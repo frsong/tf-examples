@@ -1,5 +1,4 @@
 .DS_Store
-*.pdf
 datasets/mnist/
 
 # Byte-compiled / optimized / DLL files

@@ -10,12 +10,12 @@ The code has been tested with Python 3.5 and TensorFlow 1.0.1.
 
 * `datasets/iris/iris.txt` is a subset of the full [Iris flower dataset](https://archive.ics.uci.edu/ml/datasets/Iris) used to illustrate simple linear and logistic regression. It contains the sepal length, petal length, and species label for _Iris versicolor_ and _Iris virginica_.
 
-## Linear regression with the Iris flower dataset.
+## Linear regression with the Iris flower dataset
 
 * `iris_linreg_np.py` implements linear regression in NumPy with batch gradient descent, i.e., each gradient is computed on the entire dataset.
 * `iris_linreg_tf.py` does the same with TensorFlow.
 
-## Logistic regression for MNIST handwritten digit classification.
+## Logistic regression for MNIST handwritten digit classification
 
 ## Convolutional neural network (CNN) for MNIST handwritten digit classification.
 

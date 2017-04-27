@@ -6,6 +6,8 @@ The code has been tested with Python 3.5 and TensorFlow 1.0.1.
 
 # Notes
 
+The results are reproducible on a CPU but not on GPUs.
+
 ## Datasets
 
 * `datasets/iris/iris.txt` is a subset of the full [Iris flower dataset](https://archive.ics.uci.edu/ml/datasets/Iris) used to illustrate simple linear and logistic regression. It contains the sepal length, petal length, and species label for _Iris versicolor_ and _Iris virginica_.
@@ -21,7 +23,7 @@ The code has been tested with Python 3.5 and TensorFlow 1.0.1.
 
 ## Convolutional neural network with MNIST
 
-* `mnist_cnn.py` implements a convolutional neural network.
+* `mnist_cnn.py` is a simplified version of the code from https://www.tensorflow.org/get_started/mnist/pros.
 * `mnist_cnn_model.py`, `mnist_cnn_train.py`, and `mnist_cnn_test` do the same but demonstrate a more canonical way to organize code for such projects. They also demonstrate how to use variable scopes, saving and restoring models, and using TensorBoard to monitor training progress.
 
 ## Variational autoencoder for MNIST

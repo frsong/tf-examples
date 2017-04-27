@@ -16,6 +16,8 @@ The results are reproducible on a CPU but not on GPUs.
 
 * `iris_linreg_np.py` implements linear regression in NumPy with batch gradient descent, i.e., each gradient is computed on the entire dataset.
 
+* `iris_linreg_tf.py` does the same with TensorFlow.
+
 ```
 After 10 epochs, loss = 0.119608573615551
 After 20 epochs, loss = 0.11919780820608139
@@ -31,7 +33,7 @@ W = 0.771308
 b = 0.102663
 ```
 
-* `iris_linreg_tf.py` does the same with TensorFlow.
+https://github.com/frsong/tf-examples/blob/master/figs/iris_linreg_tf.pdf
 
 ## Simple binary logistic regression with the Iris dataset
 

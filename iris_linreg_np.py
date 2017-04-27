@@ -34,7 +34,7 @@ def compute_gradients(x, W, b, y):
 
 # Hyperparameters
 learning_rate = 0.01
-num_epochs    = 1000
+num_epochs    = 10000
 
 # Starting values
 W = 0.0
@@ -46,7 +46,7 @@ for epoch in range(num_epochs):
     W -= learning_rate * grads[0]
     b -= learning_rate * grads[1]
 
-    if (epoch+1) % 100 == 0:
+    if (epoch+1) % 1000 == 0:
         loss = compute_loss(x_data, W, b, y_data)
         print("After {} epochs, loss = {}".format(epoch+1, loss))
 

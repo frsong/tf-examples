@@ -19,18 +19,18 @@ The results are reproducible on a CPU but not on GPUs.
 * `iris_linreg_tf.py` does the same with TensorFlow.
 
 ```
-After 10 epochs, loss = 0.119608573615551
-After 20 epochs, loss = 0.11919780820608139
-After 30 epochs, loss = 0.11916114389896393
-After 40 epochs, loss = 0.11912454664707184
-After 50 epochs, loss = 0.11908803135156631
-After 60 epochs, loss = 0.11905158311128616
-After 70 epochs, loss = 0.11901525408029556
-After 80 epochs, loss = 0.11897895485162735
-After 90 epochs, loss = 0.1189427524805069
-After 100 epochs, loss = 0.11890660971403122
-W = 0.771308
-b = 0.102663
+After 1000 epochs, loss = 0.11595218628644943
+After 2000 epochs, loss = 0.11327244341373444
+After 3000 epochs, loss = 0.11110898852348328
+After 4000 epochs, loss = 0.10936232656240463
+After 5000 epochs, loss = 0.10795214772224426
+After 6000 epochs, loss = 0.10681366920471191
+After 7000 epochs, loss = 0.10589452087879181
+After 8000 epochs, loss = 0.10515245795249939
+After 9000 epochs, loss = 0.10455334186553955
+After 10000 epochs, loss = 0.10406967252492905
+W = 0.952523
+b = -1.04301
 ```
 
 ![](https://github.com/frsong/tf-examples/blob/master/figs/iris_linreg_tf.png)

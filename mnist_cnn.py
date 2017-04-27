@@ -25,10 +25,10 @@ def bias(shape):
     b = tf.constant(0.1, shape=shape)
     return tf.Variable(b, name='b')
 
-def conv2d(x, W):
+def conv(x, W):
     return tf.nn.conv2d(x, W, strides=[1, 1, 1, 1], padding='SAME')
 
-def max_pool_2x2(x):
+def max_pool(x):
     return tf.nn.max_pool(x, ksize=[1, 2, 2, 1],
                           strides=[1, 2, 2, 1], padding='SAME')
 
@@ -40,15 +40,15 @@ def inference(x):
     with tf.name_scope('conv1'):
         W = weight([5, 5, 1, 32])
         b = bias([32])
-    x = tf.nn.relu(conv2d(x, W) + b)
-    x = max_pool_2x2(x) # 14x14
+    x = tf.nn.relu(conv(x, W) + b)
+    x = max_pool(x) # 14x14
 
     # Second convolutional + pooling layer
     with tf.name_scope('conv2'):
         W = weight([5, 5, 32, 64])
         b = bias([64])
-    x = tf.nn.relu(conv2d(x, W) + b)
-    x = max_pool_2x2(x) # 7x7
+    x = tf.nn.relu(conv(x, W) + b)
+    x = max_pool(x) # 7x7
 
     # Flatten feature planes
     x = tf.reshape(x, [-1, 7*7*64])
@@ -147,8 +147,7 @@ label = data.test.labels[idx]
 
 predicted_label = predict([image])[0]
 
-print("")
-print("True label for example image: {}".format(label.argmax()))
-print("Predicted label:              {}".format(predicted_label))
-
 plt.imshow(image.reshape((28, 28)), cmap='gray')
+plt.title("True label: {}, predicted: {}"
+          .format(label.argmax(), predicted_label))
+plt.savefig('figs/mnist_cnn_prediction.pdf')

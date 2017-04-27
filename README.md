@@ -1,6 +1,6 @@
 # TensorFlow examples
 
-It seemed to me while learning TensorFlow that much of the code found online is more complicated than necessary, in particular hiding the shared structure underlying the training of many deep learning models. I tried to make the code as easy to read as possible, and only use "advanced" features in a few places when it seemed appropriate.
+It seemed to me while learning TensorFlow that much of the code found online is more complicated than necessary, in particular hiding the shared structure underlying the training of many deep learning models. I tried to make the code as easy to read as possible, and only used "advanced" features in a few places when they seemed appropriate.
 
 # Requirements
 

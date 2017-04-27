@@ -1,5 +1,5 @@
 # tf-examples
-TensorFlow tutorials.
+A lot of TensorFlow code online is more complicated than necessary, at least for learning purposes. A few "advanced" features of TensorFlow are introduced along the way.
 
 # Requirements
 The code has been tested with Python 3.5 and TensorFlow 1.0.1.

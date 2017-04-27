@@ -33,7 +33,7 @@ W = 0.771308
 b = 0.102663
 ```
 
-!(https://github.com/frsong/tf-examples/blob/master/figs/iris_linreg_tf.pdf)
+![](https://github.com/frsong/tf-examples/blob/master/figs/iris_linreg_tf.pdf)
 
 ## Simple binary logistic regression with the Iris dataset
 

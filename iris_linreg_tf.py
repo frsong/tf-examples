@@ -31,7 +31,7 @@ loss = 0.5 * tf.reduce_mean(tf.square(y_pred - y))
 
 # Hyperparameters
 learning_rate = 0.01
-num_epochs    = 100
+num_epochs    = 10000
 
 # Optimizer
 optimizer = tf.train.GradientDescentOptimizer(learning_rate)
@@ -46,7 +46,7 @@ feed_dict = {x: x_data, y: y_data}
 for epoch in range(num_epochs):
     sess.run(train_op, feed_dict)
 
-    if (epoch+1) % 10 == 0:
+    if (epoch+1) % 1000 == 0:
         current_loss = sess.run(loss, feed_dict)
         print("After {} epochs, loss = {}".format(epoch+1, current_loss))
 

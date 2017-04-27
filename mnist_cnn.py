@@ -150,4 +150,4 @@ predicted_label = predict([image])[0]
 plt.imshow(image.reshape((28, 28)), cmap='gray')
 plt.title("True label: {}, predicted: {}"
           .format(label.argmax(), predicted_label))
-plt.savefig('figs/mnist_cnn_prediction.pdf')
+plt.savefig('figs/mnist_cnn_prediction.png')

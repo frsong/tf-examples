@@ -6,9 +6,12 @@ The code has been tested with Python 3.5 and TensorFlow 1.0.1.
 
 # Notes
 
+## Datasets
+
+* We created `datasets/iris/iris.txt` out of the full Iris flower dataset to illustrate simple linear and logistic regression. It contains the sepal length, petal length, and species label for _Iris versicolor_ and _Iris virginica_.
+
 ## Linear regression with the Iris flower dataset.
 
-* `datasets/iris/iris.txt` contains the sepal and petal lengths for _Iris versicolor_ and _Iris virginica_.
 * `iris_linreg_np.py` implements linear regression in NumPy with batch gradient descent, i.e., each gradient is computed on the entire dataset.
 * `iris_linreg_tf.py` does the same with TensorFlow.
 

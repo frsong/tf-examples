@@ -1,5 +1,4 @@
-Sepal length (cm) Petal length (cm) Versicolor (0) or Virginica (1)
-              7.0               4.7                               0
+Sepal length (cm) Petal length (cm) Versicolor (0) or Virginica (1)              7.0               4.7                               0
               6.4               4.5                               0
               6.9               4.9                               0
               5.5               4.0                               0

@@ -8,7 +8,7 @@ The code has been tested with Python 3.5 and TensorFlow 1.0.1.
 
 ## Datasets
 
-* We created `datasets/iris/iris.txt` out of the full Iris flower dataset to illustrate simple linear and logistic regression. It contains the sepal length, petal length, and species label for _Iris versicolor_ and _Iris virginica_.
+* We created `datasets/iris/iris.txt` out of the full [Iris flower dataset]https://en.wikipedia.org/wiki/Iris_flower_data_set to illustrate simple linear and logistic regression. It contains the sepal length, petal length, and species label for _Iris versicolor_ and _Iris virginica_.
 
 ## Linear regression with the Iris flower dataset.
 

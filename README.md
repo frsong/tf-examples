@@ -32,7 +32,8 @@ After 10000 epochs, loss = 0.10406967252492905
 W = 0.952523
 b = -1.04301
 ```
-![](https://github.com/frsong/tf-examples/blob/master/figs/iris_linreg_tf.png)
+
+[](https://github.com/frsong/tf-examples/blob/master/figs/iris_linreg_tf.png)
 
 ## Simple binary logistic regression with the Iris dataset
 

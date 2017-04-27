@@ -79,4 +79,4 @@ plt.xlabel("Sepal length (cm)")
 plt.ylabel("Petal legnth (cm)")
 
 # Save figure
-plt.savefig('figs/iris_linreg_tf.pdf')
+plt.savefig('figs/iris_linreg_tf.png')

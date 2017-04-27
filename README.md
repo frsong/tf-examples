@@ -1,7 +1,9 @@
-# tf-examples
-A lot of TensorFlow code online is more complicated than necessary, at least for learning purposes. A few "advanced" features of TensorFlow are introduced along the way.
+# TensorFlow examples
+
+It seemed to me while learning TensorFlow that much of the code found online is more complicated than necessary, in particular hiding the shared structure underlying the training of many deep learning models. I tried to clean up and simplify as much as possible, while introducing a few "advanced" features when convenient.
 
 # Requirements
+
 The code has been tested with Python 3.5 and TensorFlow 1.0.1.
 
 # Notes

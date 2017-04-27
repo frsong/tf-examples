@@ -88,7 +88,7 @@ accuracy_op = tf.reduce_mean(tf.cast(correct_op, tf.float32))
 
 # Hyperparameters
 learning_rate = 1e-4
-num_epochs    = 1#20
+num_epochs    = 20
 batch_size    = 50
 
 # Optimizer

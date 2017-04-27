@@ -4,7 +4,7 @@ TensorFlow tutorials.
 # Requirements
 The code has been tested with Python 3.5 and TensorFlow 1.0.1.
 
-# Summary
+# Notes
 
 ## Linear regression with the Iris flower dataset.
 

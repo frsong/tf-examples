@@ -34,7 +34,7 @@ The results below are reproducible on a single CPU (for the same version of TF),
 
 ## Convolutional neural network with MNIST
 
-* `mnist_cnn.py` is a simplified version of the code from https://www.tensorflow.org/get_started/mnist/pros.
+* `mnist_cnn.py` implements a convolutional neural network and is a simplified version of the code from https://www.tensorflow.org/get_started/mnist/pros.
 
 * `mnist_cnn_model.py`, `mnist_cnn_train.py`, and `mnist_cnn_test` together do the same with dropout in the fully connected layer, and demonstrate a more canonical way of organizing the code so that the model can simultaneously be used for training and extracting predictions. Includes variable scopes, saving and restoring checkpoints, and using TensorBoard to monitor training progress.
 
@@ -50,27 +50,27 @@ fc/b:0 (1024,)
 softmax/W:0 (1024, 10)
 softmax/b:0 (10,)
 => Total number of parameters = 3274634
-After 1 epochs, validation accuracy = 0.97079998254776
-After 2 epochs, validation accuracy = 0.9829999804496765
-After 3 epochs, validation accuracy = 0.9779999852180481
-After 4 epochs, validation accuracy = 0.9825999736785889
-After 5 epochs, validation accuracy = 0.9876000285148621
-After 6 epochs, validation accuracy = 0.9876000285148621
-After 7 epochs, validation accuracy = 0.9876000285148621
-After 8 epochs, validation accuracy = 0.9914000034332275
-After 9 epochs, validation accuracy = 0.9887999892234802
-After 10 epochs, validation accuracy = 0.9855999946594238
-After 11 epochs, validation accuracy = 0.9909999966621399
-After 12 epochs, validation accuracy = 0.9873999953269958
-After 13 epochs, validation accuracy = 0.9879999756813049
-After 14 epochs, validation accuracy = 0.9904000163078308
-After 15 epochs, validation accuracy = 0.9908000230789185
+After 1 epochs, validation accuracy = 0.9580000042915344
+After 2 epochs, validation accuracy = 0.9782000184059143
+After 3 epochs, validation accuracy = 0.9825999736785889
+After 4 epochs, validation accuracy = 0.9846000075340271
+After 5 epochs, validation accuracy = 0.9879999756813049
+After 6 epochs, validation accuracy = 0.9883999824523926
+After 7 epochs, validation accuracy = 0.989799976348877
+After 8 epochs, validation accuracy = 0.9904000163078308
+After 9 epochs, validation accuracy = 0.9900000095367432
+After 10 epochs, validation accuracy = 0.9909999966621399
+After 11 epochs, validation accuracy = 0.9911999702453613
+After 12 epochs, validation accuracy = 0.9914000034332275
+After 13 epochs, validation accuracy = 0.991599977016449
+After 14 epochs, validation accuracy = 0.9908000230789185
+After 15 epochs, validation accuracy = 0.9914000034332275
 After 16 epochs, validation accuracy = 0.9918000102043152
-After 17 epochs, validation accuracy = 0.9914000034332275
-After 18 epochs, validation accuracy = 0.9914000034332275
+After 17 epochs, validation accuracy = 0.991599977016449
+After 18 epochs, validation accuracy = 0.9927999973297119
 After 19 epochs, validation accuracy = 0.9923999905586243
-After 20 epochs, validation accuracy = 0.9887999892234802
-Test accuracy = 0.9872999787330627
+After 20 epochs, validation accuracy = 0.9918000102043152
+Test accuracy = 0.9908000230789185
 ```
 
 ## Variational autoencoder with MNIST

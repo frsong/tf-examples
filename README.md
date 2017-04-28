@@ -34,7 +34,7 @@ The results below are reproducible on a single CPU (for the same version of TF),
 
 ## Convolutional neural network with MNIST
 
-* `mnist_cnn.py` implements a CNN based on the code from https://www.tensorflow.org/get_started/mnist/pros. It includes code for printing all trainable variables and counting the number of parameters in the model, which I find useful to know.
+* `mnist_cnn.py` implements a CNN based on the code from https://www.tensorflow.org/get_started/mnist/pros. It includes code for displaying a list of trainable variables and counting the number of parameters in the model, which I find useful to know.
 
 * `mnist_cnn_model.py`, `mnist_cnn_train.py`, and `mnist_cnn_test` together do the same with dropout in the fully connected layer, and demonstrate a more canonical way of organizing the code so that the model can simultaneously be used for training and extracting predictions. Includes variable scopes, saving and restoring checkpoints, and using TensorBoard to monitor training progress.
 

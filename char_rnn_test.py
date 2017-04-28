@@ -10,34 +10,36 @@ import tensorflow as tf
 
 from char_rnn_model import Model
 
-def sample(save_dir, start_text):
-    filename = os.path.join(save_dir, 'config.pkl')
-    with open(filename, 'rb') as f:
-        saved_args = pickle.load(f)
+FLAGS = tf.app.flags.FLAGS
 
-    filename = os.path.join(save_dir, 'chars_vocab.pkl')
+tf.app.flags.DEFINE_string('save_dir', 'save/char-rnn', "save directory")
+tf.app.flags.DEFINE_string('start_text', "Alas, ", "start text")
+
+def sample():
+    filename = os.path.join(FLAGS.save_dir, 'chars_vocab.pkl')
     with open(filename, 'rb') as f:
         chars, vocab = pickle.load(f)
+    vocab_size = len(chars)
 
     # Model
-    model = Model(saved_args)
+    model = Model(vocab_size)
 
     # Saver
     saver = tf.train.Saver(tf.global_variables())
 
     with tf.Session() as sess:
         # Load model
-        ckpt = tf.train.get_checkpoint_state(save_dir)
+        ckpt = tf.train.get_checkpoint_state(FLAGS.save_dir)
         if ckpt and ckpt.model_checkpoint_path:
             saver.restore(sess, ckpt.model_checkpoint_path)
 
         # Generate sample
-        return model.sample(sess, chars, vocab, start_text)
+        return model.sample(sess, chars, vocab, FLAGS.start_text)
 
 #///////////////////////////////////////////////////////////////////////////////
 
+def main(_):
+    print(sample())
+
 if __name__ == '__main__':
-    save_dir   = 'save/char-rnn'
-    start_text = "Alas, "
-    text = sample(save_dir, start_text)
-    print(text)
+    tf.app.run()

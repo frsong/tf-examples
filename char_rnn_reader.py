@@ -38,7 +38,7 @@ class Reader(object):
         count_pairs = sorted(counter.items(), key=lambda x: x[1])[::-1]
         self.chars, _ = zip(*count_pairs)
         self.vocab = {c: i for i, c in enumerate(self.chars)}
-        self.tensor = np.array(map(self.vocab.get, data))
+        self.tensor = np.array(list(map(self.vocab.get, data)))
 
         with open(vocab_file, 'wb') as f:
             pickle.dump(self.chars, f)

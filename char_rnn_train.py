@@ -12,25 +12,33 @@ import tensorflow as tf
 from char_rnn_model import Model
 import char_rnn_reader as reader
 
-def train(args):
+FLAGS = tf.app.flags.FLAGS
+
+tf.app.flags.DEFINE_string('data_dir', 'datasets/tinyshakespeare',
+                           "data directory")
+tf.app.flags.DEFINE_string('save_dir', 'save/char-rnn', "save directory")
+tf.app.flags.DEFINE_string('log_dir', 'logs/char-rnn', "log directory")
+tf.app.flags.DEFINE_float('learning_rate', 0.002, "learning rate")
+tf.app.flags.DEFINE_float('decay_rate', 0.97, "decay rate")
+tf.app.flags.DEFINE_integer('batch_size', 50, "batch size")
+tf.app.flags.DEFINE_integer('num_epochs', 50, "number of epochs to train")
+tf.app.flags.DEFINE_integer('seq_length', 50, "sequence length")
+
+def train():
     # Load data
-    data = reader.Reader(args.data_dir, args.batch_size, args.seq_length)
-    args.vocab_size = len(data.chars)
+    data = reader.Reader(FLAGS.data_dir, FLAGS.batch_size, FLAGS.seq_length)
+    vocab_size = len(data.chars)
 
     # Setup directories
-    if not os.path.isdir(args.save_dir):
-        os.makedirs(args.save_dir)
+    if not os.path.isdir(FLAGS.save_dir):
+        os.makedirs(FLAGS.save_dir)
 
-    filename = os.path.join(args.save_dir, 'config.pkl')
-    with open(filename, 'wb') as f:
-        pickle.dump(args, f)
-
-    filename = os.path.join(args.save_dir, 'chars_vocab.pkl')
+    filename = os.path.join(FLAGS.save_dir, 'chars_vocab.pkl')
     with open(filename, 'wb') as f:
         pickle.dump([data.chars, data.vocab], f)
 
     # Model
-    model = Model(args, args.learning_rate)
+    model = Model(vocab_size, training=True)
 
     # Saver
     saver = tf.train.Saver(tf.global_variables())
@@ -53,9 +61,9 @@ def train(args):
         sess.run(tf.global_variables_initializer())
 
         # For TensorBoard
-        writer = tf.summary.FileWriter(args.log_dir, sess.graph)
+        writer = tf.summary.FileWriter(FLAGS.log_dir, sess.graph)
 
-        for epoch in range(args.num_epochs):
+        for epoch in range(FLAGS.num_epochs):
             # Reset data
             data.reset_batch_pointer()
 
@@ -79,29 +87,17 @@ def train(args):
                       .format(epoch+1, b+1, data.num_batches, loss))
 
             # Save
-            ckpt_path = os.path.join(args.save_dir, 'model.ckpt')
+            ckpt_path = os.path.join(FLAGS.save_dir, 'model.ckpt')
             saver.save(sess, ckpt_path, global_step=epoch+1)
 
             # Update learning rate
-            update_lr = tf.assign(model.lr, model.lr * args.decay_rate)
+            update_lr = tf.assign(model.lr, model.lr * FLAGS.decay_rate)
             sess.run(update_lr)
 
 #///////////////////////////////////////////////////////////////////////////////
 
+def main(_):
+    train()
+
 if __name__ == '__main__':
-    from argparse import Namespace as Parser
-
-    args = Parser()
-
-    args.num_layers    = 2
-    args.rnn_size      = 128
-    args.seq_length    = 50
-    args.batch_size    = 50
-    args.num_epochs    = 50
-    args.learning_rate = 0.002
-    args.decay_rate    = 0.97
-    args.data_dir      = 'datasets/tinyshakespeare'
-    args.save_dir      = 'save/char-rnn'
-    args.log_dir       = 'logs/char-rnn'
-
-    train(args)
+    tf.app.run()

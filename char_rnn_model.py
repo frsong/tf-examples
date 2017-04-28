@@ -9,13 +9,16 @@ import tensorflow as tf
 from tensorflow.contrib import rnn
 from tensorflow.contrib import legacy_seq2seq
 
-class Model(object):
-    def __init__(self, args, learning_rate=None):
-        self.args = args
+FLAGS = tf.app.flags.FLAGS
 
-        if learning_rate is not None:
-            batch_size = args.batch_size
-            seq_length = args.seq_length
+tf.app.flags.DEFINE_integer('num_layers', 2, "number of LSTM layers")
+tf.app.flags.DEFINE_integer('rnn_size', 128, "LSTM size")
+
+class Model(object):
+    def __init__(self, vocab_size, training=False):
+        if training:
+            batch_size = FLAGS.batch_size
+            seq_length = FLAGS.seq_length
         else:
             batch_size = 1
             seq_length = 1
@@ -26,7 +29,7 @@ class Model(object):
 
         # Multilayer RNN
         Cell  = rnn.BasicLSTMCell
-        cells = [Cell(args.rnn_size) for _ in range(args.num_layers)]
+        cells = [Cell(FLAGS.rnn_size) for _ in range(FLAGS.num_layers)]
         self.cell = cell = rnn.MultiRNNCell(cells)
 
         # For feeding in data
@@ -38,13 +41,11 @@ class Model(object):
         self.initial_state = cell.zero_state(batch_size, tf.float32)
 
         # Readout
-        softmax_W = tf.get_variable('softmax_W',
-                                    [args.rnn_size, args.vocab_size])
-        softmax_b = tf.get_variable('softmax_b', [args.vocab_size])
+        softmax_W = tf.get_variable('softmax_W', [FLAGS.rnn_size, vocab_size])
+        softmax_b = tf.get_variable('softmax_b', [vocab_size])
 
         # Input embedding
-        embedding = tf.get_variable('embedding',
-                                    [args.vocab_size, args.rnn_size])
+        embedding = tf.get_variable('embedding', [vocab_size, FLAGS.rnn_size])
 
         # inputs.shape = [batch_size, seq_length, rnn_size]
         inputs = tf.nn.embedding_lookup(embedding, self.input_data)
@@ -55,7 +56,7 @@ class Model(object):
         # inputs is list of seq_length x [batch_size, rnn_size]
         inputs = [tf.squeeze(i, [1]) for i in inputs]
 
-        if learning_rate is not None:
+        if training:
             predict_char = None
         else:
             def predict_char(prev, _):
@@ -71,7 +72,7 @@ class Model(object):
 
         # concat  -> [batch_size, seq_length x rnn_size]
         # reshape -> [batch_size * seq_length, rnn_size]
-        output = tf.reshape(tf.concat(outputs, 1), [-1, args.rnn_size])
+        output = tf.reshape(tf.concat(outputs, 1), [-1, FLAGS.rnn_size])
 
         self.logits = tf.matmul(output, softmax_W) + softmax_b
         self.probs  = tf.nn.softmax(self.logits)
@@ -85,14 +86,14 @@ class Model(object):
         self.loss = tf.reduce_mean(loss)
         self.final_state = last_state
 
-        if learning_rate is None:
+        if not training:
             return
 
         #-----------------------------------------------------------------------
         # For training only
         #-----------------------------------------------------------------------
 
-        self.lr = tf.Variable(learning_rate, trainable=False)
+        self.lr = tf.Variable(FLAGS.learning_rate, trainable=False)
         trainables = tf.trainable_variables()
         grads = tf.gradients(self.loss, trainables)
         grads, _ = tf.clip_by_global_norm(grads, 5)

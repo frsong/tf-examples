@@ -61,14 +61,15 @@ def train():
         # For TensorBoard
         writer = tf.summary.FileWriter(FLAGS.log_dir, sess.graph)
 
+        # Minimize the loss function
         for epoch in range(FLAGS.num_epochs):
             state = sess.run(model.initial_state)
             for b in range(data.num_batches):
                 batch = data.next_batch()
                 feed_dict = {model.inputs:  batch[0], model.targets: batch[1]}
-                for i, (c, h) in enumerate(model.initial_state):
-                    feed_dict[c] = state[i].c
-                    feed_dict[h] = state[i].h
+                for layer, (c, h) in enumerate(model.initial_state):
+                    feed_dict[c] = state[layer].c
+                    feed_dict[h] = state[layer].h
                 fetches = [model.train_op, model.loss, model.final_state,
                            summary_op]
                 _, loss, state, summary = sess.run(fetches, feed_dict)

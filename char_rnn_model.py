@@ -30,7 +30,7 @@ class Model(object):
 
         # Multilayer RNN
         cells = [BasicLSTMCell(FLAGS.rnn_size) for _ in range(FLAGS.num_layers)]
-        self.cell = cell = MultiRNNCell(cells)
+        self.cell = MultiRNNCell(cells)
 
         # For feeding in data
         self.inputs  = tf.placeholder(tf.int32, [batch_size, seq_length])
@@ -38,7 +38,7 @@ class Model(object):
 
         # len(initial_state) = num_layers
         # state[i].c.shape   = [batch_size, rnn_size]
-        self.initial_state = cell.zero_state(batch_size, tf.float32)
+        self.initial_state = self.cell.zero_state(batch_size, tf.float32)
 
         # Input embedding
         embedding = tf.get_variable('embedding', [vocab_size, FLAGS.rnn_size])
@@ -52,28 +52,30 @@ class Model(object):
         # inputs is list of seq_length x [batch_size, rnn_size]
         inputs = [tf.squeeze(i, [1]) for i in inputs]
 
+        # Readout weights and biases
+        softmax_W = tf.get_variable('softmax_W', [FLAGS.rnn_size, vocab_size])
+        softmax_b = tf.get_variable('softmax_b', [vocab_size])
+
         if training:
             predict_char = None
         else:
-            def predict_char(prev, _):
-                prev = tf.matmul(prev, softmax_W) + softmax_b
-                prev_symbol = tf.stop_gradient(tf.argmax(prev, 1))
-                return tf.nn.embedding_lookup(embedding, prev_symbol)
+            def predict_char(outputs, _):
+                logits = tf.matmul(outputs, softmax_W) + softmax_b
+                char   = tf.stop_gradient(tf.argmax(logits, 1))
+                return tf.nn.embedding_lookup(embedding, char)
 
         # outputs is list of seq_length x [batch_size, rnn_size]
         outputs, self.final_state = legacy_seq2seq.rnn_decoder(
-            inputs, self.initial_state, cell,
+            inputs, self.initial_state, self.cell,
             loop_function=predict_char
             )
 
         # concat  -> [batch_size, seq_length x rnn_size]
         # reshape -> [batch_size * seq_length, rnn_size]
-        output = tf.reshape(tf.concat(outputs, 1), [-1, FLAGS.rnn_size])
+        outputs = tf.reshape(tf.concat(outputs, 1), [-1, FLAGS.rnn_size])
 
         # Readout
-        softmax_W   = tf.get_variable('softmax_W', [FLAGS.rnn_size, vocab_size])
-        softmax_b   = tf.get_variable('softmax_b', [vocab_size])
-        self.logits = tf.matmul(output, softmax_W) + softmax_b
+        self.logits = tf.matmul(outputs, softmax_W) + softmax_b
         self.probs  = tf.nn.softmax(self.logits)
 
         # loss.shape = [batch_size * seq_length]

@@ -10,7 +10,7 @@ from tensorflow.contrib import rnn
 from tensorflow.contrib import legacy_seq2seq
 
 class Model(object):
-    def __init__(self, args, training=True, seed=1):
+    def __init__(self, args, training=False):
         self.args = args
 
         if training:

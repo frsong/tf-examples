@@ -8,7 +8,6 @@ import codecs
 import os
 import pickle
 from collections import Counter
-
 import numpy as np
 
 class Reader(object):

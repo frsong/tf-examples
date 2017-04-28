@@ -20,7 +20,7 @@ def sample(save_dir, start_text):
         chars, vocab = pickle.load(f)
 
     # Model
-    model = Model(saved_args, training=False)
+    model = Model(saved_args)
 
     # Saver
     saver = tf.train.Saver(tf.global_variables())

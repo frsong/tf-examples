@@ -30,7 +30,7 @@ def train(args):
         pickle.dump([data.chars, data.vocab], f)
 
     # Model
-    model = Model(args)
+    model = Model(args, training=True)
 
     # Saver
     saver = tf.train.Saver(tf.global_variables())
@@ -94,8 +94,8 @@ if __name__ == '__main__':
 
     args.num_layers    = 2
     args.rnn_size      = 128
-    args.batch_size    = 50
     args.seq_length    = 50
+    args.batch_size    = 50
     args.num_epochs    = 50
     args.learning_rate = 0.002
     args.decay_rate    = 0.97

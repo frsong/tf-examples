@@ -8,13 +8,13 @@ This code has been tested with Python 3.5 and TensorFlow 1.0.1.
 
 # Notes
 
-The results below are reproducible on a single CPU (for the same version of TF), but not on a GPU. When used, an "epoch" means one full presentation of the dataset.
+Results and figures are reproducible on a single CPU (for the same version of TF), but not on a GPU. When used, an "epoch" means one full presentation of the dataset.
 
 ## Datasets
 
 * `datasets/iris/iris.txt` is a subset of the full [Iris flower dataset](https://archive.ics.uci.edu/ml/datasets/Iris) used to illustrate simple linear and logistic regression. It contains the sepal length, petal length, and species label for _Iris versicolor_ and _Iris virginica_.
 
-* MNIST will download itself as needed.
+* MNIST downloads and/or extracts itself as needed.
 
 ## Linear regression with the Iris dataset
 

@@ -144,8 +144,12 @@ grid = np.zeros((28*ny, 28*nx))
 reconstructed_grid = np.zeros((28*ny, 28*nx))
 for i in range(ny):
     for j in range(nx):
-        grid[28*(ny-i-1):28*(ny-i),28*j:28*(j+1)] = images[i*ny+j].reshape((28, 28))
-        reconstructed_grid[28*(ny-i-1):28*(ny-i),28*j:28*(j+1)] = reconstructed_images[i*ny+j].reshape((28, 28))
+        grid[28*(ny-i-1):28*(ny-i),28*j:28*(j+1)] = (
+            images[i*ny+j].reshape((28, 28))
+            )
+        reconstructed_grid[28*(ny-i-1):28*(ny-i),28*j:28*(j+1)] = (
+            reconstructed_images[i*ny+j].reshape((28, 28))
+            )
 
 plt.figure()
 
@@ -159,7 +163,7 @@ plt.subplot(1, 2, 2)
 plt.title("Reconstructed")
 plt.imshow(reconstructed_grid, vmin=0, vmax=1, cmap='gray')
 
-# Save
+# Save figure
 plt.savefig('figs/vae_reconstructions.png')
 
 #-------------------------------------------------------------------------------

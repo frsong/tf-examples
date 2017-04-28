@@ -118,4 +118,4 @@ After 75 epochs, loss = 138.50106091586025
 
 ## char-rnn with Shakespeare
 
-* `char_rnn_reader.py`
+* `char_rnn_reader.py`, `char_rnn_model.py`, `char_rnn_train.py`, and `char_rnn_test.py` together implement an LSTM character-level language model based on https://github.com/sherjilozair/char-rnn-tensorflow.

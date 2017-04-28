@@ -56,9 +56,9 @@ def decoder(x, hidden_dim=500):
         x = tf.nn.softplus(x)
         x = linear('hidden_2', x, hidden_dim)
         x = tf.nn.softplus(x)
-        x_reconstruction = linear('reconstruction', x, 784)
+        x = linear('reconstruction', x, 784)
 
-    return x_reconstruction
+    return x
 
 # Seed the TF random number generator for reproducible initialization
 tf.set_random_seed(0)
@@ -70,10 +70,11 @@ x = tf.placeholder(tf.float32, [None, 784])
 z_mean, z_log_var = encoder(x)
 epsilon = tf.random_normal(tf.shape(z_log_var))
 z = z_mean + epsilon * tf.exp(0.5*z_log_var) # "Reparametrization trick"
-x_reconstruction = decoder(z)
+logits = decoder(z)
+x_reconstruction = tf.nn.sigmoid(logits)
 
 # Reconstruction loss
-CE = tf.nn.sigmoid_cross_entropy_with_logits(logits=x_reconstruction, labels=x)
+CE = tf.nn.sigmoid_cross_entropy_with_logits(logits=logits, labels=x)
 CE = tf.reduce_sum(CE, 1)
 
 # Latent loss
@@ -161,7 +162,7 @@ plt.imshow(grid, cmap='gray')
 # Reconstructed images
 plt.subplot(1, 2, 2)
 plt.title("Reconstructed")
-plt.imshow(reconstructed_grid, vmin=0, vmax=1, cmap='gray')
+plt.imshow(reconstructed_grid, cmap='gray')
 
 # Save figure
 plt.savefig('figs/vae_reconstructions.png')
@@ -199,5 +200,5 @@ if latent_dim == 2:
             grid[28*(ny-i-1):28*(ny-i),28*j:28*(j+1)] = image.reshape((28, 28))
 
     plt.figure()
-    plt.imshow(grid, vmin=0, vmax=1, cmap='gray', extent=[-3, 3, -3, 3])
+    plt.imshow(grid, cmap='gray', extent=[-3, 3, -3, 3])
     plt.savefig('figs/vae_samples.png')

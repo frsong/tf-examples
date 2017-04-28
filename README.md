@@ -18,7 +18,7 @@ This code has been tested with Python 3.5 and TensorFlow 1.0.1. Results and figu
 
 * `iris_linreg_tf.py` does the same with TensorFlow.
 
-* `visualize_graph.py` writes the computational graph for the linear regression loss to a log file so it can be visualized by running `tensorboard --logdir=logs/visualize` and opening the indicated IP address in a browser.
+* `visualize_graph.py` writes the computational graph for the linear regression loss to a log file so it can be visualized by running `tensorboard --logdir=logs/visualize`. Open the indicated IP address in a browser and click on the "Graphs" tab.
 
 ## Binary logistic regression with the Iris dataset
 

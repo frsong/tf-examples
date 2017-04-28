@@ -132,21 +132,6 @@ def reconstruct(x_):
     return sess.run(x_reconstruction, {x: x_})
 
 #-------------------------------------------------------------------------------
-# Plot latent embedding
-#-------------------------------------------------------------------------------
-
-images = data.test.images
-labels = data.test.labels
-z_mu   = encode(images)
-
-plt.figure()
-plt.scatter(z_mu[:,0], z_mu[:,1], c=np.argmax(labels, 1))
-plt.xlim(-4, 4)
-plt.ylim(-4, 4)
-plt.colorbar()
-plt.savefig('figs/vae.png')
-
-#-------------------------------------------------------------------------------
 # Example reconstructions
 #-------------------------------------------------------------------------------
 
@@ -179,20 +164,37 @@ plt.imshow(reconstructed_grid, vmin=0, vmax=1, cmap='gray')
 plt.savefig('figs/vae_reconstructions.png')
 
 #-------------------------------------------------------------------------------
+# Plot latent embedding
+#-------------------------------------------------------------------------------
+
+if latent_dim == 2:
+    images = data.test.images
+    labels = data.test.labels
+    z_mu   = encode(images)
+
+    plt.figure()
+    plt.scatter(z_mu[:,0], z_mu[:,1], c=np.argmax(labels, 1))
+    plt.xlim(-4, 4)
+    plt.ylim(-4, 4)
+    plt.colorbar()
+    plt.savefig('figs/vae.png')
+
+#-------------------------------------------------------------------------------
 # Plot samples at corresponding latent space positions
 #-------------------------------------------------------------------------------
 
-nx = ny = 20
-xs = np.linspace(-3, 3, nx)
-ys = np.linspace(-3, 3, ny)
+if latent_dim == 2:
+    nx = ny = 20
+    xs = np.linspace(-3, 3, nx)
+    ys = np.linspace(-3, 3, ny)
 
-grid = np.zeros((28*ny, 28*nx))
-for i, y_i in enumerate(ys):
-    for j, x_j in enumerate(xs):
-        latent = [[x_j, y_i]]
-        image  = generate(latent)[0]
-        grid[28*(ny-i-1):28*(ny-i),28*j:28*(j+1)] = image.reshape((28, 28))
+    grid = np.zeros((28*ny, 28*nx))
+    for i, y_i in enumerate(ys):
+        for j, x_j in enumerate(xs):
+            latent = [[x_j, y_i]]
+            image  = generate(latent)[0]
+            grid[28*(ny-i-1):28*(ny-i),28*j:28*(j+1)] = image.reshape((28, 28))
 
-plt.figure()
-plt.imshow(grid, vmin=0, vmax=1, cmap='gray', extent=[-3, 3, -3, 3])
-plt.savefig('figs/vae_samples.png')
+    plt.figure()
+    plt.imshow(grid, vmin=0, vmax=1, cmap='gray', extent=[-3, 3, -3, 3])
+    plt.savefig('figs/vae_samples.png')

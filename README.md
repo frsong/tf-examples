@@ -112,4 +112,4 @@ After 70 epochs, loss = 138.74444517655806
 After 75 epochs, loss = 138.50106091586025
 ```
 
-<img src="https://github.com/frsong/tf-examples/blob/master/figs/vae_embedding.png" width=500><img src="https://github.com/frsong/tf-examples/blob/master/figs/vae_samples.png" width=500>
+<img src="https://github.com/frsong/tf-examples/blob/master/figs/vae_embedding.png" width=400><img src="https://github.com/frsong/tf-examples/blob/master/figs/vae_samples.png" width=400>

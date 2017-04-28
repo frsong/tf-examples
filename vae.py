@@ -24,11 +24,6 @@ data = input_data.read_data_sets('datasets/mnist', one_hot=True)
 # Latent space dimension
 latent_dim = 2
 
-# Hyperparameters
-learning_rate = 0.001
-num_epochs    = 75
-batch_size    = 100
-
 def weight(shape):
     bound = np.sqrt(6.0 / np.sum(shape))
     W = tf.random_uniform(shape, -bound, bound)
@@ -87,6 +82,11 @@ KL = -0.5 * tf.reduce_sum(KL, 1)
 
 # Total loss
 loss = tf.reduce_mean(CE + KL)
+
+# Hyperparameters
+learning_rate = 0.001
+num_epochs    = 75
+batch_size    = 100
 
 # Optimizer
 optimizer = tf.train.AdamOptimizer(learning_rate)

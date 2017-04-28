@@ -38,6 +38,7 @@ This code has been tested with Python 3.5 and TensorFlow 1.0.1. Results and figu
 
 ```
 $ python mnist_cnn_train.py
+
 Variables
 ---------
 conv1/W:0 (5, 5, 1, 32)
@@ -78,6 +79,7 @@ Test accuracy = 0.9908000230789185
 
 ```
 $ python vae.py
+
 Variables
 ---------
 encoder/hidden_1/W:0 (784, 500)

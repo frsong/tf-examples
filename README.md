@@ -1,6 +1,6 @@
 # TensorFlow examples
 
-It seemed to me while learning TensorFlow that many online tutorials provide code that's more mysterious than necessary, in particular obscuring the shared structure of deep learning models. This is my attempt to remedy the situation. That said, thanks to the authors of the original code that I learned from for doing the hard part of getting things to work.
+It seemed to me while learning TensorFlow that many online tutorials provide code that's more mysterious than is ideal for beginners, in particular obscuring the shared structure of deep learning models. This is my attempt to remedy the situation. That said, thanks to the authors of the original code that I learned from for doing the hard part of getting things to work.
 
 # Notes
 
@@ -36,7 +36,7 @@ This code has been tested with Python 3.5 and TensorFlow 1.0.1. Results and figu
 
 * `mnist_cnn.py` implements a CNN based on the code from https://www.tensorflow.org/get_started/mnist/pros. Includes name scopes and code for displaying a list of trainable variables and counting the number of parameters in the model, which I find useful to know.
 
-* `mnist_cnn_model.py`, `mnist_cnn_train.py`, and `mnist_cnn_test` together do the same with dropout in the fully connected layer, and demonstrate a more canonical way of organizing the code so that the model can simultaneously be used for training and extracting predictions. Includes variable scopes, saving and restoring checkpoints, and using TensorBoard to monitor training progress (for which, run ``tensorboard --logdir=logs/mnist`` in another terminal).
+* `mnist_cnn_model.py`, `mnist_cnn_train.py`, and `mnist_cnn_test` together do the same with dropout in the fully connected layer, and demonstrate a more canonical way of organizing the code so that the model can simultaneously be used for training and extracting predictions. Includes variable scopes, saving and restoring checkpoints, and using TensorBoard to monitor training progress (for which, run ``tensorboard --logdir=logs/mnist`` in another terminal). Run `python mnist_cnn_train.py` to train, and `python mnist_cnn_test.py` to extract a prediction.
 
 ```
 $ python mnist_cnn_train.py

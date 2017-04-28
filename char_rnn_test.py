@@ -14,6 +14,7 @@ FLAGS = tf.app.flags.FLAGS
 
 tf.app.flags.DEFINE_string('save_dir', 'save/char-rnn', "save directory")
 tf.app.flags.DEFINE_string('start_text', "Alas ", "start text")
+tf.app.flags.DEFINE_integer('seed', 0, "random number generator seed")
 
 def sample():
     filename = os.path.join(FLAGS.save_dir, 'chars_vocab.pkl')
@@ -34,7 +35,7 @@ def sample():
             saver.restore(sess, ckpt.model_checkpoint_path)
 
         # Generate sample
-        return model.sample(sess, chars, vocab, FLAGS.start_text)
+        return model.sample(sess, chars, vocab, FLAGS.start_text, FLAGS.seed)
 
 #///////////////////////////////////////////////////////////////////////////////
 

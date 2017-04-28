@@ -24,9 +24,8 @@ class Model(object):
             batch_size = 1
             seq_length = 1
 
-        # Seed random number generators
+        # Seed random number generator for reproducible initialization
         tf.set_random_seed(0)
-        np.random.seed(0)
 
         # Multilayer RNN
         cells = [BasicLSTMCell(FLAGS.rnn_size) for _ in range(FLAGS.num_layers)]
@@ -90,7 +89,7 @@ class Model(object):
         # For TensorBoard
         tf.summary.scalar('loss', self.loss)
 
-    def sample(self, sess, chars, vocab, start_text, num_chars=500):
+    def sample(self, sess, chars, vocab, start_text, seed=0, num_chars=500):
         # Run the LSTM through the start text
         # len(state) = num_layers, state[i].c.shape = [1, rnn_size]
         state = sess.run(self.cell.zero_state(1, tf.float32))
@@ -98,6 +97,9 @@ class Model(object):
             x = vocab[char]
             feed_dict = {self.inputs: [[x]], self.initial_state: state}
             state = sess.run(self.final_state, feed_dict)
+
+        # Seed random number generator
+        rng = np.random.RandomState(seed)
 
         # Generate new text
         text = start_text
@@ -108,7 +110,7 @@ class Model(object):
             probs, state = sess.run([self.probs, self.final_state], feed_dict)
 
             p = probs[0]
-            char = chars[np.random.choice(len(p), p=p)]
+            char = chars[rng.choice(len(p), p=p)]
             text += char
 
         return text

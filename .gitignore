@@ -1,5 +1,7 @@
 .DS_Store
 datasets/mnist/
+datasets/tinyshakespeare/data.npy
+datasets/tinyshakespeare/vocab.pkl
 logs/
 save/
 

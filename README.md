@@ -22,6 +22,8 @@ The results below are reproducible on a single CPU (for the same version of TF),
 
 * `iris_linreg_tf.py` does the same with TensorFlow.
 
+* `visualize_graph.py` writes the computational graph for the linear regression loss to a log file so it can be visualized by typing `tensorboard --logdir=logs/visualize` and opening the indicated IP address in a browser.
+
 ## Simple binary logistic regression with the Iris dataset
 
 * `iris_logreg_np.py` implements logistic regression in NumPy with stochastic gradient descent, i.e., each gradient is computed on one random example from the dataset.

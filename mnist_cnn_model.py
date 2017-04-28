@@ -4,13 +4,13 @@ MNIST handwritten digit classification with a convolutional neural network.
 """
 import tensorflow as tf
 
-def weight(shape, dtype=tf.float32):
-    init = tf.truncated_normal_initializer(stddev=0.1, dtype=dtype)
-    return tf.get_variable('W', shape, initializer=init, dtype=dtype)
+def weight(shape):
+    init = tf.truncated_normal_initializer(stddev=0.1)
+    return tf.get_variable('W', shape, initializer=init)
 
-def bias(shape, dtype=tf.float32):
-    init = tf.constant_initializer(0.1, dtype=dtype)
-    return tf.get_variable('b', shape, initializer=init, dtype=dtype)
+def bias(shape):
+    init = tf.constant_initializer(0.1)
+    return tf.get_variable('b', shape, initializer=init)
 
 def conv(x, W):
     return tf.nn.conv2d(x, W, strides=[1, 1, 1, 1], padding='SAME')

@@ -1,6 +1,6 @@
 # TensorFlow examples
 
-It seemed to me while learning TensorFlow that much of the code found online is more complicated than necessary, in particular hiding the shared structure underlying the training of many deep learning models. I tried to make the code as easy to read as possible, and only used "advanced" features in a few places when they seemed appropriate.
+It seemed to me while learning TensorFlow that much of the code found online is more complicated than necessary, in particular obscuring the shared structure of many deep learning models. I tried to make the code as easy to read as possible, and only used "advanced" features in a few places when they seemed appropriate.
 
 # Requirements
 
@@ -60,7 +60,7 @@ After 1 epochs, validation accuracy = 0.97079998254776
 Test accuracy = 0.9733999967575073
 ```
 
-* `mnist_cnn_model.py`, `mnist_cnn_train.py`, and `mnist_cnn_test` do the same but with dropout, and demonstrate a more canonical way of organizing code for such projects. Includes variable scopes, saving and restoring the model, and using TensorBoard to monitor training progress.
+* `mnist_cnn_model.py`, `mnist_cnn_train.py`, and `mnist_cnn_test` do the same but with dropout, and demonstrate a more canonical way of organizing the code so that the model can be used for both training and extracting predictions from the saved model. Includes variable scopes, saving and restoring checkpoints, and using TensorBoard to monitor training progress.
 
 ## Variational autoencoder with MNIST
 

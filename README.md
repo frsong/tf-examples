@@ -76,3 +76,38 @@ Test accuracy = 0.9908000230789185
 ## Variational autoencoder with MNIST
 
 * `vae.py` implements a variational autoencoder based on the code from https://jmetzen.github.io/2015-11-27/vae.html.
+
+```
+Variables
+---------
+encoder/hidden_1/W:0 (784, 500)
+encoder/hidden_1/b:0 (500,)
+encoder/hidden_2/W:0 (500, 500)
+encoder/hidden_2/b:0 (500,)
+encoder/mean/W:0 (500, 2)
+encoder/mean/b:0 (2,)
+encoder/log_var/W:0 (500, 2)
+encoder/log_var/b:0 (2,)
+decoder/hidden_1/W:0 (2, 500)
+decoder/hidden_1/b:0 (500,)
+decoder/hidden_2/W:0 (500, 500)
+decoder/hidden_2/b:0 (500,)
+decoder/mean/W:0 (500, 784)
+decoder/mean/b:0 (784,)
+=> Total number of parameters = 1289788
+After 5 epochs, loss = 155.88664106889203
+After 10 epochs, loss = 148.58128617720172
+After 15 epochs, loss = 145.61274827436966
+After 20 epochs, loss = 143.976779535467
+After 25 epochs, loss = 142.8190042669123
+After 30 epochs, loss = 142.0120587019487
+After 35 epochs, loss = 141.4040315662731
+After 40 epochs, loss = 140.78155033458364
+After 45 epochs, loss = 140.41188788674094
+After 50 epochs, loss = 139.98751409357246
+After 55 epochs, loss = 139.62178749778053
+After 60 epochs, loss = 139.27646353981712
+After 65 epochs, loss = 139.04612417047673
+After 70 epochs, loss = 138.74444517655806
+After 75 epochs, loss = 138.50106091586025
+```

@@ -144,10 +144,8 @@ grid = np.zeros((28*ny, 28*nx))
 reconstructed_grid = np.zeros((28*ny, 28*nx))
 for i in range(ny):
     for j in range(nx):
-        ( grid[28*(ny-i-1):28*(ny-i),28*j:28*(j+1)]
-          = images[i*ny+j].reshape((28, 28)) )
-        ( reconstructed_grid[28*(ny-i-1):28*(ny-i),28*j:28*(j+1)]
-          = reconstructed_images[i*ny+j].reshape((28, 28)) )
+        grid[28*(ny-i-1):28*(ny-i),28*j:28*(j+1)] = images[i*ny+j].reshape((28, 28))
+        reconstructed_grid[28*(ny-i-1):28*(ny-i),28*j:28*(j+1)] = reconstructed_images[i*ny+j].reshape((28, 28))
 
 plt.figure()
 
@@ -178,7 +176,7 @@ if latent_dim == 2:
     plt.xlim(-4, 4)
     plt.ylim(-4, 4)
     plt.colorbar()
-    plt.savefig('figs/vae.png')
+    plt.savefig('figs/vae_embedding.png')
 
 #-------------------------------------------------------------------------------
 # Plot samples at corresponding latent space positions

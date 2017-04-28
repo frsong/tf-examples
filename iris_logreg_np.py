@@ -26,7 +26,7 @@ def compute_accuracy(x, W, b, y):
     return np.mean(labels == Y_data)
 
 def compute_gradients(x, W, b, y):
-    logits  = np.matmul(x, W) + b
+    logits = np.matmul(x, W) + b
     y_pred = sigmoid(logits)
 
     error = y_pred - y

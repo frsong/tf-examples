@@ -30,7 +30,7 @@ The results below are reproducible on a single CPU (for the same version of TF),
 
 ## Multiclass logistic regression with MNIST
 
-* `mnist_logreg.py` implements logistic regression.
+* `mnist_logreg.py` implements logistic regression based on the code from https://www.tensorflow.org/get_started/mnist/beginners.
 
 ## Convolutional neural network with MNIST
 

@@ -37,6 +37,7 @@ This code has been tested with Python 3.5 and TensorFlow 1.0.1. Results and figu
 * `mnist_cnn_model.py`, `mnist_cnn_train.py`, and `mnist_cnn_test` together do the same with dropout in the fully connected layer, and demonstrate a more canonical way of organizing the code so that the model can simultaneously be used for training and extracting predictions. Includes variable scopes, saving and restoring checkpoints, and using TensorBoard to monitor training progress (for which, run ``tensorboard --logdir=logs/mnist`` in another terminal).
 
 ```
+$ python mnist_cnn_train.py
 Variables
 ---------
 conv1/W:0 (5, 5, 1, 32)
@@ -76,6 +77,7 @@ Test accuracy = 0.9908000230789185
 * `vae.py` implements a VAE based on the code from https://jmetzen.github.io/2015-11-27/vae.html.
 
 ```
+$ python vae.py
 Variables
 ---------
 encoder/hidden_1/W:0 (784, 500)

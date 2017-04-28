@@ -17,18 +17,19 @@ def train(save_dir='save/mnist', log_dir='logs/mnist'):
     if not os.path.isdir(save_dir):
         os.makedirs(save_dir)
 
+    # Hyperparameters
+    learning_rate = 1e-4
+    num_epochs    = 20
+    batch_size    = 50
+
     # Model
-    model = Model()
+    model = Model(learning_rate)
 
     # Saver
     saver = tf.train.Saver(tf.global_variables())
 
     # Summary
     summary_op = tf.summary.merge_all()
-
-    # Hyperparameters
-    num_epochs = 20
-    batch_size = 50
 
     # Seed the random number generator for reproducible batches
     np.random.seed(0)
@@ -57,8 +58,8 @@ def train(save_dir='save/mnist', log_dir='logs/mnist'):
             for b in range(num_batches_per_epoch):
                 batch = data.train.next_batch(batch_size)
                 feed_dict = {model.x: batch[0],
-                             model.y: batch[1]}#,
-                             #model.keep_prob: 0.5}
+                             model.y: batch[1],
+                             model.keep_prob: 0.5}
                 _, summary = sess.run([model.train_op, summary_op], feed_dict)
 
                 # Add to summary
@@ -66,8 +67,8 @@ def train(save_dir='save/mnist', log_dir='logs/mnist'):
 
             # Progress report
             feed_dict = {model.x: data.validation.images,
-                         model.y: data.validation.labels}#,
-                         #model.keep_prob: 1.0}
+                         model.y: data.validation.labels,
+                         model.keep_prob: 1.0}
             accuracy = sess.run(model.accuracy_op, feed_dict)
             print("After {} epochs, validation accuracy = {}"
                   .format(epoch+1, accuracy))
@@ -78,8 +79,8 @@ def train(save_dir='save/mnist', log_dir='logs/mnist'):
 
         # Test accuracy
         feed_dict = {model.x: data.test.images,
-                     model.y: data.test.labels}#,
-                     #model.keep_prob: 1.0}
+                     model.y: data.test.labels,
+                     model.keep_prob: 1.0}
         accuracy = sess.run(model.accuracy_op, feed_dict)
         print("Test accuracy = {}".format(accuracy))
 

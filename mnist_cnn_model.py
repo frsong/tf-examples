@@ -19,7 +19,7 @@ def max_pool(x):
     return tf.nn.max_pool(x, ksize=[1, 2, 2, 1],
                           strides=[1, 2, 2, 1], padding='SAME')
 
-def inference(x):#, keep_prob):
+def inference(x, keep_prob):
     # Reshape input
     x = tf.reshape(x, [-1, 28, 28, 1])
 
@@ -47,7 +47,7 @@ def inference(x):#, keep_prob):
     x = tf.nn.relu(tf.matmul(x, W) + b)
 
     # Dropout
-    #x = tf.nn.dropout(x, keep_prob)
+    x = tf.nn.dropout(x, keep_prob)
 
     # Softmax layer
     with tf.variable_scope('softmax'):
@@ -58,7 +58,7 @@ def inference(x):#, keep_prob):
     return x
 
 class Model(object):
-    def __init__(self, training=True):
+    def __init__(self, learning_rate=None):
         # Seed the TF random number generator for reproducible initialization
         tf.set_random_seed(0)
 
@@ -67,10 +67,10 @@ class Model(object):
         self.y = y = tf.placeholder(tf.float32, [None, 10])
 
         # Dropout
-        #self.keep_prob = tf.placeholder(tf.float32)
+        self.keep_prob = tf.placeholder(tf.float32)
 
         # Logits
-        logits = inference(x)#, self.keep_prob)
+        logits = inference(x, self.keep_prob)
 
         # Prediction
         predict_op  = tf.argmax(logits, 1)
@@ -79,7 +79,7 @@ class Model(object):
         self.predict_op  = predict_op
         self.accuracy_op = accuracy_op
 
-        if not training:
+        if learning_rate is None:
             return
 
         #-----------------------------------------------------------------------

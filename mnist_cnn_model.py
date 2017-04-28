@@ -2,7 +2,6 @@
 MNIST handwritten digit classification with a convolutional neural network.
 
 """
-import numpy as np
 import tensorflow as tf
 
 def weight(shape, dtype=tf.float32):

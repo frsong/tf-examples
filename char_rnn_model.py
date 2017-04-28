@@ -52,22 +52,9 @@ class Model(object):
         # inputs is list of seq_length x [batch_size, rnn_size]
         inputs = [tf.squeeze(i, [1]) for i in inputs]
 
-        # Readout weights and biases
-        softmax_W = tf.get_variable('softmax_W', [FLAGS.rnn_size, vocab_size])
-        softmax_b = tf.get_variable('softmax_b', [vocab_size])
-
-        if training:
-            predict_char = None
-        else:
-            def predict_char(outputs, _):
-                logits = tf.matmul(outputs, softmax_W) + softmax_b
-                char   = tf.stop_gradient(tf.argmax(logits, 1))
-                return tf.nn.embedding_lookup(embedding, char)
-
         # outputs is list of seq_length x [batch_size, rnn_size]
         outputs, self.final_state = legacy_seq2seq.rnn_decoder(
-            inputs, self.initial_state, self.cell,
-            loop_function=predict_char
+            inputs, self.initial_state, self.cell
             )
 
         # concat  -> [batch_size, seq_length x rnn_size]
@@ -75,6 +62,8 @@ class Model(object):
         outputs = tf.reshape(tf.concat(outputs, 1), [-1, FLAGS.rnn_size])
 
         # Readout
+        softmax_W = tf.get_variable('softmax_W', [FLAGS.rnn_size, vocab_size])
+        softmax_b = tf.get_variable('softmax_b', [vocab_size])
         self.logits = tf.matmul(outputs, softmax_W) + softmax_b
         self.probs  = tf.nn.softmax(self.logits)
 
@@ -102,6 +91,7 @@ class Model(object):
         tf.summary.scalar('loss', self.loss)
 
     def sample(self, sess, chars, vocab, start_text, num_chars=500):
+        # Run the LSTM through the start text
         # len(state) = num_layers, state[i].c.shape = [1, rnn_size]
         state = sess.run(self.cell.zero_state(1, tf.float32))
         for char in start_text[:-1]:
@@ -109,6 +99,7 @@ class Model(object):
             feed_dict = {self.inputs: [[x]], self.initial_state: state}
             state = sess.run(self.final_state, feed_dict)
 
+        # Generate new text
         text = start_text
         char = start_text[-1]
         for _ in range(num_chars):
@@ -117,10 +108,7 @@ class Model(object):
             probs, state = sess.run([self.probs, self.final_state], feed_dict)
 
             p = probs[0]
-            sample = np.random.choice(len(p), p=p)
-
-            pred = chars[sample]
-            text += pred
-            char = pred
+            char = chars[np.random.choice(len(p), p=p)]
+            text += char
 
         return text

@@ -13,7 +13,7 @@ from char_rnn_model import Model
 FLAGS = tf.app.flags.FLAGS
 
 tf.app.flags.DEFINE_string('save_dir', 'save/char-rnn', "save directory")
-tf.app.flags.DEFINE_string('start_text', "Alas, ", "start text")
+tf.app.flags.DEFINE_string('start_text', "Alas ", "start text")
 
 def sample():
     filename = os.path.join(FLAGS.save_dir, 'chars_vocab.pkl')

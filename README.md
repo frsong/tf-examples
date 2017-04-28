@@ -20,21 +20,6 @@ The results are reproducible on a CPU but not on GPUs.
 
 * `iris_linreg_tf.py` does the same with TensorFlow.
 
-```
-After 1000 epochs, loss = 0.11595218628644943
-After 2000 epochs, loss = 0.11327244341373444
-After 3000 epochs, loss = 0.11110898852348328
-After 4000 epochs, loss = 0.10936232656240463
-After 5000 epochs, loss = 0.10795214772224426
-After 6000 epochs, loss = 0.10681366920471191
-After 7000 epochs, loss = 0.10589452087879181
-After 8000 epochs, loss = 0.10515245795249939
-After 9000 epochs, loss = 0.10455334186553955
-After 10000 epochs, loss = 0.10406967252492905
-W = 0.952523
-b = -1.04301
-```
-
 ## Simple binary logistic regression with the Iris dataset
 
 ## Multiclass logistic regression with MNIST
@@ -55,9 +40,17 @@ fc/b:0 (1024,)
 softmax/W:0 (1024, 10)
 softmax/b:0 (10,)
 => Total number of parameters = 3274634
-
 After 1 epochs, validation accuracy = 0.97079998254776
-Test accuracy = 0.9733999967575073
+After 2 epochs, validation accuracy = 0.9829999804496765
+After 3 epochs, validation accuracy = 0.9779999852180481
+After 4 epochs, validation accuracy = 0.9825999736785889
+After 5 epochs, validation accuracy = 0.9876000285148621
+After 6 epochs, validation accuracy = 0.9876000285148621
+After 7 epochs, validation accuracy = 0.9876000285148621
+After 8 epochs, validation accuracy = 0.9914000034332275
+After 9 epochs, validation accuracy = 0.9887999892234802
+After 10 epochs, validation accuracy = 0.9855999946594238
+Test accuracy = 0.9858999848365784
 ```
 
 * `mnist_cnn_model.py`, `mnist_cnn_train.py`, and `mnist_cnn_test` do the same but with dropout, and demonstrate a more canonical way of organizing the code so that the model can be used for both training and extracting predictions from the saved model. Includes variable scopes, saving and restoring checkpoints, and using TensorBoard to monitor training progress.

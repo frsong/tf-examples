@@ -59,7 +59,7 @@ def inference(x):
         b = bias([1024])
     x = tf.nn.relu(tf.matmul(x, W) + b)
 
-    # Fully connected readout
+    # Softmax layer
     with tf.name_scope('softmax'):
         W = weight([1024, 10])
         b = bias([10])

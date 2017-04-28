@@ -50,7 +50,7 @@ def inference(x):#, keep_prob):
     # Dropout
     #x = tf.nn.dropout(x, keep_prob)
 
-    # Fully connected readout
+    # Softmax layer
     with tf.variable_scope('softmax'):
         W = weight([1024, 10])
         b = bias([10])

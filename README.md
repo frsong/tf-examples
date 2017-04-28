@@ -34,7 +34,7 @@ The results below are reproducible on a single CPU (for the same version of TF),
 
 ## Convolutional neural network with MNIST
 
-* `mnist_cnn.py` implements a convolutional neural network based on the code from https://www.tensorflow.org/get_started/mnist/pros.
+* `mnist_cnn.py` implements a CNN based on the code from https://www.tensorflow.org/get_started/mnist/pros.
 
 * `mnist_cnn_model.py`, `mnist_cnn_train.py`, and `mnist_cnn_test` together do the same with dropout in the fully connected layer, and demonstrate a more canonical way of organizing the code so that the model can simultaneously be used for training and extracting predictions. Includes variable scopes, saving and restoring checkpoints, and using TensorBoard to monitor training progress.
 
@@ -75,7 +75,7 @@ Test accuracy = 0.9908000230789185
 
 ## Variational autoencoder with MNIST
 
-* `vae.py` implements a variational autoencoder based on the code from https://jmetzen.github.io/2015-11-27/vae.html.
+* `vae.py` implements a VAE based on the code from https://jmetzen.github.io/2015-11-27/vae.html.
 
 ```
 Variables

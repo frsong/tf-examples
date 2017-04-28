@@ -14,6 +14,8 @@ The results are reproducible on a CPU but not on GPUs.
 
 * `datasets/iris/iris.txt` is a subset of the full [Iris flower dataset](https://archive.ics.uci.edu/ml/datasets/Iris) used to illustrate simple linear and logistic regression. It contains the sepal length, petal length, and species label for _Iris versicolor_ and _Iris virginica_.
 
+* MNIST takes care of itself.
+
 ## Simple linear regression with the Iris dataset
 
 * `iris_linreg_np.py` implements linear regression in NumPy with batch gradient descent, i.e., each gradient is computed on the entire dataset.

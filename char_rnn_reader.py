@@ -28,7 +28,6 @@ class Reader(object):
             print("Loading preprocessed files.")
             self.load_preprocessed(vocab_file, tensor_file)
         self.create_batches()
-        self.reset_batch_pointer()
 
     def preprocess(self, input_file, vocab_file, tensor_file):
         with codecs.open(input_file, 'r', encoding=self.encoding) as f:
@@ -55,20 +54,21 @@ class Reader(object):
         self.num_batches = self.tensor.size // chars_per_batch
         assert self.num_batches > 0
 
-        self.tensor = self.tensor[:self.num_batches * chars_per_batch]
-        x_data = self.tensor
-        y_data = np.concatenate((x_data[1:], [x_data[0]]))
-        self.x_batches = np.split(x_data.reshape(self.batch_size, -1),
+        n = self.num_batches * chars_per_batch
+        x_data = self.tensor[:n]
+        if n < self.tensor.size:
+            y_data = self.tensor[1:n+1]
+        else:
+            y_data = np.concatenate((x_data[1:], [x_data[0]]))
+        self.x_batches = np.split(x_data.reshape((self.batch_size, -1)),
                                   self.num_batches, 1)
-        self.y_batches = np.split(y_data.reshape(self.batch_size, -1),
+        self.y_batches = np.split(y_data.reshape((self.batch_size, -1)),
                                   self.num_batches, 1)
-
-    def reset_batch_pointer(self):
         self.pointer = 0
 
     def next_batch(self):
         batch = self.x_batches[self.pointer], self.y_batches[self.pointer]
-        self.pointer += 1
+        self.pointer = (self.pointer + 1) % self.num_batches
         return batch
 
 #///////////////////////////////////////////////////////////////////////////////

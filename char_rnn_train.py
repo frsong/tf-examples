@@ -18,10 +18,9 @@ tf.app.flags.DEFINE_string('data_dir', 'datasets/tinyshakespeare',
                            "data directory")
 tf.app.flags.DEFINE_string('save_dir', 'save/char-rnn', "save directory")
 tf.app.flags.DEFINE_string('log_dir', 'logs/char-rnn', "log directory")
-tf.app.flags.DEFINE_float('learning_rate', 0.002, "learning rate")
 tf.app.flags.DEFINE_float('decay_rate', 0.97, "decay rate")
 tf.app.flags.DEFINE_integer('batch_size', 50, "batch size")
-tf.app.flags.DEFINE_integer('num_epochs', 50, "number of epochs to train")
+tf.app.flags.DEFINE_integer('num_epochs', 20, "number of epochs to train")
 tf.app.flags.DEFINE_integer('seq_length', 50, "sequence length")
 
 def train():
@@ -64,9 +63,6 @@ def train():
         writer = tf.summary.FileWriter(FLAGS.log_dir, sess.graph)
 
         for epoch in range(FLAGS.num_epochs):
-            # Reset data
-            data.reset_batch_pointer()
-
             state = sess.run(model.initial_state)
             for b in range(data.num_batches):
                 batch = data.next_batch()
@@ -91,8 +87,8 @@ def train():
             saver.save(sess, ckpt_path, global_step=epoch+1)
 
             # Update learning rate
-            update_lr = tf.assign(model.lr, model.lr * FLAGS.decay_rate)
-            sess.run(update_lr)
+            #update_lr = tf.assign(model.lr, model.lr * FLAGS.decay_rate)
+            #sess.run(update_lr)
 
 #///////////////////////////////////////////////////////////////////////////////
 

@@ -56,7 +56,7 @@ def decoder(x, hidden_dim=500):
         x = tf.nn.softplus(x)
         x = linear('hidden_2', x, hidden_dim)
         x = tf.nn.softplus(x)
-        x_reconstruction = linear('mean', x, 784)
+        x_reconstruction = linear('reconstruction', x, 784)
 
     return x_reconstruction
 

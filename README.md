@@ -92,8 +92,8 @@ decoder/hidden_1/W:0 (2, 500)
 decoder/hidden_1/b:0 (500,)
 decoder/hidden_2/W:0 (500, 500)
 decoder/hidden_2/b:0 (500,)
-decoder/mean/W:0 (500, 784)
-decoder/mean/b:0 (784,)
+decoder/reconstruction/W:0 (500, 784)
+decoder/reconstruction/b:0 (784,)
 => Total number of parameters = 1289788
 After 5 epochs, loss = 155.88664106889203
 After 10 epochs, loss = 148.58128617720172

@@ -1,5 +1,6 @@
 .DS_Store
 datasets/mnist/
+logs/
 save/
 
 # Byte-compiled / optimized / DLL files

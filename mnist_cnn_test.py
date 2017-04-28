@@ -36,7 +36,10 @@ if __name__ == '__main__':
 
     predicted_label = predict([image])[0]
 
+    # Plot image with label
     plt.imshow(image.reshape((28, 28)), cmap='gray')
     plt.title("True label: {}, predicted: {}"
               .format(label.argmax(), predicted_label))
+
+    # Save figure
     plt.savefig('figs/mnist_cnn_test.png')

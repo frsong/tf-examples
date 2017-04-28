@@ -88,7 +88,7 @@ accuracy_op = tf.reduce_mean(tf.cast(correct_op, tf.float32))
 
 # Hyperparameters
 learning_rate = 1e-4
-num_epochs    = 10
+num_epochs    = 20
 batch_size    = 50
 
 # Optimizer
@@ -146,7 +146,10 @@ label = data.test.labels[idx]
 
 predicted_label = predict([image])[0]
 
+# Plot image with label
 plt.imshow(image.reshape((28, 28)), cmap='gray')
 plt.title("True label: {}, predicted: {}"
           .format(label.argmax(), predicted_label))
+
+# Save figure
 plt.savefig('figs/mnist_cnn.png')

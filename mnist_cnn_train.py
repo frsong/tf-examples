@@ -27,7 +27,7 @@ def train(save_dir='save/mnist', log_dir='logs/mnist'):
     summary_op = tf.summary.merge_all()
 
     # Hyperparameters
-    num_epochs = 1
+    num_epochs = 20
     batch_size = 50
 
     # Seed the random number generator for reproducible batches

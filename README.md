@@ -24,6 +24,10 @@ The results are reproducible on a CPU but not on GPUs.
 
 ## Simple binary logistic regression with the Iris dataset
 
+* `iris_logreg_np.py` implements logistic regression in NumPy with stochastic gradient descent, i.e., each gradient is computed on one random example from the dataset.
+
+* `iris_logreg_tf.py` does the same with TensorFlow.
+
 ## Multiclass logistic regression with MNIST
 
 ## Convolutional neural network with MNIST

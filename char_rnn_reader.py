@@ -51,8 +51,8 @@ class Reader(object):
         self.tensor = np.load(tensor_file)
 
     def create_batches(self):
-        chars_per_batch = self.batch_size * self.seq_length
-        self.num_batches = int(self.tensor.size / chars_per_batch)
+        chars_per_batch  = self.batch_size * self.seq_length
+        self.num_batches = self.tensor.size // chars_per_batch
         assert self.num_batches > 0
 
         self.tensor = self.tensor[:self.num_batches * chars_per_batch]

@@ -130,7 +130,7 @@ for epoch in range(num_epochs):
 # Test accuracy
 feed_dict = {x: data.test.images, y: data.test.labels}
 accuracy = sess.run(accuracy_op, feed_dict)
-print("Test accuracy = {}".format(accuracy))
+print("Test accuracy =", accuracy)
 
 def predict(images):
     feed_dict = {x: images}

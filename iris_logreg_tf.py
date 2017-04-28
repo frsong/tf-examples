@@ -67,11 +67,11 @@ for epoch in range(num_epochs):
 W_val, b_val = sess.run([W, b])
 W_val = W_val[:,0]
 b_val = b_val[0]
-print("W = {}".format(W_val))
-print("b = {}".format(b_val))
+print("W =", W_val)
+print("b =", b_val)
 
 def predict(x_):
-    return 1*sess.run(predict_op, {x: x_})
+    return 1 * sess.run(predict_op, {x: x_})
 
 #-------------------------------------------------------------------------------
 # Figure

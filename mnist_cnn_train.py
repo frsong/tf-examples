@@ -82,7 +82,7 @@ def train(save_dir='save/mnist', log_dir='logs/mnist'):
                      model.y: data.test.labels,
                      model.keep_prob: 1.0}
         accuracy = sess.run(model.accuracy_op, feed_dict)
-        print("Test accuracy = {}".format(accuracy))
+        print("Test accuracy =", accuracy)
 
 #///////////////////////////////////////////////////////////////////////////////
 

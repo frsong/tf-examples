@@ -19,7 +19,7 @@ def sigmoid(x):
 
 def predict(x):
     logits = np.matmul(x, W) + b
-    return 1*(logits >= 0)
+    return 1 * (logits >= 0)
 
 def compute_accuracy(x, W, b, y):
     labels = predict(X_data)

@@ -8,7 +8,7 @@ The code has been tested with Python 3.5 and TensorFlow 1.0.1.
 
 # Notes
 
-The results below are reproducible on a CPU (for the same version of TF) but not on GPUs. When used, an "epoch" means one full presentation of the dataset.
+The results below are reproducible on a single CPU, for the same version of TF, but not on a GPU. When used, an "epoch" means one full presentation of the dataset.
 
 ## Datasets
 

@@ -88,19 +88,12 @@ accuracy_op = tf.reduce_mean(tf.cast(correct_op, tf.float32))
 
 # Hyperparameters
 learning_rate = 1e-4
-num_epochs    = 20
+num_epochs    = 1
 batch_size    = 50
 
 # Optimizer
 optimizer = tf.train.AdamOptimizer(learning_rate)
 train_op  = optimizer.minimize(loss)
-
-# TF session
-sess = tf.Session()
-sess.run(tf.global_variables_initializer())
-
-# Seed the random number generator for reproducible batches
-np.random.seed(0)
 
 # Print list of variables
 print("")
@@ -113,6 +106,13 @@ for v in variables:
     print("{} {}".format(v.name, v.get_shape()))
 print("=> Total number of parameters =", num_params)
 print("")
+
+# Seed the random number generator for reproducible batches
+np.random.seed(0)
+
+# TF session
+sess = tf.Session()
+sess.run(tf.global_variables_initializer())
 
 # Minimize the loss function
 num_batches_per_epoch = data.train.num_examples // batch_size
@@ -150,4 +150,4 @@ predicted_label = predict([image])[0]
 plt.imshow(image.reshape((28, 28)), cmap='gray')
 plt.title("True label: {}, predicted: {}"
           .format(label.argmax(), predicted_label))
-plt.savefig('figs/mnist_cnn_prediction.png')
+plt.savefig('figs/mnist_cnn.png')

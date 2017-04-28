@@ -62,8 +62,8 @@ After 1 epochs, validation accuracy = 0.97079998254776
 Test accuracy = 0.9733999967575073
 ```
 
-* `mnist_cnn_model.py`, `mnist_cnn_train.py`, and `mnist_cnn_test` do the same but demonstrate a more canonical way to organize code for such projects. They also demonstrate how to use variable scopes, saving and restoring models, and using TensorBoard to monitor training progress.
+* `mnist_cnn_model.py`, `mnist_cnn_train.py`, and `mnist_cnn_test` do the same but with dropout, and demonstrate a more canonical way of organizing code for such projects. Includes variable scopes, saving and restoring the model, and using TensorBoard to monitor training progress.
 
-## Variational autoencoder for MNIST
+## Variational autoencoder with MNIST
 
 * `vae.py` is a simplified version of the code from https://jmetzen.github.io/2015-11-27/vae.html.

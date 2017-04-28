@@ -13,14 +13,14 @@ def bias(shape, dtype=tf.float32):
     init = tf.constant_initializer(0.1, dtype=dtype)
     return tf.get_variable('b', shape, initializer=init, dtype=dtype)
 
-def conv2d(x, W):
+def conv(x, W):
     return tf.nn.conv2d(x, W, strides=[1, 1, 1, 1], padding='SAME')
 
-def max_pool_2x2(x):
+def max_pool(x):
     return tf.nn.max_pool(x, ksize=[1, 2, 2, 1],
                           strides=[1, 2, 2, 1], padding='SAME')
 
-def inference(x, keep_prob):
+def inference(x):#, keep_prob):
     # Reshape input
     x = tf.reshape(x, [-1, 28, 28, 1])
 
@@ -28,15 +28,15 @@ def inference(x, keep_prob):
     with tf.variable_scope('conv1'):
         W = weight([5, 5, 1, 32])
         b = bias([32])
-    x = tf.nn.relu(conv2d(x, W) + b)
-    x = max_pool_2x2(x) # 14x14
+    x = tf.nn.relu(conv(x, W) + b)
+    x = max_pool(x) # 14x14
 
     # Second convolutional + pooling layer
     with tf.variable_scope('conv2'):
         W = weight([5, 5, 32, 64])
         b = bias([64])
-    x = tf.nn.relu(conv2d(x, W) + b)
-    x = max_pool_2x2(x) # 7x7
+    x = tf.nn.relu(conv(x, W) + b)
+    x = max_pool(x) # 7x7
 
     # Flatten feature planes
     x = tf.reshape(x, [-1, 7*7*64])
@@ -48,7 +48,7 @@ def inference(x, keep_prob):
     x = tf.nn.relu(tf.matmul(x, W) + b)
 
     # Dropout
-    x = tf.nn.dropout(x, keep_prob)
+    #x = tf.nn.dropout(x, keep_prob)
 
     # Fully connected readout
     with tf.variable_scope('softmax'):
@@ -59,23 +59,19 @@ def inference(x, keep_prob):
     return x
 
 class Model(object):
-    def __init__(self, training=True, seed=0):
-        # Reset graph in case of reuse
-        tf.reset_default_graph()
-
-        # Seed random number generators
-        tf.set_random_seed(seed)
-        np.random.seed(seed)
+    def __init__(self, training=True):
+        # Seed the TF random number generator for reproducible initialization
+        tf.set_random_seed(0)
 
         # For feeding in data
         self.x = x = tf.placeholder(tf.float32, [None, 784])
         self.y = y = tf.placeholder(tf.float32, [None, 10])
 
         # Dropout
-        self.keep_prob = tf.placeholder(tf.float32)
+        #self.keep_prob = tf.placeholder(tf.float32)
 
         # Logits
-        logits = inference(x, self.keep_prob)
+        logits = inference(x)#, self.keep_prob)
 
         # Prediction
         predict_op  = tf.argmax(logits, 1)

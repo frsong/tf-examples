@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import tensorflow as tf
 from tensorflow.examples.tutorials.mnist import input_data
 
-from mnist_model import Model
+from mnist_cnn_model import Model
 
 def predict(images, save_dir='save/mnist'):
     # Model
@@ -36,8 +36,7 @@ if __name__ == '__main__':
 
     predicted_label = predict([image])[0]
 
-    print("")
-    print("True label for example image: {}".format(label.argmax()))
-    print("Predicted label:              {}".format(predicted_label))
-
     plt.imshow(image.reshape((28, 28)), cmap='gray')
+    plt.title("True label: {}, predicted: {}"
+              .format(label.argmax(), predicted_label))
+    plt.savefig('figs/mnist_cnn_test.png')

@@ -7,7 +7,7 @@ import numpy as np
 import tensorflow as tf
 from tensorflow.examples.tutorials.mnist import input_data
 
-from mnist_model import Model
+from mnist_cnn_model import Model
 
 def train(save_dir='save/mnist', log_dir='logs/mnist'):
     # Load data
@@ -27,7 +27,7 @@ def train(save_dir='save/mnist', log_dir='logs/mnist'):
     summary_op = tf.summary.merge_all()
 
     # Hyperparameters
-    num_epochs = 20
+    num_epochs = 1
     batch_size = 50
 
     # Print list of variables
@@ -39,8 +39,11 @@ def train(save_dir='save/mnist', log_dir='logs/mnist'):
     for v in variables:
         num_params += np.prod(v.get_shape().as_list())
         print("{} {}".format(v.name, v.get_shape()))
-    print("=> Total number of parameters = {}".format(num_params))
+    print("=> Total number of parameters =", num_params)
     print("")
+
+    # Seed the random number generator for reproducible batches
+    np.random.seed(0)
 
     with tf.Session() as sess:
         sess.run(tf.global_variables_initializer())
@@ -55,8 +58,8 @@ def train(save_dir='save/mnist', log_dir='logs/mnist'):
             for b in range(num_batches_per_epoch):
                 batch = data.train.next_batch(batch_size)
                 feed_dict = {model.x: batch[0],
-                             model.y: batch[1],
-                             model.keep_prob: 0.5}
+                             model.y: batch[1]}#,
+                             #model.keep_prob: 0.5}
                 _, summary = sess.run([model.train_op, summary_op], feed_dict)
 
                 # Add to summary
@@ -64,8 +67,8 @@ def train(save_dir='save/mnist', log_dir='logs/mnist'):
 
             # Progress report
             feed_dict = {model.x: data.validation.images,
-                         model.y: data.validation.labels,
-                         model.keep_prob: 1.0}
+                         model.y: data.validation.labels}#,
+                         #model.keep_prob: 1.0}
             accuracy = sess.run(model.accuracy_op, feed_dict)
             print("After {} epochs, validation accuracy = {}"
                   .format(epoch+1, accuracy))
@@ -76,8 +79,8 @@ def train(save_dir='save/mnist', log_dir='logs/mnist'):
 
         # Test accuracy
         feed_dict = {model.x: data.test.images,
-                     model.y: data.test.labels,
-                     model.keep_prob: 1.0}
+                     model.y: data.test.labels}#,
+                     #model.keep_prob: 1.0}
         accuracy = sess.run(model.accuracy_op, feed_dict)
         print("Test accuracy = {}".format(accuracy))
 

@@ -1,5 +1,6 @@
 .DS_Store
 datasets/mnist/
+save/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

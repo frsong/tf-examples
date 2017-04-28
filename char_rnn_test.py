@@ -39,5 +39,5 @@ def sample(save_dir, start_text):
 
 if __name__ == '__main__':
     save_dir   = 'save/char-rnn'
-    start_text = "Oh Juliet "
+    start_text = "Alas, "
     sample(save_dir, start_text)

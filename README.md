@@ -2,13 +2,9 @@
 
 It seemed to me while learning TensorFlow that many online tutorials provide code that's more mysterious than necessary, in particular obscuring the shared structure of deep learning models. This is my attempt to remedy the situation. That said, thanks to the authors of the original code that I learned from for doing the hard part of getting things to work.
 
-# Requirements
-
-This code has been tested with Python 3.5 and TensorFlow 1.0.1.
-
 # Notes
 
-Results and figures are reproducible on a single CPU (for the same version of TF), but not on a GPU. When used, an "epoch" means one full presentation of the dataset.
+This code has been tested with Python 3.5 and TensorFlow 1.0.1. Results and figures are reproducible on a single CPU (for the same version of TF), but not on a GPU. When used, an "epoch" means one full presentation of the dataset.
 
 ## Datasets
 

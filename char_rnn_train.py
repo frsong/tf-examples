@@ -30,7 +30,7 @@ def train(args):
         pickle.dump([data.chars, data.vocab], f)
 
     # Model
-    model = Model(args, training=True)
+    model = Model(args, args.learning_rate)
 
     # Saver
     saver = tf.train.Saver(tf.global_variables())
@@ -38,35 +38,32 @@ def train(args):
     # Summary
     summary_op = tf.summary.merge_all()
 
+    # Print list of variables
+    print("")
+    print("Variables")
+    print("---------")
+    variables  = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES)
+    num_params = 0
+    for v in variables:
+        num_params += np.prod(v.get_shape().as_list())
+        print("{} {}".format(v.name, v.get_shape()))
+    print("=> Total number of parameters = {}".format(num_params))
+
     with tf.Session() as sess:
+        sess.run(tf.global_variables_initializer())
+
         # For TensorBoard
         writer = tf.summary.FileWriter(args.log_dir, sess.graph)
 
-        # Initialize variables
-        sess.run(tf.global_variables_initializer())
-
-        # Print list of variables
-        print("")
-        print("Variables")
-        print("---------")
-        variables  = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES)
-        num_params = 0
-        for v in variables:
-            num_params += np.prod(v.get_shape().as_list())
-            print("{} {}".format(v.name, v.get_shape()))
-        print("=> Total number of parameters = {}".format(num_params))
-
         for epoch in range(args.num_epochs):
-            # Update learning rate for epoch
-            update_lr = tf.assign(model.lr,
-                                  args.learning_rate * args.decay_rate**epoch)
-            sess.run(update_lr)
-
+            # Reset data
             data.reset_batch_pointer()
+
             state = sess.run(model.initial_state)
             for b in range(data.num_batches):
                 batch = data.next_batch()
-                feed_dict = {model.input_data: batch[0], model.targets: batch[1]}
+                feed_dict = {model.input_data: batch[0],
+                             model.targets:    batch[1]}
                 for i, (c, h) in enumerate(model.initial_state):
                     feed_dict[c] = state[i].c
                     feed_dict[h] = state[i].h
@@ -79,11 +76,15 @@ def train(args):
 
                 # Progress report
                 print("Epoch {}, {}/{}: loss = {}"
-                      .format(epoch, b+1, data.num_batches, loss))
+                      .format(epoch+1, b+1, data.num_batches, loss))
 
             # Save
             ckpt_path = os.path.join(args.save_dir, 'model.ckpt')
             saver.save(sess, ckpt_path, global_step=epoch+1)
+
+            # Update learning rate
+            update_lr = tf.assign(model.lr, model.lr * args.decay_rate)
+            sess.run(update_lr)
 
 #///////////////////////////////////////////////////////////////////////////////
 

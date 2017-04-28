@@ -32,12 +32,12 @@ def sample(save_dir, start_text):
             saver.restore(sess, ckpt.model_checkpoint_path)
 
         # Generate sample
-        text = model.sample(sess, chars, vocab, start_text)
-        print(text)
+        return model.sample(sess, chars, vocab, start_text)
 
 #///////////////////////////////////////////////////////////////////////////////
 
 if __name__ == '__main__':
     save_dir   = 'save/char-rnn'
     start_text = "Alas, "
-    sample(save_dir, start_text)
+    text = sample(save_dir, start_text)
+    print(text)

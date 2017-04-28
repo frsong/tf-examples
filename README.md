@@ -8,9 +8,11 @@ This code has been tested with Python 3.5 and TensorFlow 1.0.1. Results and figu
 
 ## Datasets
 
-* `datasets/iris/iris.txt` is a subset of the full [Iris flower dataset](https://archive.ics.uci.edu/ml/datasets/Iris) used to illustrate simple linear and logistic regression. It contains the sepal length, petal length, and species label for _Iris versicolor_ and _Iris virginica_.
+* `datasets/iris/iris.txt`, a subset of the full [Iris flower dataset](https://archive.ics.uci.edu/ml/datasets/Iris), is used to illustrate simple linear and logistic regression. It contains the sepal length, petal length, and species label for _Iris versicolor_ and _Iris virginica_.
 
 * MNIST downloads and/or extracts itself as needed.
+
+* The Tiny Shakespeare corpus, which is originally from https://github.com/karpathy/char-rnn and consists of a subset of Shakespeare's works, is used for the char-rnn example.
 
 ## Linear regression with the Iris dataset
 
@@ -118,4 +120,27 @@ After 75 epochs, loss = 138.50106091586025
 
 ## char-rnn with Shakespeare
 
-* `char_rnn_reader.py`, `char_rnn_model.py`, `char_rnn_train.py`, and `char_rnn_test.py` together implement an LSTM character-level language model based on https://github.com/sherjilozair/char-rnn-tensorflow.
+* `char_rnn_reader.py`, `char_rnn_model.py`, `char_rnn_train.py`, and `char_rnn_test.py` together implement an LSTM character-level language model based on https://github.com/sherjilozair/char-rnn-tensorflow. The `Reader` class in `char_rnn_reader.py` is an interface to the data; each batch is just a list of words (X) and the list of words that follow each of those words (Y) as you can see from running `python char_rnn_reader.py` on its own. Use `python char_rnn_train.py` to train, and by the end you will get such high literature as
+
+```
+$ python char_rnn_test.py
+Alas, my dame;
+The kheeply?
+
+First Calintnen:
+'Tis mother Morthany the intarke, fear the chartry,
+And deceich'd in Sapasle.
+If like the father, which I am quite your caunce and the
+soft the king, so vilate of to fail!
+So for causon?
+
+VOLUMNIA:
+That of me help, thou arence new's veignace.
+
+Clurdenenars:
+Plicter to ever worldiar our for you,
+And statient 'mestameth; but sir; for thine gave,
+Her thou pase ago; not to the a having
+Title men hath subt aly, aboad dender was his vay;
+Wive heart curst, desrop
+```

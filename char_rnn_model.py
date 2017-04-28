@@ -10,10 +10,10 @@ from tensorflow.contrib import rnn
 from tensorflow.contrib import legacy_seq2seq
 
 class Model(object):
-    def __init__(self, args, training=False):
+    def __init__(self, args, learning_rate=None):
         self.args = args
 
-        if training:
+        if learning_rate is not None:
             batch_size = args.batch_size
             seq_length = args.seq_length
         else:
@@ -55,7 +55,7 @@ class Model(object):
         # inputs is list of seq_length x [batch_size, rnn_size]
         inputs = [tf.squeeze(i, [1]) for i in inputs]
 
-        if training:
+        if learning_rate is not None:
             predict_char = None
         else:
             def predict_char(prev, _):
@@ -85,14 +85,14 @@ class Model(object):
         self.loss = tf.reduce_mean(loss)
         self.final_state = last_state
 
-        if not training:
+        if learning_rate is None:
             return
 
         #-----------------------------------------------------------------------
         # For training only
         #-----------------------------------------------------------------------
 
-        self.lr = tf.Variable(0.0, trainable=False)
+        self.lr = tf.Variable(learning_rate, trainable=False)
         trainables = tf.trainable_variables()
         grads = tf.gradients(self.loss, trainables)
         grads, _ = tf.clip_by_global_norm(grads, 5)

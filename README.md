@@ -4,7 +4,7 @@ It seemed to me while learning TensorFlow that many online tutorials provide cod
 
 # Notes
 
-This code has been tested with Python 3.5 and TensorFlow 1.0.1. Results and figures are exactly reproducible on a single CPU (for the same version of TF), but not on a GPU. An "epoch" means one full presentation of the dataset.
+This code has been tested with Python 3.5 and TensorFlow 1.0.1. Many examples generate a figure or two so take a look at `figs/` to see what to expect. An "epoch" means one full presentation of the dataset.
 
 ## Datasets
 

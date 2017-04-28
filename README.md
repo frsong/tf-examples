@@ -1,6 +1,6 @@
 # TensorFlow examples
 
-It seemed to me while learning TensorFlow that many of the tutorials online provide code that's more mysterious than necessary, in particular obscuring the shared structure of many deep learning models. This is my attempt to remedy the situation. That said, thanks to the authors of the original code that I learned from for doing the hard part of getting things to work.
+It seemed to me while learning TensorFlow that many online tutorials provide code that's more mysterious than necessary, in particular obscuring the shared structure of many deep learning models. This is my attempt to remedy the situation. That said, thanks to the authors of the original code that I learned from for doing the hard part of getting things to work.
 
 # Requirements
 

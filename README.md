@@ -16,7 +16,7 @@ This code has been tested with Python 3.5 and TensorFlow 1.0.1. Results and figu
 
 ## Linear regression with the Iris dataset
 
-* `iris_linreg_np.py` implements linear regression in NumPy with batch gradient descent, i.e., each gradient is computed on the entire dataset.
+* `iris_linreg_np.py` implements linear regression in NumPy with batch gradient descent, i.e., each gradient is computed on the entire dataset. It hardly needs to be said (but I'll say it anyway) that this is not a good way to do linear regression for real data.
 
 * `iris_linreg_tf.py` does the same with TensorFlow.
 

@@ -36,7 +36,7 @@ The results below are reproducible on a single CPU (for the same version of TF),
 
 * `mnist_cnn.py` is a simplified version of the code from https://www.tensorflow.org/get_started/mnist/pros.
 
-* `mnist_cnn_model.py`, `mnist_cnn_train.py`, and `mnist_cnn_test` together do the same with dropout in the fully connected layer, and demonstrate a more canonical way of organizing the code so that the model can be used for simultaneously training and extracting predictions. Includes variable scopes, saving and restoring checkpoints, and using TensorBoard to monitor training progress.
+* `mnist_cnn_model.py`, `mnist_cnn_train.py`, and `mnist_cnn_test` together do the same with dropout in the fully connected layer, and demonstrate a more canonical way of organizing the code so that the model can simultaneously be used for training and extracting predictions. Includes variable scopes, saving and restoring checkpoints, and using TensorBoard to monitor training progress.
 
 ```
 Variables

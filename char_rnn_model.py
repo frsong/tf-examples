@@ -98,7 +98,7 @@ class Model(object):
             feed_dict = {self.inputs: [[x]], self.initial_state: state}
             state = sess.run(self.final_state, feed_dict)
 
-        # Seed random number generator
+        # Get random number generator
         rng = np.random.RandomState(seed)
 
         # Generate new text

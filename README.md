@@ -16,7 +16,7 @@ The results below are reproducible on a single CPU (for the same version of TF),
 
 * MNIST will download itself as needed.
 
-## Simple linear regression with the Iris dataset
+## Linear regression with the Iris dataset
 
 * `iris_linreg_np.py` implements linear regression in NumPy with batch gradient descent, i.e., each gradient is computed on the entire dataset.
 
@@ -24,7 +24,7 @@ The results below are reproducible on a single CPU (for the same version of TF),
 
 * `visualize_graph.py` writes the computational graph for the linear regression loss to a log file so it can be visualized by running `tensorboard --logdir=logs/visualize` and opening the indicated IP address in a browser.
 
-## Simple binary logistic regression with the Iris dataset
+## Binary logistic regression with the Iris dataset
 
 * `iris_logreg_np.py` implements logistic regression in NumPy with stochastic gradient descent, i.e., each gradient is computed on one random example from the dataset.
 

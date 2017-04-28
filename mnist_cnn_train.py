@@ -30,20 +30,19 @@ def train(save_dir='save/mnist', log_dir='logs/mnist'):
     num_epochs = 1
     batch_size = 50
 
+    # Seed the random number generator for reproducible batches
+    np.random.seed(0)
+
     # Print list of variables
     print("")
     print("Variables")
     print("---------")
-    variables = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES)
+    variables  = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES)
     num_params = 0
     for v in variables:
         num_params += np.prod(v.get_shape().as_list())
         print("{} {}".format(v.name, v.get_shape()))
     print("=> Total number of parameters =", num_params)
-    print("")
-
-    # Seed the random number generator for reproducible batches
-    np.random.seed(0)
 
     with tf.Session() as sess:
         sess.run(tf.global_variables_initializer())

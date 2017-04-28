@@ -88,27 +88,26 @@ accuracy_op = tf.reduce_mean(tf.cast(correct_op, tf.float32))
 
 # Hyperparameters
 learning_rate = 1e-4
-num_epochs    = 1
+num_epochs    = 10
 batch_size    = 50
 
 # Optimizer
 optimizer = tf.train.AdamOptimizer(learning_rate)
 train_op  = optimizer.minimize(loss)
 
+# Seed the random number generator for reproducible batches
+np.random.seed(0)
+
 # Print list of variables
 print("")
 print("Variables")
 print("---------")
-variables = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES)
+variables  = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES)
 num_params = 0
 for v in variables:
     num_params += np.prod(v.get_shape().as_list())
     print("{} {}".format(v.name, v.get_shape()))
 print("=> Total number of parameters =", num_params)
-print("")
-
-# Seed the random number generator for reproducible batches
-np.random.seed(0)
 
 # TF session
 sess = tf.Session()

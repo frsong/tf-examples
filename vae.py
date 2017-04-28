@@ -110,6 +110,7 @@ print("=> Total number of parameters = {}".format(num_params))
 sess = tf.Session()
 sess.run(tf.global_variables_initializer())
 
+# Minimize the loss function
 num_batches_per_epoch = data.train.num_examples // batch_size
 for epoch in range(num_epochs):
     current_loss = 0

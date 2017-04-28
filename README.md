@@ -4,7 +4,7 @@ It seemed to me while learning TensorFlow that many of the tutorials online prov
 
 # Requirements
 
-The code has been tested with Python 3.5 and TensorFlow 1.0.1.
+This code has been tested with Python 3.5 and TensorFlow 1.0.1.
 
 # Notes
 

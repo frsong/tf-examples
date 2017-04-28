@@ -58,7 +58,17 @@ After 7 epochs, validation accuracy = 0.9876000285148621
 After 8 epochs, validation accuracy = 0.9914000034332275
 After 9 epochs, validation accuracy = 0.9887999892234802
 After 10 epochs, validation accuracy = 0.9855999946594238
-Test accuracy = 0.9858999848365784
+After 11 epochs, validation accuracy = 0.9909999966621399
+After 12 epochs, validation accuracy = 0.9873999953269958
+After 13 epochs, validation accuracy = 0.9879999756813049
+After 14 epochs, validation accuracy = 0.9904000163078308
+After 15 epochs, validation accuracy = 0.9908000230789185
+After 16 epochs, validation accuracy = 0.9918000102043152
+After 17 epochs, validation accuracy = 0.9914000034332275
+After 18 epochs, validation accuracy = 0.9914000034332275
+After 19 epochs, validation accuracy = 0.9923999905586243
+After 20 epochs, validation accuracy = 0.9887999892234802
+Test accuracy = 0.9872999787330627
 ```
 
 * `mnist_cnn_model.py`, `mnist_cnn_train.py`, and `mnist_cnn_test` together do the same but with dropout, and demonstrate a more canonical way of organizing the code so that the model can be used for both training and extracting predictions from the saved model. Includes variable scopes, saving and restoring checkpoints, and using TensorBoard to monitor training progress.

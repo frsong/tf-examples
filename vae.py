@@ -69,7 +69,7 @@ x = tf.placeholder(tf.float32, [None, 784])
 # Model
 z_mean, z_log_var = encoder(x)
 epsilon = tf.random_normal(tf.shape(z_log_var))
-z = z_mean + epsilon * tf.exp(0.5*z_log_var)
+z = z_mean + epsilon * tf.exp(0.5*z_log_var) # "Reparametrization trick"
 x_reconstruction = decoder(z)
 
 # Reconstruction loss

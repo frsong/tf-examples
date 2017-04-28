@@ -29,7 +29,7 @@ class Model(object):
         cells = [Cell(args.rnn_size) for _ in range(args.num_layers)]
         self.cell = cell = rnn.MultiRNNCell(cells)
 
-        # Inputs and targets
+        # For feeding in data
         self.input_data = tf.placeholder(tf.int32, [batch_size, seq_length])
         self.targets    = tf.placeholder(tf.int32, [batch_size, seq_length])
 

@@ -115,3 +115,7 @@ After 75 epochs, loss = 138.50106091586025
 ```
 
 <img src="https://github.com/frsong/tf-examples/blob/master/figs/vae_embedding.png" width=400><img src="https://github.com/frsong/tf-examples/blob/master/figs/vae_samples.png" width=400>
+
+## char-rnn for Shakespeare's plays
+
+* `char_rnn_reader.py`

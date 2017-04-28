@@ -19,5 +19,4 @@ with open('iris.txt', 'w') as f:
         else:
             continue
 
-        f.write("{:17} {:17} {:31}\n"
-                .format(float(r[0]), float(r[2]), label))
+        f.write("{:17} {:17} {:31}\n".format(float(r[0]), float(r[2]), label))

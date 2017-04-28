@@ -33,8 +33,8 @@ class Model(object):
         self.cell = cell = MultiRNNCell(cells)
 
         # For feeding in data
-        self.input_data = tf.placeholder(tf.int32, [batch_size, seq_length])
-        self.targets    = tf.placeholder(tf.int32, [batch_size, seq_length])
+        self.inputs  = tf.placeholder(tf.int32, [batch_size, seq_length])
+        self.targets = tf.placeholder(tf.int32, [batch_size, seq_length])
 
         # len(initial_state) = num_layers
         # state[i].c.shape   = [batch_size, rnn_size]
@@ -44,7 +44,7 @@ class Model(object):
         embedding = tf.get_variable('embedding', [vocab_size, FLAGS.rnn_size])
 
         # inputs.shape = [batch_size, seq_length, rnn_size]
-        inputs = tf.nn.embedding_lookup(embedding, self.input_data)
+        inputs = tf.nn.embedding_lookup(embedding, self.inputs)
 
         # inputs is list of seq_length x [batch_size, 1, rnn_size]
         inputs = tf.split(inputs, seq_length, 1)
@@ -91,8 +91,7 @@ class Model(object):
         # For training only
         #-----------------------------------------------------------------------
 
-        self.lr = tf.Variable(FLAGS.learning_rate, trainable=False)
-        optimizer = tf.train.AdamOptimizer(self.lr)
+        optimizer = tf.train.AdamOptimizer(FLAGS.learning_rate)
         grads, variables = zip(*optimizer.compute_gradients(self.loss))
         grads, _ = tf.clip_by_global_norm(grads, 5)
         self.train_op = optimizer.apply_gradients(zip(grads, variables))
@@ -105,14 +104,14 @@ class Model(object):
         state = sess.run(self.cell.zero_state(1, tf.float32))
         for char in start_text[:-1]:
             x = vocab[char]
-            feed_dict = {self.input_data: [[x]], self.initial_state: state}
+            feed_dict = {self.inputs: [[x]], self.initial_state: state}
             state = sess.run(self.final_state, feed_dict)
 
         text = start_text
         char = start_text[-1]
         for _ in range(num_chars):
             x = vocab[char]
-            feed_dict = {self.input_data: [[x]], self.initial_state: state}
+            feed_dict = {self.inputs: [[x]], self.initial_state: state}
             probs, state = sess.run([self.probs, self.final_state], feed_dict)
 
             p = probs[0]

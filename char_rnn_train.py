@@ -18,7 +18,6 @@ tf.app.flags.DEFINE_string('data_dir', 'datasets/tinyshakespeare',
                            "data directory")
 tf.app.flags.DEFINE_string('save_dir', 'save/char-rnn', "save directory")
 tf.app.flags.DEFINE_string('log_dir', 'logs/char-rnn', "log directory")
-tf.app.flags.DEFINE_float('decay_rate', 0.97, "decay rate")
 tf.app.flags.DEFINE_integer('batch_size', 50, "batch size")
 tf.app.flags.DEFINE_integer('num_epochs', 20, "number of epochs to train")
 tf.app.flags.DEFINE_integer('seq_length', 50, "sequence length")
@@ -66,8 +65,7 @@ def train():
             state = sess.run(model.initial_state)
             for b in range(data.num_batches):
                 batch = data.next_batch()
-                feed_dict = {model.input_data: batch[0],
-                             model.targets:    batch[1]}
+                feed_dict = {model.inputs:  batch[0], model.targets: batch[1]}
                 for i, (c, h) in enumerate(model.initial_state):
                     feed_dict[c] = state[i].c
                     feed_dict[h] = state[i].h
@@ -85,10 +83,6 @@ def train():
             # Save
             ckpt_path = os.path.join(FLAGS.save_dir, 'model.ckpt')
             saver.save(sess, ckpt_path, global_step=epoch+1)
-
-            # Update learning rate
-            #update_lr = tf.assign(model.lr, model.lr * FLAGS.decay_rate)
-            #sess.run(update_lr)
 
 #///////////////////////////////////////////////////////////////////////////////
 

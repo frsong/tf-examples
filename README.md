@@ -59,7 +59,7 @@ After 10 epochs, validation accuracy = 0.9855999946594238
 Test accuracy = 0.9858999848365784
 ```
 
-* `mnist_cnn_model.py`, `mnist_cnn_train.py`, and `mnist_cnn_test` do the same but with dropout, and demonstrate a more canonical way of organizing the code so that the model can be used for both training and extracting predictions from the saved model. Includes variable scopes, saving and restoring checkpoints, and using TensorBoard to monitor training progress.
+* `mnist_cnn_model.py`, `mnist_cnn_train.py`, and `mnist_cnn_test` together do the same but with dropout, and demonstrate a more canonical way of organizing the code so that the model can be used for both training and extracting predictions from the saved model. Includes variable scopes, saving and restoring checkpoints, and using TensorBoard to monitor training progress.
 
 ## Variational autoencoder with MNIST
 

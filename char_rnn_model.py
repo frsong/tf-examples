@@ -43,7 +43,7 @@ class Model(object):
                                         [vocab_size, FLAGS.rnn_size],
                                         initializer=init)
             inputs = tf.nn.embedding_lookup(embedding, self.inputs)
-            inputs = tf.nn.dropout(inputs, FLAGS.keep_prob)
+        inputs = tf.nn.dropout(inputs, FLAGS.keep_prob)
 
         # Multilayer RNN with output dropout
         cells = [BasicLSTMCell(FLAGS.rnn_size) for _ in range(FLAGS.num_layers)]

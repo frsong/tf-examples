@@ -44,8 +44,8 @@ class Model(object):
             embedding = tf.get_variable('embedding',
                                         [vocab_size, FLAGS.rnn_size])
 
-        # inputs.shape = [batch_size, seq_length, rnn_size]
-        inputs = tf.nn.embedding_lookup(embedding, self.inputs)
+            # inputs.shape = [batch_size, seq_length, rnn_size]
+            inputs = tf.nn.embedding_lookup(embedding, self.inputs)
 
         # inputs is list of seq_length x [batch_size, 1, rnn_size]
         inputs = tf.split(inputs, seq_length, 1)

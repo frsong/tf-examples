@@ -40,7 +40,9 @@ class Model(object):
         self.initial_state = self.cell.zero_state(batch_size, tf.float32)
 
         # Input embedding
-        embedding = tf.get_variable('embedding', [vocab_size, FLAGS.rnn_size])
+        with tf.device("/cpu:0"):
+            embedding = tf.get_variable('embedding',
+                                        [vocab_size, FLAGS.rnn_size])
 
         # inputs.shape = [batch_size, seq_length, rnn_size]
         inputs = tf.nn.embedding_lookup(embedding, self.inputs)
@@ -61,9 +63,10 @@ class Model(object):
         outputs = tf.reshape(tf.concat(outputs, 1), [-1, FLAGS.rnn_size])
 
         # Readout
-        softmax_W = tf.get_variable('softmax_W', [FLAGS.rnn_size, vocab_size])
-        softmax_b = tf.get_variable('softmax_b', [vocab_size])
-        self.logits = tf.matmul(outputs, softmax_W) + softmax_b
+        with tf.variable_scope('softmax'):
+            W = tf.get_variable('W', [FLAGS.rnn_size, vocab_size])
+            b = tf.get_variable('b', [vocab_size])
+        self.logits = tf.matmul(outputs, W) + b
         self.probs  = tf.nn.softmax(self.logits)
 
         # loss.shape = [batch_size * seq_length]

@@ -64,6 +64,7 @@ def train():
         # Minimize the loss function
         for epoch in range(FLAGS.num_epochs):
             state = sess.run(model.initial_state)
+            current_loss = 0
             for b in range(data.num_batches):
                 batch = data.next_batch()
                 feed_dict = {model.inputs:  batch[0], model.targets: batch[1]}
@@ -73,13 +74,14 @@ def train():
                 fetches = [model.train_op, model.loss, model.final_state,
                            summary_op]
                 _, loss, state, summary = sess.run(fetches, feed_dict)
+                current_loss += loss
 
                 # Add to summary
                 writer.add_summary(summary, epoch*data.num_batches + b)
 
-                # Progress report
-                print("Epoch {}, {}/{}: loss = {}"
-                      .format(epoch+1, b+1, data.num_batches, loss))
+            # Progress report
+            print("After {} epochs, loss = {}"
+                  .format(epoch+1, current_loss/data.num_batches))
 
             # Save
             ckpt_path = os.path.join(FLAGS.save_dir, 'model.ckpt')

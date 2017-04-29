@@ -24,13 +24,13 @@ class Reader(object):
         input_file  = os.path.join(data_dir, 'input.txt')
         vocab_file  = os.path.join(data_dir, 'vocab.pkl')
         tensor_file = os.path.join(data_dir, 'data.npy')
-
         if not os.path.exists(vocab_file) or not os.path.exists(tensor_file):
             print("Reading text file.")
             self.preprocess(input_file, vocab_file, tensor_file)
         else:
             print("Loading preprocessed files.")
             self.load_preprocessed(vocab_file, tensor_file)
+
         self.create_batches()
 
     def preprocess(self, input_file, vocab_file, tensor_file):

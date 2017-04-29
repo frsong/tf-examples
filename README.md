@@ -124,21 +124,23 @@ After 75 epochs, loss = 138.50106091586025
 
 ```
 $ python char_rnn_test.py --start_text="The meaning of life is "
-The meaning of life is lament
-Rimbing to cryshion brother with a comfort,
-Tine long the nimbelable heart that this
-Is out, which mal. But none, did yet have undone;
-That bly goses is yours. There the vitors broughts I
-To the is the pusit whom your vargan letters,
-And she is friend: as I for spirit'd dispresed,
-Let the pucking old eye that I see thee hence.
+The meaning of life is service: and it
+false ready to the liberal, in my meaning judgment
+his resign unless sorrow from nothing:
+All absent and you here to someware believe.
 
-WARWICK:
-Sorrow doth speak for bid mine,
-That my good love; he is plaint to a seee,
-Past God and doubt all thingly! ay, this is the
-sake.
+HENRY BOLINGBROKE:
+See you besides, too worn; but a day will not.
 
-DUKE VINCENTIO:
-Doth not
+KING EDWARD IV:
+Richard, ho! Then all the troth,
+When you kill'd, we still desire to England.
+
+GLOUCESTER:
+Are they better on him, make fear those that
+did hear our old suitors for the sacrament,
+Now I grief follow'd by the choices of marriage?
+
+JULIET:
+Go, spy up in reproved trai
 ```

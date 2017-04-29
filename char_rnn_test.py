@@ -13,7 +13,7 @@ from char_rnn_model import Model
 FLAGS = tf.app.flags.FLAGS
 
 tf.app.flags.DEFINE_string('save_dir', 'save/char-rnn', "save directory")
-tf.app.flags.DEFINE_string('start_text', "KING ", "start text")
+tf.app.flags.DEFINE_string('start_text', " ", "start text")
 tf.app.flags.DEFINE_integer('seed', 0, "random number generator seed")
 
 def sample():

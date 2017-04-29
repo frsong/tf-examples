@@ -120,7 +120,7 @@ After 75 epochs, loss = 138.50106091586025
 
 ## char-rnn with Shakespeare
 
-* `char_rnn_reader.py`, `char_rnn_model.py`, `char_rnn_train.py`, and `char_rnn_test.py` together implement an LSTM character-level language model based on https://github.com/sherjilozair/char-rnn-tensorflow. Includes RNN cells, dropout for RNNs, gradient clipping, embeddings (and pinning to the CPU), and a demonstration of how to use the TensorFlow flag system for command-line arguments. The `Reader` class in `char_rnn_reader.py` is an interface to the data; each batch is a list of words (inputs) and the list of words that follow each of those words (targets), as you can see by running `python char_rnn_reader.py` on its own. Run `python char_rnn_train.py` to train, then try different start texts to see where the model takes you:
+* `char_rnn_reader.py`, `char_rnn_model.py`, `char_rnn_train.py`, and `char_rnn_test.py` together implement an LSTM character-level language model based on https://github.com/sherjilozair/char-rnn-tensorflow. Includes RNN cells, dropout for RNNs, gradient clipping, embeddings (and pinning to the CPU), and a demonstration of how to use the TensorFlow flag system for command-line arguments. The `Reader` class in `char_rnn_reader.py` is an interface to the data; each batch is a list of words (inputs) and the list of words that follow each of those words (targets), as you can see by running `python char_rnn_reader.py` on its own. Run `python char_rnn_train.py` to train, then try different start texts with `char_rnn_test.py` to see where the model takes you:
 
 ```
 $ python char_rnn_test.py --start_text="The meaning of life is "

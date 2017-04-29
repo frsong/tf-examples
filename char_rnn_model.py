@@ -69,9 +69,6 @@ class Model(object):
         # reshape -> [batch_size * seq_length, rnn_size]
         outputs = tf.reshape(tf.concat(outputs, 1), [-1, FLAGS.rnn_size])
 
-        #outputs, self.final_state = tf.nn.dynamic_rnn(self.cell, inputs, initial_state=self.initial_state)
-        #outputs = tf.reshape(outputs, [-1, FLAGS.rnn_size])
-
         # Readout
         with tf.variable_scope('softmax'):
             W = tf.get_variable('W', [FLAGS.rnn_size, vocab_size])

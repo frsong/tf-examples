@@ -2,6 +2,8 @@
 
 It seemed to me while learning TensorFlow that many online tutorials provide code that's more mysterious than is ideal for beginners, in particular obscuring the shared structure of a lot of deep learning code. This is my attempt to remedy the situation. That said, I'm grateful to the authors of the original code that I learned from for doing the hard part of getting things to work.
 
+Please let me know if you have any suggestions for making the code even clearer.
+
 # Notes
 
 This code has been tested with Python 3.5 and TensorFlow 1.0.1. Many examples generate a figure or two so take a look at `figs/` to see what to expect. Results should be consistent between runs on the same, single CPU, but not on a GPU. An "epoch" means one full presentation of the dataset.

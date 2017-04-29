@@ -14,6 +14,7 @@ FLAGS = tf.app.flags.FLAGS
 tf.app.flags.DEFINE_integer('num_layers', 2, "number of LSTM layers")
 tf.app.flags.DEFINE_integer('rnn_size', 128, "LSTM size")
 tf.app.flags.DEFINE_float('learning_rate', 0.002, "learning rate")
+tf.app.flags.DEFINE_float('keep_prob', 0.5, "dropout probability")
 
 class Model(object):
     def __init__(self, vocab_size, training=False):
@@ -27,17 +28,9 @@ class Model(object):
         # Seed random number generator for reproducible initialization
         tf.set_random_seed(0)
 
-        # Multilayer RNN
-        cells = [BasicLSTMCell(FLAGS.rnn_size) for _ in range(FLAGS.num_layers)]
-        self.cell = MultiRNNCell(cells)
-
         # For feeding in data
         self.inputs  = tf.placeholder(tf.int32, [batch_size, seq_length])
         self.targets = tf.placeholder(tf.int32, [batch_size, seq_length])
-
-        # len(initial_state) = num_layers
-        # state[i].c.shape   = [batch_size, rnn_size]
-        self.initial_state = self.cell.zero_state(batch_size, tf.float32)
 
         # Input embedding
         with tf.device('/cpu:0'):
@@ -47,11 +40,25 @@ class Model(object):
                                         initializer=init)
             inputs = tf.nn.embedding_lookup(embedding, self.inputs)
 
+        # Dropout
+        if training:
+            inputs = tf.nn.dropout(inputs, FLAGS.keep_prob)
+
         # inputs is list of seq_length x [batch_size, 1, rnn_size]
         inputs = tf.split(inputs, seq_length, 1)
 
         # inputs is list of seq_length x [batch_size, rnn_size]
         inputs = [tf.squeeze(i, [1]) for i in inputs]
+
+        # Multilayer RNN
+        cells = [BasicLSTMCell(FLAGS.rnn_size) for _ in range(FLAGS.num_layers)]
+        if training:
+            cells = [tf.contrib.rnn.DropoutWrapper(cell, output_keep_prob=FLAGS.keep_prob) for cell in cells]
+        self.cell = MultiRNNCell(cells)
+
+        # len(initial_state) = num_layers
+        # state[i].c.shape   = [batch_size, rnn_size]
+        self.initial_state = self.cell.zero_state(batch_size, tf.float32)
 
         # outputs is list of seq_length x [batch_size, rnn_size]
         outputs, self.final_state = legacy_seq2seq.rnn_decoder(

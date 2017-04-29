@@ -123,24 +123,23 @@ After 75 epochs, loss = 138.50106091586025
 * `char_rnn_reader.py`, `char_rnn_model.py`, `char_rnn_train.py`, and `char_rnn_test.py` together implement an LSTM character-level language model based on https://github.com/sherjilozair/char-rnn-tensorflow. Includes RNN cells, dropout for RNNs, gradient clipping, embeddings (and pinning to the CPU), and a demonstration of how to use the TensorFlow flag system for command-line arguments. The `Reader` class in `char_rnn_reader.py` is an interface to the data; each batch is a list of words (inputs) and the list of words that follow each of those words (targets), as you can see by running `python char_rnn_reader.py` on its own. Run `python char_rnn_train.py` to train, and by the end you'll feel as if the Bard himself has come back to life:
 
 ```
-$ python char_rnn_test.py --start_text="KING "
-Alas, my dame;
-The kheeply?
+$ python char_rnn_test.py --start_text="The meaning of life is "
+The meaning of life is lament
+Rimbing to cryshion brother with a comfort,
+Tine long the nimbelable heart that this
+Is out, which mal. But none, did yet have undone;
+That bly goses is yours. There the vitors broughts I
+To the is the pusit whom your vargan letters,
+And she is friend: as I for spirit'd dispresed,
+Let the pucking old eye that I see thee hence.
 
-First Calintnen:
-'Tis mother Morthany the intarke, fear the chartry,
-And deceich'd in Sapasle.
-If like the father, which I am quite your caunce and the
-soft the king, so vilate of to fail!
-So for causon?
+WARWICK:
+Sorrow doth speak for bid mine,
+That my good love; he is plaint to a seee,
+Past God and doubt all thingly! ay, this is the
+sake.
 
-VOLUMNIA:
-That of me help, thou arence new's veignace.
+DUKE VINCENTIO:
+Doth not
 
-Clurdenenars:
-Plicter to ever worldiar our for you,
-And statient 'mestameth; but sir; for thine gave,
-Her thou pase ago; not to the a having
-Title men hath subt aly, aboad dender was his vay;
-Wive heart curst, desrop
 ```

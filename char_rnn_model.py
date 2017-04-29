@@ -108,9 +108,7 @@ class Model(object):
             feed_dict = {self.inputs: [[vocab[char]]],
                          self.initial_state: state}
             probs, state = sess.run([self.probs, self.final_state], feed_dict)
-
-            p = probs[0]
-            char = chars[rng.choice(len(p), p=p)]
+            char = chars[rng.choice(len(vocab), p=probs[0])]
             text += char
 
         return text

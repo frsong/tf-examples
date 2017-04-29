@@ -40,7 +40,7 @@ class Model(object):
         self.initial_state = self.cell.zero_state(batch_size, tf.float32)
 
         # Input embedding
-        with tf.device("/cpu:0"):
+        with tf.device('/cpu:0'):
             embedding = tf.get_variable('embedding',
                                         [vocab_size, FLAGS.rnn_size])
 

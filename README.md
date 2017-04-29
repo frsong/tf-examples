@@ -77,7 +77,7 @@ Test accuracy = 0.9908000230789185
 
 ## Variational autoencoder with MNIST
 
-* `vae.py` implements a VAE based on the code from https://jmetzen.github.io/2015-11-27/vae.html. Note that the KL loss uses Equation (10) from the paper.
+* `vae.py` implements a VAE based on the code from https://jmetzen.github.io/2015-11-27/vae.html. Note that the KL term is computed using Equation (10) from the paper.
 
 ```
 $ python vae.py

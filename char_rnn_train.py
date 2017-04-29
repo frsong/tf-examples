@@ -19,7 +19,7 @@ tf.app.flags.DEFINE_string('data_dir', 'datasets/tinyshakespeare',
 tf.app.flags.DEFINE_string('save_dir', 'save/char-rnn', "save directory")
 tf.app.flags.DEFINE_string('log_dir', 'logs/char-rnn', "log directory")
 tf.app.flags.DEFINE_integer('batch_size', 50, "batch size")
-tf.app.flags.DEFINE_integer('num_epochs', 100, "number of epochs to train")
+tf.app.flags.DEFINE_integer('num_epochs', 50, "number of epochs to train")
 tf.app.flags.DEFINE_integer('seq_length', 50, "sequence length")
 
 def train():

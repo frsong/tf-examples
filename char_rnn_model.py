@@ -41,8 +41,10 @@ class Model(object):
 
         # Input embedding
         with tf.device('/cpu:0'):
+            init = tf.random_uniform_initializer(-1, 1)
             embedding = tf.get_variable('embedding',
-                                        [vocab_size, FLAGS.rnn_size])
+                                        [vocab_size, FLAGS.rnn_size],
+                                        initializer=init)
             inputs = tf.nn.embedding_lookup(embedding, self.inputs)
 
         # inputs is list of seq_length x [batch_size, 1, rnn_size]
@@ -59,6 +61,9 @@ class Model(object):
         # concat  -> [batch_size, seq_length x rnn_size]
         # reshape -> [batch_size * seq_length, rnn_size]
         outputs = tf.reshape(tf.concat(outputs, 1), [-1, FLAGS.rnn_size])
+
+        #outputs, self.final_state = tf.nn.dynamic_rnn(self.cell, inputs, initial_state=self.initial_state)
+        #outputs = tf.reshape(outputs, [-1, FLAGS.rnn_size])
 
         # Readout
         with tf.variable_scope('softmax'):

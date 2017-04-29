@@ -12,7 +12,7 @@ from tensorflow.contrib.rnn import BasicLSTMCell, DropoutWrapper, MultiRNNCell
 FLAGS = tf.app.flags.FLAGS
 
 tf.app.flags.DEFINE_integer('num_layers', 2, "number of LSTM layers")
-tf.app.flags.DEFINE_integer('rnn_size', 128, "LSTM size")
+tf.app.flags.DEFINE_integer('rnn_size', 256, "LSTM size")
 tf.app.flags.DEFINE_float('learning_rate', 0.002, "learning rate")
 tf.app.flags.DEFINE_float('keep_prob', 0.5, "dropout probability")
 

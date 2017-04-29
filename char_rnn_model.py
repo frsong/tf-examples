@@ -32,22 +32,19 @@ class Model(object):
         self.inputs  = tf.placeholder(tf.int32, [batch_size, seq_length])
         self.targets = tf.placeholder(tf.int32, [batch_size, seq_length])
 
-        # Input embedding
+        # Input embedding with dropout
         with tf.device('/cpu:0'):
             init = tf.random_uniform_initializer(-1, 1)
             embedding = tf.get_variable('embedding',
                                         [vocab_size, FLAGS.rnn_size],
                                         initializer=init)
             inputs = tf.nn.embedding_lookup(embedding, self.inputs)
+            inputs = tf.nn.dropout(inputs, FLAGS.keep_prob)
 
-        # Dropout
-        #if training:
-        #    inputs = tf.nn.dropout(inputs, FLAGS.keep_prob)
-
-        # Multilayer RNN
+        # Multilayer RNN with output dropout
         cells = [BasicLSTMCell(FLAGS.rnn_size) for _ in range(FLAGS.num_layers)]
-        #if training:
-        #    cells = [tf.contrib.rnn.DropoutWrapper(cell, output_keep_prob=FLAGS.keep_prob) for cell in cells]
+        if training:
+            cells = [tf.contrib.rnn.DropoutWrapper(cell, output_keep_prob=FLAGS.keep_prob) for cell in cells]
         self.cell = MultiRNNCell(cells)
 
         # len(initial_state) = num_layers

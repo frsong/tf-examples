@@ -15,9 +15,9 @@ from tensorflow.contrib.rnn import BasicLSTMCell, DropoutWrapper, MultiRNNCell
 
 FLAGS = tf.app.flags.FLAGS
 
-tf.app.flags.DEFINE_integer('num_layers', 3, "number of LSTM layers")
-tf.app.flags.DEFINE_integer('rnn_size', 512, "LSTM size")
-tf.app.flags.DEFINE_float('learning_rate', 0.001, "learning rate")
+tf.app.flags.DEFINE_integer('num_layers', 2, "number of LSTM layers")
+tf.app.flags.DEFINE_integer('rnn_size', 256, "LSTM size")
+tf.app.flags.DEFINE_float('learning_rate', 0.002, "learning rate")
 tf.app.flags.DEFINE_float('keep_prob', 0.5, "dropout probability")
 
 class Model(object):
@@ -43,7 +43,8 @@ class Model(object):
                                         [vocab_size, FLAGS.rnn_size],
                                         initializer=init)
             inputs = tf.nn.embedding_lookup(embedding, self.inputs)
-        inputs = tf.nn.dropout(inputs, FLAGS.keep_prob)
+        if training:
+            inputs = tf.nn.dropout(inputs, FLAGS.keep_prob)
 
         # Multilayer RNN with output dropout
         cells = [BasicLSTMCell(FLAGS.rnn_size) for _ in range(FLAGS.num_layers)]

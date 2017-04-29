@@ -6,8 +6,8 @@ Simple char-rnn based on
 """
 import numpy as np
 import tensorflow as tf
-from tensorflow.contrib import legacy_seq2seq
-from tensorflow.contrib.rnn import BasicLSTMCell, MultiRNNCell
+from tensorflow.contrib.legacy_seq2seq import sequence_loss_by_example
+from tensorflow.contrib.rnn import BasicLSTMCell, DropoutWrapper, MultiRNNCell
 
 FLAGS = tf.app.flags.FLAGS
 
@@ -44,7 +44,8 @@ class Model(object):
         # Multilayer RNN with output dropout
         cells = [BasicLSTMCell(FLAGS.rnn_size) for _ in range(FLAGS.num_layers)]
         if training:
-            cells = [tf.contrib.rnn.DropoutWrapper(cell, output_keep_prob=FLAGS.keep_prob) for cell in cells]
+            cells = [DropoutWrapper(cell, output_keep_prob=FLAGS.keep_prob)
+                     for cell in cells]
         self.cell = MultiRNNCell(cells)
 
         # len(initial_state) = num_layers
@@ -66,7 +67,7 @@ class Model(object):
         self.probs  = tf.nn.softmax(self.logits)
 
         # loss.shape = [batch_size * seq_length]
-        loss = legacy_seq2seq.sequence_loss_by_example(
+        loss = sequence_loss_by_example(
             [self.logits],
             [tf.reshape(self.targets, [-1])],
             [tf.ones(self.logits.get_shape()[0])]

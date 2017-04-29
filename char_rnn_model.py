@@ -44,9 +44,6 @@ class Model(object):
         #if training:
         #    inputs = tf.nn.dropout(inputs, FLAGS.keep_prob)
 
-        # inputs is list of seq_length x [batch_size, rnn_size]
-        #inputs = tf.unstack(inputs, seq_length, 1)
-
         # Multilayer RNN
         cells = [BasicLSTMCell(FLAGS.rnn_size) for _ in range(FLAGS.num_layers)]
         #if training:
@@ -57,20 +54,10 @@ class Model(object):
         # state[i].c.shape   = [batch_size, rnn_size]
         self.initial_state = self.cell.zero_state(batch_size, tf.float32)
 
-        # outputs is list of seq_length x [batch_size, rnn_size]
-        #outputs, self.final_state = legacy_seq2seq.rnn_decoder(
-        #    inputs, self.initial_state, self.cell
-        #    )
-
-        #from tensorflow.contrib.rnn import static_rnn
-        #outputs, self.final_state = static_rnn(self.cell, inputs, initial_state=self.initial_state)
-
         outputs, self.final_state = tf.nn.dynamic_rnn(self.cell, inputs, initial_state=self.initial_state)
-        outputs = tf.reshape(outputs, [-1, FLAGS.rnn_size])
 
-        # concat  -> [batch_size, seq_length x rnn_size]
-        # reshape -> [batch_size * seq_length, rnn_size]
-        #outputs = tf.reshape(tf.concat(outputs, 1), [-1, FLAGS.rnn_size])
+        # Reshape to [batch_size * seq_length, rnn_size]
+        outputs = tf.reshape(outputs, [-1, FLAGS.rnn_size])
 
         # Readout
         with tf.variable_scope('softmax'):
@@ -85,7 +72,6 @@ class Model(object):
             [tf.reshape(self.targets, [-1])],
             [tf.ones(self.logits.get_shape()[0])]
             )
-
         self.loss = tf.reduce_mean(loss)
 
         if not training:

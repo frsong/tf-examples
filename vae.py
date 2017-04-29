@@ -35,7 +35,7 @@ def bias(shape):
 
 def linear(scope, x, dim):
     with tf.name_scope(scope):
-        W = weight((x.get_shape()[-1].value, dim))
+        W = weight([x.get_shape()[-1].value, dim])
         b = bias([dim])
     return tf.matmul(x, W) + b
 

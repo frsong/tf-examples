@@ -94,7 +94,7 @@ class Model(object):
         # For TensorBoard
         tf.summary.scalar('loss', self.loss)
 
-    def sample(self, sess, chars, vocab, start_text, seed=0, num_chars=500):
+    def sample(self, sess, chars, vocab, start_text, num_chars, seed=0):
         # Run the LSTM through the start text
         # len(state) = num_layers, state[i].c.shape = [1, rnn_size]
         state = sess.run(self.cell.zero_state(1, tf.float32))

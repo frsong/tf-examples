@@ -18,6 +18,7 @@ FLAGS = tf.app.flags.FLAGS
 
 tf.app.flags.DEFINE_string('save_dir', 'save/char-rnn', "save directory")
 tf.app.flags.DEFINE_string('start_text', " ", "start text")
+tf.app.flags.DEFINE_integer('num_chars', 500, "number of characters to sample")
 tf.app.flags.DEFINE_integer('seed', 0, "random number generator seed")
 
 def sample():
@@ -42,7 +43,8 @@ def sample():
             raise Exception("No checkpoint available.")
 
         # Generate sample
-        return model.sample(sess, chars, vocab, FLAGS.start_text, FLAGS.seed)
+        return model.sample(sess, chars, vocab,
+                            FLAGS.start_text, FLAGS.num_chars, FLAGS.seed)
 
 #///////////////////////////////////////////////////////////////////////////////
 

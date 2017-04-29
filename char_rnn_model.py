@@ -50,6 +50,7 @@ class Model(object):
         # len(initial_state) = num_layers
         # state[i].c.shape   = [batch_size, rnn_size]
         self.initial_state = self.cell.zero_state(batch_size, tf.float32)
+
         outputs, self.final_state = tf.nn.dynamic_rnn(
             self.cell, inputs, initial_state=self.initial_state
             )

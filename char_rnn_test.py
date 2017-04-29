@@ -3,6 +3,10 @@ Simple char-rnn based on
 
     https://github.com/sherjilozair/char-rnn-tensorflow
 
+Original article:
+
+    http://karpathy.github.io/2015/05/21/rnn-effectiveness/
+
 """
 import os
 import pickle

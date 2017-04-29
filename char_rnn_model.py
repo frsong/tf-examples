@@ -3,6 +3,10 @@ Simple char-rnn based on
 
     https://github.com/sherjilozair/char-rnn-tensorflow
 
+Original article:
+
+    http://karpathy.github.io/2015/05/21/rnn-effectiveness/
+
 """
 import numpy as np
 import tensorflow as tf
@@ -11,9 +15,9 @@ from tensorflow.contrib.rnn import BasicLSTMCell, DropoutWrapper, MultiRNNCell
 
 FLAGS = tf.app.flags.FLAGS
 
-tf.app.flags.DEFINE_integer('num_layers', 2, "number of LSTM layers")
-tf.app.flags.DEFINE_integer('rnn_size', 256, "LSTM size")
-tf.app.flags.DEFINE_float('learning_rate', 0.002, "learning rate")
+tf.app.flags.DEFINE_integer('num_layers', 3, "number of LSTM layers")
+tf.app.flags.DEFINE_integer('rnn_size', 512, "LSTM size")
+tf.app.flags.DEFINE_float('learning_rate', 0.001, "learning rate")
 tf.app.flags.DEFINE_float('keep_prob', 0.5, "dropout probability")
 
 class Model(object):

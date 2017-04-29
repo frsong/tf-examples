@@ -94,8 +94,8 @@ class Model(object):
         # len(state) = num_layers, state[i].c.shape = [1, rnn_size]
         state = sess.run(self.cell.zero_state(1, tf.float32))
         for char in start_text[:-1]:
-            x = vocab[char]
-            feed_dict = {self.inputs: [[x]], self.initial_state: state}
+            feed_dict = {self.inputs: [[vocab[char]]],
+                         self.initial_state: state}
             state = sess.run(self.final_state, feed_dict)
 
         # Get random number generator
@@ -105,8 +105,8 @@ class Model(object):
         text = start_text
         char = start_text[-1]
         for _ in range(num_chars):
-            x = vocab[char]
-            feed_dict = {self.inputs: [[x]], self.initial_state: state}
+            feed_dict = {self.inputs: [[vocab[char]]],
+                         self.initial_state: state}
             probs, state = sess.run([self.probs, self.final_state], feed_dict)
 
             p = probs[0]

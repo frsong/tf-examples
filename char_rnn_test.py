@@ -17,7 +17,7 @@ tf.app.flags.DEFINE_string('start_text', "KING ", "start text")
 tf.app.flags.DEFINE_integer('seed', 0, "random number generator seed")
 
 def sample():
-    # Load vocabulary
+    # Load characters
     filename = os.path.join(FLAGS.save_dir, 'chars_vocab.pkl')
     with open(filename, 'rb') as f:
         chars, vocab = pickle.load(f)

@@ -52,27 +52,27 @@ fc/b:0 (1024,)
 softmax/W:0 (1024, 10)
 softmax/b:0 (10,)
 => Total number of parameters = 3274634
-After 1 epochs, validation accuracy = 0.9580000042915344
+After 1 epochs, validation accuracy = 0.9574000239372253
 After 2 epochs, validation accuracy = 0.9782000184059143
-After 3 epochs, validation accuracy = 0.9825999736785889
-After 4 epochs, validation accuracy = 0.9846000075340271
-After 5 epochs, validation accuracy = 0.9879999756813049
-After 6 epochs, validation accuracy = 0.9883999824523926
-After 7 epochs, validation accuracy = 0.989799976348877
-After 8 epochs, validation accuracy = 0.9904000163078308
+After 3 epochs, validation accuracy = 0.9818000197410583
+After 4 epochs, validation accuracy = 0.9832000136375427
+After 5 epochs, validation accuracy = 0.9887999892234802
+After 6 epochs, validation accuracy = 0.9891999959945679
+After 7 epochs, validation accuracy = 0.9890000224113464
+After 8 epochs, validation accuracy = 0.989799976348877
 After 9 epochs, validation accuracy = 0.9900000095367432
-After 10 epochs, validation accuracy = 0.9909999966621399
-After 11 epochs, validation accuracy = 0.9911999702453613
-After 12 epochs, validation accuracy = 0.9914000034332275
-After 13 epochs, validation accuracy = 0.991599977016449
-After 14 epochs, validation accuracy = 0.9908000230789185
-After 15 epochs, validation accuracy = 0.9914000034332275
-After 16 epochs, validation accuracy = 0.9918000102043152
-After 17 epochs, validation accuracy = 0.991599977016449
-After 18 epochs, validation accuracy = 0.9927999973297119
-After 19 epochs, validation accuracy = 0.9923999905586243
-After 20 epochs, validation accuracy = 0.9918000102043152
-Test accuracy = 0.9908000230789185
+After 10 epochs, validation accuracy = 0.989799976348877
+After 11 epochs, validation accuracy = 0.9909999966621399
+After 12 epochs, validation accuracy = 0.991599977016449
+After 13 epochs, validation accuracy = 0.9909999966621399
+After 14 epochs, validation accuracy = 0.9911999702453613
+After 15 epochs, validation accuracy = 0.9926000237464905
+After 16 epochs, validation accuracy = 0.9922000169754028
+After 17 epochs, validation accuracy = 0.9927999973297119
+After 18 epochs, validation accuracy = 0.9922000169754028
+After 19 epochs, validation accuracy = 0.9926000237464905
+After 20 epochs, validation accuracy = 0.9937999844551086
+Test accuracy = 0.9924
 ```
 
 ## Variational autoencoder with MNIST

@@ -1,6 +1,6 @@
 # TensorFlow examples
 
-It seemed to me while learning TensorFlow that many example codes are not as intuitive as they could be for beginners, often obscuring the shared structure of deep learning models. This is my attempt to remedy the situation. That said, I'm grateful to the authors of the original code for doing the hard part of getting things to work. I'm still learning, so please let me know if you have suggestions for making the code even clearer.
+It seemed to me while learning TensorFlow that many example codes are not as consistent or intuitive as they could be for beginners, often obscuring the shared structure of deep learning models. This is my attempt to remedy the situation. That said, I'm grateful to the authors of the original code for doing the hard part of getting things to work. I'm still learning, so please let me know if you have suggestions for making the code even clearer.
 
 # Notes
 

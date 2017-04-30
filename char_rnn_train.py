@@ -71,7 +71,7 @@ def train():
             current_loss = 0
             for b in range(data.num_batches):
                 batch = data.next_batch()
-                feed_dict = {model.inputs: batch[0], model.targets: batch[1]}
+                feed_dict = {model.x: batch[0], model.y: batch[1]}
                 for layer, (c, h) in enumerate(model.initial_state):
                     feed_dict[c] = state[layer].c
                     feed_dict[h] = state[layer].h

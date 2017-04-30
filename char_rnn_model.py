@@ -33,8 +33,8 @@ class Model(object):
         tf.set_random_seed(0)
 
         # For feeding in data
-        self.inputs  = tf.placeholder(tf.int32, [batch_size, seq_length])
-        self.targets = tf.placeholder(tf.int32, [batch_size, seq_length])
+        self.x = tf.placeholder(tf.int32, [batch_size, seq_length])
+        self.y = tf.placeholder(tf.int32, [batch_size, seq_length])
 
         # Input embedding with dropout
         with tf.device('/cpu:0'):
@@ -42,7 +42,7 @@ class Model(object):
             embedding = tf.get_variable('embedding',
                                         [vocab_size, FLAGS.rnn_size],
                                         initializer=init)
-            inputs = tf.nn.embedding_lookup(embedding, self.inputs)
+            inputs = tf.nn.embedding_lookup(embedding, self.x)
         if training:
             inputs = tf.nn.dropout(inputs, FLAGS.keep_prob)
 
@@ -74,7 +74,7 @@ class Model(object):
         # loss.shape = [batch_size * seq_length]
         loss = sequence_loss_by_example(
             [self.logits],
-            [tf.reshape(self.targets, [-1])],
+            [tf.reshape(self.y, [-1])],
             [tf.ones(self.logits.get_shape()[0])]
             )
         self.loss = tf.reduce_mean(loss)
@@ -99,7 +99,7 @@ class Model(object):
         # len(state) = num_layers, state[i].c.shape = [1, rnn_size]
         state = sess.run(self.cell.zero_state(1, tf.float32))
         for char in start_text[:-1]:
-            feed_dict = {self.inputs: [[vocab[char]]],
+            feed_dict = {self.x: [[vocab[char]]],
                          self.initial_state: state}
             state = sess.run(self.final_state, feed_dict)
 
@@ -110,7 +110,7 @@ class Model(object):
         text = start_text
         char = start_text[-1]
         for _ in range(num_chars):
-            feed_dict = {self.inputs: [[vocab[char]]],
+            feed_dict = {self.x: [[vocab[char]]],
                          self.initial_state: state}
             probs, state = sess.run([self.probs, self.final_state], feed_dict)
             char = chars[rng.choice(len(vocab), p=probs[0])]

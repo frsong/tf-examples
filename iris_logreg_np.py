@@ -22,7 +22,7 @@ def predict(x, W, b):
     return 1 * (logits >= 0)
 
 def compute_accuracy(x, W, b, y):
-    labels = predict(X_data, W, b)
+    labels = predict(x, W, b)
     return np.mean(labels == Y_data)
 
 def compute_gradients(x, W, b, y):

@@ -36,7 +36,7 @@ This code has been tested with Python 3.5 and TensorFlow 1.0.1. Many examples ge
 
 ## Convolutional neural network with MNIST
 
-* `filter.py` demonstrates the effect of a convolution on a black-and-white image.
+* `filter.py` demonstrates the effect of a convolution with a random filter on a black-and-white image.
 
 * `mnist_cnn.py` implements a CNN based on the code from https://www.tensorflow.org/get_started/mnist/pros. Includes name scopes and code for displaying a list of trainable variables and counting the number of parameters in the model, which I find useful to know.
 

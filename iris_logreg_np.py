@@ -17,12 +17,12 @@ Y_data = data[:,2]
 def sigmoid(x):
     return 1/(1 + np.exp(-x))
 
-def predict(x):
+def predict(x, W, b):
     logits = np.matmul(x, W) + b
     return 1 * (logits >= 0)
 
 def compute_accuracy(x, W, b, y):
-    labels = predict(X_data)
+    labels = predict(X_data, W, b)
     return np.mean(labels == Y_data)
 
 def compute_gradients(x, W, b, y):
@@ -69,7 +69,7 @@ print("b =", b)
 #-------------------------------------------------------------------------------
 
 # Model predictions
-labels = predict(X_data)
+labels = predict(X_data, W, b)
 
 # Find indices for the two species
 idx_0, = np.where(labels == 0)

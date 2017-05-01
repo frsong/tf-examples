@@ -6,7 +6,7 @@ import tensorflow as tf
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 
-# Original image
+# Load original image
 image = mpimg.imread('datasets/images/wsp_arch.png')
 
 def weight(shape):

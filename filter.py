@@ -13,13 +13,10 @@ def weight(shape):
     W = tf.truncated_normal(shape, stddev=0.1)
     return tf.Variable(W, name='W')
 
-def conv(x, W):
-    return tf.nn.conv2d(x, W, strides=[1, 1, 1, 1], padding='SAME')
-
 def apply_convolution(x):
     x = tf.reshape(x, [-1] + x.get_shape().as_list() + [1])
     W = weight([10, 10, 1, 1])
-    x = conv(x, W)
+    x = tf.nn.conv2d(x, W, strides=[1, 1, 1, 1], padding='SAME')
 
     return tf.squeeze(x, [0, -1])
 

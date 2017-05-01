@@ -104,7 +104,7 @@ variables  = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES)
 num_params = 0
 for v in variables:
     num_params += np.prod(v.get_shape().as_list())
-    print("{} {}".format(v.name, v.get_shape()))
+    print(v.name, v.get_shape())
 print("=> Total number of parameters = {}".format(num_params))
 
 # TF session

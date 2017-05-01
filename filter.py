@@ -23,12 +23,12 @@ def apply_convolution(x):
 # Seed random number generator for reproducible initialization
 tf.set_random_seed(0)
 
-x = tf.placeholder(tf.float32, image.shape)
+x = tf.constant(image)
 y = apply_convolution(x)
 
 with tf.Session() as sess:
     sess.run(tf.global_variables_initializer())
-    conv_image = sess.run(y, {x: image})
+    conv_image = sess.run(y)
 
 # Original image
 plt.subplot(1, 2, 1)

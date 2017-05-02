@@ -14,7 +14,7 @@ from tensorflow.examples.tutorials.mnist import input_data
 data = input_data.read_data_sets('datasets/mnist', one_hot=True)
 
 #-------------------------------------------------------------------------------
-# Train
+# Model
 #-------------------------------------------------------------------------------
 
 def weight(shape):
@@ -76,6 +76,10 @@ y = tf.placeholder(tf.float32, [None, 10])
 
 # Define the model
 logits = inference(x)
+
+#-------------------------------------------------------------------------------
+# Train
+#-------------------------------------------------------------------------------
 
 # Loss function
 loss = tf.nn.softmax_cross_entropy_with_logits(labels=y, logits=logits)

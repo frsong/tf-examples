@@ -27,6 +27,10 @@ b = tf.Variable(tf.zeros([10]))
 # Define the model
 logits = tf.matmul(x, W) + b
 
+#-------------------------------------------------------------------------------
+# Train
+#-------------------------------------------------------------------------------
+
 # Loss function
 loss = tf.nn.softmax_cross_entropy_with_logits(labels=y, logits=logits)
 loss = tf.reduce_mean(loss)

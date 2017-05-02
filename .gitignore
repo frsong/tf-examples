@@ -4,6 +4,9 @@ datasets/tinyshakespeare/data.npy
 datasets/tinyshakespeare/vocab.pkl
 logs/
 save/
+scratch/
+a3c*
+normal_gan*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

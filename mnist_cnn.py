@@ -77,6 +77,11 @@ y = tf.placeholder(tf.float32, [None, 10])
 # Define the model
 logits = inference(x)
 
+# Prediction
+predict_op  = tf.argmax(logits, 1)
+correct_op  = tf.equal(predict_op, tf.argmax(y, 1))
+accuracy_op = tf.reduce_mean(tf.cast(correct_op, tf.float32))
+
 #-------------------------------------------------------------------------------
 # Train
 #-------------------------------------------------------------------------------
@@ -84,11 +89,6 @@ logits = inference(x)
 # Loss function
 loss = tf.nn.softmax_cross_entropy_with_logits(labels=y, logits=logits)
 loss = tf.reduce_mean(loss)
-
-# Prediction
-predict_op  = tf.argmax(logits, 1)
-correct_op  = tf.equal(predict_op, tf.argmax(y, 1))
-accuracy_op = tf.reduce_mean(tf.cast(correct_op, tf.float32))
 
 # Hyperparameters
 learning_rate = 1e-4

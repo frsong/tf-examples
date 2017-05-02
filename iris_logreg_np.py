@@ -28,8 +28,8 @@ def compute_accuracy(x, W, b, y):
 def compute_gradients(x, W, b, y):
     logits = np.matmul(x, W) + b
     y_pred = sigmoid(logits)
-
-    error = y_pred - y
+    error  = y_pred - y
+    
     dLdW  = np.mean(error*x.T, axis=1)
     dLdb  = np.mean(error)
 

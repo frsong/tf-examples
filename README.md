@@ -14,7 +14,7 @@ This code has been tested with Python 3.5 and TensorFlow 1.0.1. Many examples ge
 
 * The Tiny Shakespeare corpus, which is originally from https://github.com/karpathy/char-rnn and consists of a subset of Shakespeare's works, is used for the char-rnn example.
 
-* `datasets/images/wsp_arch.png` is a black-and-white photo of Washington Square Park in New York City used for the random filter example.
+* `datasets/images/wsp_arch.png` is a black-and-white photograph of Washington Square Park in New York City used for the random filter example.
 
 ## Linear regression with the Iris dataset
 

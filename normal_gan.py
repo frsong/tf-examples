@@ -210,9 +210,8 @@ plt.plot(bin_centers, p_data, 'b', label='Data distribution')
 plt.plot(bin_centers, p_gan,  'r', label='GAN distribution')
 
 # Decision boundary
-x_dec = np.linspace(-noise.bound, noise.bound, 100)
-y_dec = decision_boundary(x_dec)
-plt.plot(x_dec, y_dec, color='orange', label='P(x from data)')
+y = decision_boundary(bin_centers)
+plt.plot(bin_centers, y, color='orange', label='P(x from data)')
 
 # Set limits
 plt.xlim(-5, 5)

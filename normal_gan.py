@@ -40,7 +40,7 @@ class NoiseDistribution(object):
     def sample(self, size, sort=False):
         x = np.random.uniform(-self.bound, self.bound, size)
         if sort:
-            np.sort(x)
+            x = np.sort(x)
 
         return x
 

@@ -209,7 +209,7 @@ p_gan, _ = np.histogram(x_gan, bins=bins, density=True)
 plt.plot(bin_centers, p_data, 'b', label='Data distribution')
 plt.plot(bin_centers, p_gan,  'r', label='GAN distribution')
 
-# Decision boundary
+# Plot decision boundary
 y = decision_boundary(bin_centers)
 plt.plot(bin_centers, y, color='orange', label='P(x from data)')
 

@@ -151,6 +151,6 @@ Go, spy up in reproved trai
 
 ## Generative adversarial network for a normal distribution
 
-* `normal_gan.py` implements a GAN based on the code from http://blog.evjang.com/2016/06/generative-adversarial-nets-in.html and http://blog.aylien.com/introduction-generative-adversarial-networks-code-tensorflow/. Some of the tricks mentioned in those blog posts didn't seem to be necessary for this simple example so were not included. Demonstrates the use of an exponentially decaying learning rate and optimizing with respect to subsets of the parameters.
+* `normal_gan.py` implements a GAN based on the code from http://blog.evjang.com/2016/06/generative-adversarial-nets-in.html and http://blog.aylien.com/introduction-generative-adversarial-networks-code-tensorflow/. Some of the tricks mentioned in those blog posts didn't seem to be necessary for this simple example so are not included. Demonstrates the use of an exponentially decaying learning rate and optimizing with respect to subsets of the model parameters.
 
 <img src="https://github.com/frsong/tf-examples/blob/master/figs/normal_gan.png" width=400>

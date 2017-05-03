@@ -44,17 +44,18 @@ class NoiseDistribution(object):
 
         return x
 
-def weight(shape, stddev):
-    init = tf.truncated_normal_initializer(stddev=stddev)
+def weight(shape):
+    bound = np.sqrt(6.0 / np.sum(shape))
+    init  = tf.random_uniform_initializer(-bound, bound)
     return tf.get_variable('W', shape, initializer=init)
 
 def bias(shape):
-    init = tf.constant_initializer(0.1)
+    init = tf.constant_initializer(0.0)
     return tf.get_variable('b', shape, initializer=init)
 
-def linear(scope, x, dim, stddev=1.0):
+def linear(scope, x, dim):
     with tf.variable_scope(scope):
-        W = weight([x.get_shape()[-1].value, dim], stddev)
+        W = weight([x.get_shape()[-1].value, dim])
         b = bias([dim])
     return tf.matmul(x, W) + b
 
@@ -70,13 +71,13 @@ def discriminator(x, hidden_dim=8):
     x = tf.tanh(x)
     x = linear('hidden_2', x, hidden_dim)
     x = tf.tanh(x)
-    x = linear('logit', x, 1)
+    x = linear('logits', x, 1)
     x = tf.sigmoid(x)
 
     return x
 
 def get_train_op(loss, variables, initial_learning_rate,
-                 decay=0.95, decay_steps=200):
+                 decay=0.96, decay_steps=200):
     # Implement exponential decay of learning rate
     global_step   = tf.Variable(0, trainable=False)
     learning_rate = tf.train.exponential_decay(

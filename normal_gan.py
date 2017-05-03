@@ -23,9 +23,12 @@ class DataDistribution(object):
         self.mu    = mu
         self.sigma = sigma
 
-    def sample(self, size):
+    def sample(self, size, sort=False):
         x = np.random.normal(self.mu, self.sigma, size)
-        return np.sort(x)
+        if sort:
+            x = np.sort(x)
+
+        return x
 
 data = DataDistribution()
 
@@ -159,7 +162,7 @@ noise = NoiseDistribution(noise_bound)
 # Train
 for step in range(num_steps):
     # Update discriminator
-    batch_x   = data.sample(batch_size)
+    batch_x   = data.sample(batch_size, sort=True)
     batch_z   = noise.sample(batch_size, sort=True)
     feed_dict = {x: batch_x.reshape((-1, 1)), z: batch_z.reshape((-1, 1))}
     _, current_D_loss = sess.run([D_train_op, D_loss], feed_dict)
@@ -196,7 +199,7 @@ bin_centers = (bins[:-1] + bins[1:])/2
 
 # Data
 x_data = data.sample(num_samples)
-p_data, edges = np.histogram(x_data, bins=bins, density=True)
+p_data, _ = np.histogram(x_data, bins=bins, density=True)
 
 # Generated samples
 x_gan = sample(num_samples)

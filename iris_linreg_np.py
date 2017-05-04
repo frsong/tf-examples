@@ -27,7 +27,7 @@ def compute_gradients(x, W, b, y):
     y_pred = predict(x, W, b)
     error  = y_pred - y
 
-    dLdW = np.mean(error*x)
+    dLdW = np.mean(error * x)
     dLdb = np.mean(error)
 
     return dLdW, dLdb

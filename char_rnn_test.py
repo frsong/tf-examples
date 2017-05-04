@@ -38,6 +38,7 @@ def sample():
         # Load model
         ckpt = tf.train.get_checkpoint_state(FLAGS.save_dir)
         if ckpt and ckpt.model_checkpoint_path:
+            print("Loading", ckpt.model_checkpoint_path)
             saver.restore(sess, ckpt.model_checkpoint_path)
         else:
             raise Exception("No checkpoint available.")

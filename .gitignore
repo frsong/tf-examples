@@ -6,7 +6,7 @@ logs/
 save/
 scratch/
 a3c*
-movies/
+movies/*.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

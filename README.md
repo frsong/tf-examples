@@ -79,7 +79,7 @@ After 20 epochs, validation accuracy = 0.9937999844551086
 Test accuracy = 0.9924
 ```
 
-## Variational autoencoder with MNIST
+## Variational autoencoder (VAE) with MNIST
 
 * `vae.py` implements a VAE based on the code from https://jmetzen.github.io/2015-11-27/vae.html. Note that the KL term is computed using Equation (10) in the original [paper](https://arxiv.org/abs/1312.6114).
 
@@ -149,8 +149,24 @@ JULIET:
 Go, spy up in reproved trai
 ```
 
-## Generative adversarial network for a normal distribution
+## Generative adversarial network (GAN) for a normal distribution
 
 * `normal_gan.py` implements a GAN based on the code from http://blog.evjang.com/2016/06/generative-adversarial-nets-in.html and http://blog.aylien.com/introduction-generative-adversarial-networks-code-tensorflow/. Some of the tricks mentioned in those blog posts didn't seem to be necessary for this simple example so are not included. Demonstrates the use of an exponentially decaying learning rate and optimizing with respect to subsets of the model parameters.
 
 <img src="https://github.com/frsong/tf-examples/blob/master/figs/normal_gan.png" width=400>
+
+## Asynchronous Advantage Actor-Critic (A3C) for Atari
+
+* `a3c_*.py` together implement A3C for Atari games using the OpenAI Gym environment. This is mostly a stripped-down version of the already excellent code at https://github.com/openai/universe-starter-agent. It's a bit more readable but not as general as the original code - in particular, I removed the VNC components to make the code easier to digest. Use `a3c_train.py` to train and `a3c_test.py` to generate a video of the agent playing. For the examples below only 2 workers were used but basically the more workers (with more cores) the better.
+
+Pong:
+```
+python a3c_train.py --env-id=PongDeterministic-v3 --num-workers=2 --log-dir=/tmp/pong
+python a3c_test.py --env-id=PongDeterministic-v3 --log-dir=/tmp/pong
+```
+
+Breakout:
+```
+python a3c_train.py --env-id=BreakoutDeterministic-v3 --num-workers=2 --log-dir=/tmp/breakout
+python a3c_test.py --env-id=BreakoutDeterministic-v3 --log-dir=/tmp/breakout
+```

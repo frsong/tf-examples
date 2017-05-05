@@ -90,7 +90,7 @@ plt.plot(X_data[idx_1,0], X_data[idx_1,1], 'ro', label='I. virginica')
 
 # Plot the separating hyperplane
 x_sep = np.linspace(X_data[:,0].min(), X_data[:,0].max())
-y_sep = (-b_val - W_val[0]*x_sep)/W_val[1]
+y_sep = (-b_val - W_val[0]*x_sep) / W_val[1]
 plt.plot(x_sep, y_sep, 'm', label="Decision boundary")
 
 # Legend

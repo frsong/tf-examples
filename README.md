@@ -161,17 +161,18 @@ Go, spy up in reproved trai
 
 Pong:
 ```
-python a3c_train.py --env-id=PongDeterministic-v3 --num-workers=2 --log-dir=/tmp/pong
-tensorboard --logdir=/tmp/pong
-python a3c_test.py --env-id=PongDeterministic-v3 --log-dir=/tmp/pong --movie --movie-path=movies/pong
+$ python a3c_train.py --env-id=PongDeterministic-v3 --num-workers=2 --log-dir=/tmp/pong
+$ tensorboard --logdir=/tmp/pong
+$ python a3c_test.py --env-id=PongDeterministic-v3 --log-dir=/tmp/pong --movie --movie-path=movies/pong
 ```
 
 <img src="https://github.com/frsong/tf-examples/blob/master/movies/pong.mp4" />
 
 Breakout:
 ```
-python a3c_train.py --env-id=BreakoutDeterministic-v3 --num-workers=2 --log-dir=/tmp/breakout
-python a3c_test.py --env-id=BreakoutDeterministic-v3 --log-dir=/tmp/breakout --movie --movie-path=movies/breakout
+$ python a3c_train.py --env-id=BreakoutDeterministic-v3 --num-workers=2 --log-dir=/tmp/breakout
+$ tensorboard --logdir=/tmp/breakout
+$ python a3c_test.py --env-id=BreakoutDeterministic-v3 --log-dir=/tmp/breakout --movie --movie-path=movies/breakout
 ```
 
-<img src="https://github.com/frsong/tf-examples/blob/master/movies/breakout.mp4" />
+<video src="https://github.com/frsong/tf-examples/blob/master/movies/breakout.mp4" />

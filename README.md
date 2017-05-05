@@ -10,7 +10,7 @@ This code has been tested with Python 3.5 and TensorFlow 1.0.1. Many examples ge
 
 * `datasets/iris/iris.txt`, a subset of the full [Iris flower dataset](https://archive.ics.uci.edu/ml/datasets/Iris), is used to illustrate simple linear and logistic regression. It contains the sepal length, petal length, and species label for _Iris versicolor_ and _Iris virginica_.
 
-* MNIST downloads and/or extracts itself as needed.
+* The MNIST handwritten digit dataset downloads and/or extracts itself as needed.
 
 * The Tiny Shakespeare corpus, which is originally from https://github.com/karpathy/char-rnn and consists of a subset of Shakespeare's works, is used for the char-rnn example.
 

@@ -120,7 +120,7 @@ After 70 epochs, loss = 138.74444517655806
 After 75 epochs, loss = 138.50106091586025
 ```
 
-<img src="https://github.com/frsong/tf-examples/blob/master/figs/vae_embedding.png" width=400><img src="https://github.com/frsong/tf-examples/blob/master/figs/vae_samples.png" width=400>
+<img src="https://github.com/frsong/tf-examples/blob/master/figs/vae_embedding.png" width=400 /><img src="https://github.com/frsong/tf-examples/blob/master/figs/vae_samples.png" width=400 />
 
 ## char-rnn with Shakespeare
 
@@ -153,20 +153,25 @@ Go, spy up in reproved trai
 
 * `normal_gan.py` implements a GAN based on the code from http://blog.evjang.com/2016/06/generative-adversarial-nets-in.html and http://blog.aylien.com/introduction-generative-adversarial-networks-code-tensorflow/. Some of the tricks mentioned in those blog posts didn't seem to be necessary for this simple example so are not included. Demonstrates the use of an exponentially decaying learning rate and optimizing with respect to subsets of the model parameters.
 
-<img src="https://github.com/frsong/tf-examples/blob/master/figs/normal_gan.png" width=400>
+<img src="https://github.com/frsong/tf-examples/blob/master/figs/normal_gan.png" width=400 />
 
 ## Asynchronous advantage actor-critic (A3C) for Atari
 
-* `a3c_*.py` implement A3C for Atari games using the OpenAI Gym environment. This is mostly a stripped-down version of the already excellent code at https://github.com/openai/universe-starter-agent. It's a bit more readable but not as general as the original code - in particular, it cannot play games over VNC. Use `a3c_train.py` to train and `a3c_test.py` to generate a video of the agent playing. For the examples below only 2 workers were used but basically the more workers (with more cores) the better.
+* `a3c_*.py` implement A3C for Atari games using the OpenAI Gym environment. This is, for the most part, a stripped-down version of the already excellent code at https://github.com/openai/universe-starter-agent. I hope the code is a bit more readable and `a3c_model.py` in particular has been simplified, but it is also not as general as the original code - for instance, it cannot play games over VNC and doesn't work for earlier versions of TensorFlow. Use `a3c_train.py` to train (note that this version uses nohup to launch processes by default, but as in the original code you can use `--mode=tmux` to use tmux) and `a3c_test.py` to generate a video of the agent playing. Use TensorBoard to monitoring training progress. For the examples below only 2 workers were used but basically the more workers (with more cores) the better.
 
 Pong:
 ```
 python a3c_train.py --env-id=PongDeterministic-v3 --num-workers=2 --log-dir=/tmp/pong
-python a3c_test.py --env-id=PongDeterministic-v3 --log-dir=/tmp/pong
+tensorboard --logdir=/tmp/pong
+python a3c_test.py --env-id=PongDeterministic-v3 --log-dir=/tmp/pong --movie --movie-path=movies/pong
 ```
+
+<img src="https://github.com/frsong/tf-examples/blob/master/movies/pong.mp4" />
 
 Breakout:
 ```
 python a3c_train.py --env-id=BreakoutDeterministic-v3 --num-workers=2 --log-dir=/tmp/breakout
-python a3c_test.py --env-id=BreakoutDeterministic-v3 --log-dir=/tmp/breakout
+python a3c_test.py --env-id=BreakoutDeterministic-v3 --log-dir=/tmp/breakout --movie --movie-path=movies/breakout
 ```
+
+<img src="https://github.com/frsong/tf-examples/blob/master/movies/breakout.mp4" />

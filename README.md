@@ -157,7 +157,7 @@ Go, spy up in reproved trai
 
 ## Asynchronous advantage actor-critic (A3C) for Atari
 
-* `a3c_*.py` implement A3C for Atari games using the OpenAI Gym environment. This is, for the most part, a stripped-down version of the already excellent code at https://github.com/openai/universe-starter-agent. I hope the code is a bit more readable and easier to extend, but it is also not as general as the original code - for instance, it cannot play games over VNC and doesn't work for earlier versions of TensorFlow. Use `a3c_train.py` to train (note that this version uses nohup to launch processes by default, but as in the original code you can use `--mode=tmux` to use tmux) and `a3c_test.py` to generate a video of the agent playing. Use TensorBoard to monitoring training progress. For the examples below only 2 workers were used but basically the more workers (with more cores) the better.
+* `a3c_*.py` implement A3C for Atari games using the OpenAI Gym environment. This is, for the most part, a stripped-down version of the already excellent code at https://github.com/openai/universe-starter-agent. I hope this is a bit more readable and therefore easier to modify, but it is also not as general as the original code - for instance, it cannot play games over VNC and doesn't work for earlier versions of TensorFlow. Use `a3c_train.py` to train (note that this version uses nohup to launch processes by default, but as in the original code you can use `--mode=tmux` to use tmux) and `a3c_test.py` to generate a video of the agent playing. Use TensorBoard to monitoring training progress. For the examples below only 2 workers were used but basically the more workers (with more cores) the better.
 
 Pong:
 ```

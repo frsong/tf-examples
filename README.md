@@ -166,7 +166,7 @@ $ tensorboard --logdir=/tmp/pong
 $ python a3c_test.py --env-id=PongDeterministic-v3 --log-dir=/tmp/pong --movie --movie-path=movies/pong
 ```
 
-<img src="https://github.com/frsong/tf-examples/blob/master/movies/pong.gif" />
+<img src="https://github.com/frsong/tf-examples/blob/develop/movies/pong.gif" />
 
 Breakout:
 ```
@@ -175,4 +175,4 @@ $ tensorboard --logdir=/tmp/breakout
 $ python a3c_test.py --env-id=BreakoutDeterministic-v3 --log-dir=/tmp/breakout --movie --movie-path=movies/breakout
 ```
 
-<img src="https://github.com/frsong/tf-examples/blob/master/movies/breakout.mp4" />
+<img src="https://github.com/frsong/tf-examples/blob/develop/movies/breakout.gif" />

@@ -27,14 +27,16 @@ def inference(x, keep_prob):
     with tf.variable_scope('conv1'):
         W = weight([5, 5, 1, 32])
         b = bias([32])
-    x = tf.nn.relu(conv(x, W) + b)
+    x = conv(x, W) + b
+    x = tf.nn.relu(x)
     x = max_pool(x) # 14x14
 
     # Second convolutional + pooling layer
     with tf.variable_scope('conv2'):
         W = weight([5, 5, 32, 64])
         b = bias([64])
-    x = tf.nn.relu(conv(x, W) + b)
+    x = conv(x, W) + b
+    x = tf.nn.relu(x)
     x = max_pool(x) # 7x7
 
     # Flatten feature planes
@@ -44,7 +46,8 @@ def inference(x, keep_prob):
     with tf.variable_scope('fc'):
         W = weight([7*7*64, 1024])
         b = bias([1024])
-    x = tf.nn.relu(tf.matmul(x, W) + b)
+    x = tf.matmul(x, W) + b
+    x = tf.nn.relu(x)
 
     # Dropout
     x = tf.nn.dropout(x, keep_prob)

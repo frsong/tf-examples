@@ -155,7 +155,7 @@ Go, spy up in reproved trai
 
 <img src="https://github.com/frsong/tf-examples/blob/master/figs/normal_gan.png" width=400>
 
-## Asynchronous Advantage Actor-Critic (A3C) for Atari
+## Asynchronous advantage actor-critic (A3C) for Atari
 
 * `a3c_*.py` together implement A3C for Atari games using the OpenAI Gym environment. This is mostly a stripped-down version of the already excellent code at https://github.com/openai/universe-starter-agent. It's a bit more readable but not as general as the original code - in particular, I removed the VNC components to make the code easier to digest. Use `a3c_train.py` to train and `a3c_test.py` to generate a video of the agent playing. For the examples below only 2 workers were used but basically the more workers (with more cores) the better.
 

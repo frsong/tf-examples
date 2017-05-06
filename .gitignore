@@ -5,7 +5,7 @@ datasets/tinyshakespeare/vocab.pkl
 logs/
 save/
 scratch/
-movies/
+movies/*.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

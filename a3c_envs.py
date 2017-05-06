@@ -89,9 +89,6 @@ class Rescale(vectorized.ObservationWrapper):
     def _observation(self, observation_n):
         return [_process_frame(observation) for observation in observation_n]
 
-def create_env(env_id, seed):
-    return create_atari_env(env_id, seed)
-
 def create_atari_env(env_id, seed):
     env = gym.make(env_id)
     env.seed(seed)
@@ -103,3 +100,6 @@ def create_atari_env(env_id, seed):
     env = Unvectorize(env)
 
     return env
+
+def create_env(env_id, seed):
+    return create_atari_env(env_id, seed)

@@ -171,18 +171,18 @@ Pong:
 ```
 $ python a3c_train.py --env-id=PongDeterministic-v3 --num-workers=2 --log-dir=/tmp/pong
 $ tensorboard --logdir=/tmp/pong
-$ python a3c_test.py --env-id=PongDeterministic-v3 --log-dir=/tmp/pong --movie --movie-path=movies/pong
+$ python a3c_test.py --env-id=PongDeterministic-v3 --log-dir=/tmp/pong --movie-path=movies/pong
 ```
 
-<img src="https://github.com/frsong/tf-examples/blob/develop/movies/pong.gif" />
+<img src="https://github.com/frsong/tf-examples/blob/develop/images/pong_reward.png" /><img src="https://github.com/frsong/tf-examples/blob/develop/movies/pong.gif" />
 
 Breakout:
 ```
 $ python a3c_train.py --env-id=BreakoutDeterministic-v3 --num-workers=2 --log-dir=/tmp/breakout
 $ tensorboard --logdir=/tmp/breakout
-$ python a3c_test.py --env-id=BreakoutDeterministic-v3 --log-dir=/tmp/breakout --movie --movie-path=movies/breakout
+$ python a3c_test.py --env-id=BreakoutDeterministic-v3 --log-dir=/tmp/breakout --movie-path=movies/breakout
 ```
 
 <img src="https://github.com/frsong/tf-examples/blob/develop/movies/breakout.gif" />
 
-Note that the original `.mp4` files were converted to animated gifs so they could be included in the markdown.
+Note that the original mp4 files were converted to animated gifs so they could be included in the markdown.

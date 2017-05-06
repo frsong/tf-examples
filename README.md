@@ -184,7 +184,7 @@ $ python a3c_test.py --env-id=PongDeterministic-v3 --log-dir=/tmp/pong --movie-p
 
 **Breakout** (16 workers)
 ```
-$ python a3c_train.py --env-id=BreakoutDeterministic-v3 --num-workers=2 --log-dir=/tmp/breakout
+$ python a3c_train.py --env-id=BreakoutDeterministic-v3 --num-workers=16 --log-dir=/tmp/breakout
 $ tensorboard --logdir=/tmp/breakout
 $ python a3c_test.py --env-id=BreakoutDeterministic-v3 --log-dir=/tmp/breakout --movie-path=movies/breakout
 ```

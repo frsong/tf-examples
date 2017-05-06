@@ -22,6 +22,8 @@ This code has been tested with Python 3.5 and TensorFlow 1.0.1. Many examples ge
 
 * `iris_linreg_tf.py` does the same with TensorFlow.
 
+<img src="https://github.com/frsong/tf-examples/blob/master/figs/iris_linreg_tf.png" width=400 />
+
 * `visualize_graph.py` writes the computational graph for the linear regression loss to an event file so it can be visualized by running `tensorboard --logdir=logs/visualize`. Open the indicated IP address in a browser and click on the "Graphs" tab.
 
 ## Binary logistic regression with the Iris dataset
@@ -29,6 +31,8 @@ This code has been tested with Python 3.5 and TensorFlow 1.0.1. Many examples ge
 * `iris_logreg_np.py` implements logistic regression in NumPy with stochastic gradient descent, i.e., each gradient is computed on one random example from the dataset.
 
 * `iris_logreg_tf.py` does the same with TensorFlow.
+
+<img src="https://github.com/frsong/tf-examples/blob/master/figs/iris_logreg_tf.png" width=400 />
 
 ## Multiclass logistic regression with MNIST
 

@@ -5,7 +5,6 @@ datasets/tinyshakespeare/vocab.pkl
 logs/
 save/
 scratch/
-a3c*
 movies/
 
 # Byte-compiled / optimized / DLL files

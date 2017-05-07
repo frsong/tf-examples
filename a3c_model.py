@@ -67,7 +67,7 @@ class Policy(object):
             x = conv('l{}'.format(i + 1), x, 32, [3, 3], [2, 2])
             x = tf.nn.elu(x)
 
-        # Flatten. First dimension is time
+        # Flatten
         x = tf.reshape(x, [1, -1, np.prod(x.get_shape().as_list()[1:])])
 
         # LSTM

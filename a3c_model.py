@@ -85,12 +85,12 @@ class Policy(object):
 
         # Run the RNN
         outputs, state = tf.nn.dynamic_rnn(lstm, x, initial_state=self.state_in)
-        self.state_out = LSTMStateTuple(state.c[:1,:], state.h[:1,:])
+        self.state_out = LSTMStateTuple(state.c[:1], state.h[:1])
         x = tf.reshape(outputs, [-1, rnn_size])
 
         # Readouts
         self.logits = linear('action', x, ac_space, rng, stddev=0.01)
-        self.action = categorical_sample(self.logits, ac_space)[0,:]
+        self.action = categorical_sample(self.logits, ac_space)[0]
         self.vf     = tf.reshape(linear('value', x, 1, rng), [-1])
 
         # Variables

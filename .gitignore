@@ -6,6 +6,8 @@ logs/
 save/
 scratch/
 movies/*.json
+draw*
+figs/draw/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

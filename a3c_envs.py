@@ -25,10 +25,8 @@ logger.setLevel(logging.INFO)
 universe.configure_logging()
 
 class DiagnosticsInfoI(vectorized.Filter):
-    def __init__(self, log_interval=503):
+    def __init__(self):
         super(DiagnosticsInfoI, self).__init__()
-
-        self._log_interval    = log_interval
         self._episode_reward  = 0
         self._episode_length  = 0
         self._all_rewards     = []

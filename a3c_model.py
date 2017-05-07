@@ -67,7 +67,7 @@ class Policy(object):
             x = conv('l{}'.format(i + 1), x, 32, [3, 3], [2, 2])
             x = tf.nn.elu(x)
 
-        # x.shape -> [batch_size=1, seq_length, input_size]
+        # x.shape -> [batch_size=1, seq_length=1, input_size]
         x = tf.reshape(x, [1, 1, np.prod(x.get_shape().as_list()[1:])])
 
         # LSTM
@@ -87,15 +87,13 @@ class Policy(object):
         outputs, state = tf.nn.dynamic_rnn(lstm, x, initial_state=self.state_in)
         self.state_out = LSTMStateTuple(state.c[:1], state.h[:1])
 
-        # x.shape -> [seq_length, rnn_size]
+        # x.shape -> [seq_length=1, rnn_size]
         x = tf.reshape(outputs, [1, rnn_size])
 
         # Readouts
         self.logits = linear('action', x, ac_space, rng, stddev=0.01)
         self.action = categorical_sample(self.logits, ac_space)[0]
         self.vf     = tf.reshape(linear('value', x, 1, rng), [-1])
-
-        print(x.shape, self.logits.shape, self.action.shape, self.vf.shape)
 
         # Variables
         self.variables = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES,

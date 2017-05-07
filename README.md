@@ -182,7 +182,7 @@ $ python a3c_test.py --env-id=PongDeterministic-v3 --log-dir=/tmp/pong --movie-p
 
 <img src="https://github.com/frsong/tf-examples/blob/develop/images/pong_reward.png" width=350 /> <img src="https://github.com/frsong/tf-examples/blob/develop/images/pong.gif" />
 
-**Breakout** (16 workers)
+**Breakout** (16 workers):
 ```
 $ python a3c_train.py --env-id=BreakoutDeterministic-v3 --num-workers=16 --log-dir=/tmp/breakout
 $ tensorboard --logdir=/tmp/breakout

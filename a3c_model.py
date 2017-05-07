@@ -84,9 +84,7 @@ class Policy(object):
         self.state_in = LSTMStateTuple(c_in, h_in)
 
         # Run the RNN
-        outputs, state = tf.nn.dynamic_rnn(
-            lstm, x, initial_state=self.state_in, time_major=False
-            )
+        outputs, state = tf.nn.dynamic_rnn(lstm, x, initial_state=self.state_in)
         self.state_out = LSTMStateTuple(state.c[:1,:], state.h[:1,:])
         x = tf.reshape(outputs, [-1, rnn_size])
 

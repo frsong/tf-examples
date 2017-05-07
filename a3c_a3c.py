@@ -77,13 +77,14 @@ class Rollout(object):
 class RunnerThread(Thread):
     def __init__(self, env, policy, num_local_steps=20):
         super(RunnerThread, self).__init__()
-        self.queue = queue.Queue(5)
+        self.env             = env
+        self.policy          = policy
         self.num_local_steps = num_local_steps
-        self.env = env
-        self.last_state = None
-        self.policy = policy
-        self.daemon = True
-        self.sess   = None
+
+        self.queue = queue.Queue(5)
+        self.daemon         = True
+        self.last_state     = None
+        self.sess           = None
         self.summary_writer = None
 
     def start_runner(self, sess, summary_writer):

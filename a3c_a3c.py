@@ -75,7 +75,7 @@ class Rollout(object):
         self.done = rollout.done
 
 class RunnerThread(Thread):
-    def __init__(self, env, policy, num_local_steps):
+    def __init__(self, env, policy, num_local_steps=20):
         super(RunnerThread, self).__init__()
         self.queue = queue.Queue(5)
         self.num_local_steps = num_local_steps
@@ -208,11 +208,8 @@ class A3C(object):
             lambda_e = 0.01
             self.loss = pi_loss + lambda_v * vf_loss - lambda_e * entropy
 
-            # Number of timesteps to run for updating policy parameters
-            num_local_steps = 20
-
             # Runner
-            self.runner = RunnerThread(env, pi, num_local_steps)
+            self.runner = RunnerThread(env, pi)
 
             # Policy gradients
             grads = tf.gradients(self.loss, pi.variables)

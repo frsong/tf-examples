@@ -28,7 +28,7 @@ decoder_size  = 256
 T             = 10
 batch_size    = 100
 learning_rate = 1e-3
-num_epochs    = 20
+num_epochs    = 2
 latent_dim    = 10
 eps           = 1e-8
 
@@ -213,7 +213,7 @@ for epoch in range(num_epochs):
           .format(epoch+1, current_loss/num_batches_per_epoch))
 
 def reconstruct(x_):
-    return sess.run(reconstruction, {x: x_})
+    return sess.run(reconstructions, {x: x_})
 
 #-------------------------------------------------------------------------------
 # Example reconstructions
@@ -234,3 +234,4 @@ for t, reconstructions_t in enumerate(reconstructed_images):
     plt.figure()
     plt.imshow(grid, cmap='gray')
     plt.savefig('figs/draw/reconstruction_t{}.png'.format(t))
+    plt.close()

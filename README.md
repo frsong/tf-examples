@@ -128,7 +128,9 @@ After 75 epochs, loss = 138.50106091586025
 
 ## Deep Recurrent Attentive Writer (DRAW) with MNIST
 
-* `draw.py` implements DRAW, a recurrent VAE with attention, based on https://github.com/ericjang/draw.
+* `draw.py` implements DRAW, a recurrent VAE with attention, based on https://github.com/ericjang/draw. Note the basic similarity with the VAE code above.
+
+<img src="https://github.com/frsong/tf-examples/blob/develop/assets/draw.gif" />
 
 ## char-rnn with Shakespeare
 

@@ -180,7 +180,7 @@ $ tensorboard --logdir=/tmp/pong
 $ python a3c_test.py --env-id=PongDeterministic-v3 --log-dir=/tmp/pong --movie-path=movies/pong
 ```
 
-<img src="https://github.com/frsong/tf-examples/blob/develop/images/pong_reward.png" width=350 /> <img src="https://github.com/frsong/tf-examples/blob/develop/images/pong.gif" />
+<img src="https://github.com/frsong/tf-examples/blob/develop/assets/pong_reward.png" width=350 /> <img src="https://github.com/frsong/tf-examples/blob/develop/assets/pong.gif" />
 
 **Breakout** (16 workers):
 ```
@@ -189,6 +189,6 @@ $ tensorboard --logdir=/tmp/breakout
 $ python a3c_test.py --env-id=BreakoutDeterministic-v3 --log-dir=/tmp/breakout --movie-path=movies/breakout
 ```
 
-<img src="https://github.com/frsong/tf-examples/blob/develop/images/breakout_reward.png" width=350 /> <img src="https://github.com/frsong/tf-examples/blob/develop/images/breakout.gif" />
+<img src="https://github.com/frsong/tf-examples/blob/develop/assets/breakout_reward.png" width=350 /> <img src="https://github.com/frsong/tf-examples/blob/develop/assets/breakout.gif" />
 
 (The original mp4 files were converted to animated gifs so they could be included here.)

@@ -95,7 +95,7 @@ def apply_filter(x, Fx, Fy, gamma, n):
     return tf.reshape(gamma, [-1, 1]) * tf.reshape(x, [-1, n*n])
 
 # Eq. 29
-def apply_filter_inv(x, Fx, Fy, gamma, n):
+def apply_filter_rev(x, Fx, Fy, gamma, n):
     Fy_t = tf.transpose(Fy, perm=[0, 2, 1])
     x = tf.reshape(x, [-1, n, n])
     x = tf.matmul(Fy_t, tf.matmul(x, Fx))
@@ -116,7 +116,7 @@ def write(decoder_output, reuse):
         w = linear(decoder_output, write_n**2)
         w = tf.reshape(w, [batch_size, write_n, write_n])
     Fx, Fy, gamma = attention_window('write', reuse, decoder_output, write_n)
-    return apply_filter_inv(w, Fx, Fy, gamma, write_n)
+    return apply_filter_rev(w, Fx, Fy, gamma, write_n)
 
 canvas          = tf.zeros_like(x)
 decoder_output  = tf.zeros((batch_size, decoder_size))
@@ -182,10 +182,6 @@ grads_vars = optimizer.compute_gradients(loss)
 grads_vars = [(tf.clip_by_norm(g, 5), v) for g, v in grads_vars]
 train_op   = optimizer.apply_gradients(grads_vars)
 
-# TF session
-sess = tf.Session()
-sess.run(tf.global_variables_initializer())
-
 # Seed the random number generator for reproducible batches
 np.random.seed(0)
 
@@ -199,6 +195,10 @@ for v in variables:
     num_params += np.prod(v.get_shape().as_list())
     print(v.name, v.get_shape())
 print("=> Total number of parameters = {}".format(num_params))
+
+# TF session
+sess = tf.Session()
+sess.run(tf.global_variables_initializer())
 
 # Minimize the loss function
 num_batches_per_epoch = data.train.num_examples // batch_size

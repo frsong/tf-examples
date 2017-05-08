@@ -130,7 +130,7 @@ After 75 epochs, loss = 138.50106091586025
 
 * `draw.py` implements DRAW, a recurrent VAE with attention, based on https://github.com/ericjang/draw. Note the basic similarity with the VAE code above.
 
-<img src="https://github.com/frsong/tf-examples/blob/develop/assets/draw.gif" />
+<img src="https://github.com/frsong/tf-examples/blob/develop/assets/draw.gif" width=400 />
 
 ## char-rnn with Shakespeare
 

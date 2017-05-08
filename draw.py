@@ -28,7 +28,7 @@ decoder_size  = 256
 T             = 10
 batch_size    = 100
 learning_rate = 1e-3
-num_epochs    = 2
+num_epochs    = 20
 latent_dim    = 10
 eps           = 1e-8
 

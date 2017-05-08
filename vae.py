@@ -71,7 +71,7 @@ z_mean, z_log_var = encoder(x)
 epsilon = tf.random_normal(tf.shape(z_log_var))
 z = z_mean + epsilon * tf.exp(0.5*z_log_var) # "Reparametrization trick"
 logits = decoder(z)
-x_reconstruction = tf.nn.sigmoid(logits)
+reconstruction = tf.nn.sigmoid(logits)
 
 # Reconstruction loss
 CE = tf.nn.sigmoid_cross_entropy_with_logits(logits=logits, labels=x)
@@ -128,10 +128,10 @@ def encode(x_):
     return sess.run(z_mean, {x: x_})
 
 def generate(z_):
-    return sess.run(x_reconstruction, {z: z_})
+    return sess.run(reconstruction, {z: z_})
 
 def reconstruct(x_):
-    return sess.run(x_reconstruction, {x: x_})
+    return sess.run(reconstruction, {x: x_})
 
 #-------------------------------------------------------------------------------
 # Example reconstructions

@@ -126,6 +126,10 @@ After 75 epochs, loss = 138.50106091586025
 
 <img src="https://github.com/frsong/tf-examples/blob/master/figs/vae_embedding.png" width=400 /><img src="https://github.com/frsong/tf-examples/blob/master/figs/vae_samples.png" width=400 />
 
+## Deep Recurrent Attentive Writer (DRAW) with MNIST
+
+* `draw.py` implements DRAW, a recurrent VAE with attention, based on https://github.com/ericjang/draw.
+
 ## char-rnn with Shakespeare
 
 * `char_rnn_reader.py`, `char_rnn_model.py`, `char_rnn_train.py`, and `char_rnn_test.py` together implement an LSTM character-level language model based on https://github.com/sherjilozair/char-rnn-tensorflow. Includes RNN cells, `dynamic_rnn`, dropout for RNNs, gradient clipping, embeddings (and pinning to the CPU), and a demonstration of how to use the TensorFlow flag system for command-line arguments. The `Reader` class in `char_rnn_reader.py` is an interface to the data; each batch is a list of words (inputs) and the list of words that follow each of those words (targets), as you can see by running `python char_rnn_reader.py` on its own. Run `python char_rnn_train.py` to train, then try different start texts with `char_rnn_test.py` to see where the model takes you (but some samples are more plausible than others):

@@ -19,7 +19,7 @@ FLAGS = tf.app.flags.FLAGS
 tf.app.flags.DEFINE_integer('num-workers', 1, "number of workers")
 tf.app.flags.DEFINE_string('env-id', 'PongDeterministic-v3', "environment ID")
 tf.app.flags.DEFINE_string('log-dir', '/tmp/pong', "log directory")
-tf.app.flags.DEFINE_string('mode', 'nohup', "tmux, nohup, or child")
+tf.app.flags.DEFINE_string('mode', 'tmux', "tmux, nohup, or child")
 tf.app.flags.DEFINE_string('shell', 'bash', "shell")
 
 def new_cmd(session, name, cmd, shell):

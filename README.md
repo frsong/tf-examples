@@ -175,11 +175,11 @@ pip install universe
 pip install opencv-python
 ```
 
-For the most part, this is just a stripped-down version of the already excellent code at https://github.com/openai/universe-starter-agent. I hope it's a bit more readable and therefore easier to modify, but it's also not as general as the original code - for instance, it cannot play games over VNC and doesn't work for earlier versions of TensorFlow. Use `a3c_train.py` to train (note this uses tmux to launch processes by default). `a3c_train.py` calls `a3c_worker.py` to launch a parameter server called ps and `num-workers` workers that experience the environment. Use TensorBoard to monitor progress during training and `a3c_test.py` at any time to generate a video of the agent playing.
+For the most part, this is just a stripped-down version of the already excellent code at https://github.com/openai/universe-starter-agent. I hope it's a bit more readable and therefore easier to modify, but it's also not as general as the original code - for instance, it cannot play games over VNC and doesn't work for earlier versions of TensorFlow. Use `a3c_train.py` to train (note this uses tmux to launch processes by default). `a3c_train.py` calls `a3c_worker.py` to launch a parameter server called ps and `num-workers` workers that experience the environment. Use TensorBoard to monitor progress during training and `a3c_test.py` at any time to generate a video of the agent playing. Both examples only use 2 workers, but basically the more workers (with more cores) the better.
 
 *Note*: If you are using a virtual environment you have to put `source [path to activate] [environment name]` in your .bashrc file so the correct environment is used when new shells are opened.
 
-**Pong** (2 workers):
+**Pong**:
 ```
 $ python a3c_train.py --env-id=PongDeterministic-v3 --num-workers=2 --log-dir=/tmp/pong
 $ tensorboard --logdir=/tmp/pong
@@ -188,7 +188,7 @@ $ python a3c_test.py --env-id=PongDeterministic-v3 --log-dir=/tmp/pong --movie-p
 
 <img src="https://github.com/frsong/tf-examples/blob/develop/assets/pong_reward.png" width=350 /> <img src="https://github.com/frsong/tf-examples/blob/develop/assets/pong.gif" />
 
-**Breakout** (16 workers):
+**Breakout**:
 ```
 $ python a3c_train.py --env-id=BreakoutDeterministic-v3 --num-workers=16 --log-dir=/tmp/breakout
 $ tensorboard --logdir=/tmp/breakout

@@ -228,7 +228,7 @@ $ tensorboard --logdir=/tmp/pong
 $ python a3c_test.py --env-id=PongDeterministic-v3 --log-dir=/tmp/pong --movie-path=movies/pong
 ```
 
-<img src="https://github.com/frsong/tf-examples/blob/develop/assets/pong_reward.png" width=350 /> <img src="https://github.com/frsong/tf-examples/blob/develop/assets/pong.gif" />
+<img src="assets/pong_reward.png" width=350 /> <img src="assets/pong.gif" />
 
 **Breakout**:
 ```

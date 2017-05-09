@@ -170,7 +170,7 @@ After 19 epochs, loss = 99.42697262850675
 After 20 epochs, loss = 99.06217550104314
 ```
 
-<img src="https://github.com/frsong/tf-examples/blob/develop/assets/draw.gif" width=400 />
+<img src="https://github.com/frsong/tf-examples/blob/develop/assets/draw.gif" width=500 />
 
 (The PNG files were turned into an animated GIF using ImageMagick with the command `convert -delay 20 -loop 0 figs/draw/* assets/draw.gif`)
 

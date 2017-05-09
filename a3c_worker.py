@@ -126,7 +126,7 @@ def cluster_spec(num_workers, num_ps):
     return cluster
 
 def main(_):
-    spec = cluster_spec(FLAGS.num_workers, 1)
+    spec    = cluster_spec(FLAGS.num_workers, 1)
     cluster = tf.train.ClusterSpec(spec).as_cluster_def()
 
     def shutdown(signal, frame):

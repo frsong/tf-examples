@@ -245,4 +245,4 @@ $ python a3c_test.py --env-id=BreakoutDeterministic-v3 --log-dir=/tmp/breakout -
 
 * Deep convolutional generative adversarial network (DCGAN): https://github.com/carpedm20/DCGAN-tensorflow
 
-* Evolution strategies for reinforcement learning: https://github.com/openai/evolution-strategies-starter
+* Evolution strategies (ES) for reinforcement learning: https://github.com/openai/evolution-strategies-starter

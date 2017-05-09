@@ -13,8 +13,8 @@ import pickle
 import numpy as np
 import tensorflow as tf
 
-from char_rnn_model import Model
-import char_rnn_reader as reader
+from char_rnn_model  import Model
+from char_rnn_reader import Reader
 
 FLAGS = tf.app.flags.FLAGS
 
@@ -28,7 +28,7 @@ tf.app.flags.DEFINE_integer('seq_length', 50, "sequence length")
 
 def train():
     # Load data
-    data = reader.Reader(FLAGS.data_dir, FLAGS.batch_size, FLAGS.seq_length)
+    data = Reader(FLAGS.data_dir, FLAGS.batch_size, FLAGS.seq_length)
     vocab_size = len(data.chars)
 
     # Setup directories
@@ -57,7 +57,7 @@ def train():
     for v in variables:
         num_params += np.prod(v.get_shape().as_list())
         print(v.name, v.get_shape())
-    print("=> Total number of parameters = {}".format(num_params))
+    print("=> Total number of parameters =", num_params)
 
     with tf.Session() as sess:
         sess.run(tf.global_variables_initializer())

@@ -92,20 +92,19 @@ def run(server, seed):
     filters = ['/job:ps', '/job:worker/task:{}/cpu:0'.format(FLAGS.task)]
     config  = tf.ConfigProto(device_filters=filters)
     with sv.managed_session(server.target, config=config) as sess:
+        # Sync parameters
         sess.run(a3c.sync_op)
-        a3c.start(sess, summary_writer)
 
-        # Global step
+        a3c.start(sess, summary_writer)
         global_step = sess.run(a3c.global_step)
         logger.info("Starting training at step = %d", global_step)
-
         while not sv.should_stop() and global_step < 100000000:
             a3c.process(sess)
             global_step = sess.run(a3c.global_step)
 
     # Ask for all services to stop
     sv.stop()
-    logger.info("reached %s steps. worker stopped.", global_step)
+    logger.info("Reached %s steps. worker stopped.", global_step)
 
 def cluster_spec(num_workers, num_ps):
     cluster = {}

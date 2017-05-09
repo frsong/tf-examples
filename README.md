@@ -239,4 +239,4 @@ $ python a3c_test.py --env-id=BreakoutDeterministic-v3 --log-dir=/tmp/breakout -
 
 <img src="https://github.com/frsong/tf-examples/blob/develop/assets/breakout_reward.png" width=350 /> <img src="https://github.com/frsong/tf-examples/blob/develop/assets/breakout.gif" />
 
-(The original mp4 files were converted to animated GIFs with the command `convert -delay 20 movies/pong.mp4 assets/pong.gif` for Pong and similarly for Breakout so they could be included here.)
+(The original mp4 files were converted to animated GIFs with the command `convert -delay 2 movies/pong.mp4 assets/pong.gif` for Pong and similarly for Breakout so they could be included here.)

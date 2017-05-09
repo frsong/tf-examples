@@ -119,6 +119,7 @@ def write(decoder_output, reuse):
     return apply_filter_rev(w, Fx, Fy, gamma, write_n)
 
 canvas          = tf.zeros_like(x)
+reconstruction  = tf.zeros_like(x)
 decoder_output  = tf.zeros((batch_size, decoder_size))
 encoder_state   = encoder.zero_state(batch_size, tf.float32)
 decoder_state   = decoder.zero_state(batch_size, tf.float32)
@@ -135,8 +136,7 @@ for t in range(T):
     # Encoding step
     with tf.variable_scope('encoder', reuse=reuse):
         # The encoder observes previous output
-        x_reconstruction = tf.sigmoid(canvas)
-        x_error = x - x_reconstruction
+        x_error = x - reconstruction
         r = read(x, x_error, decoder_output, reuse)
         encoder_inputs = tf.concat([r, decoder_output], 1)
 
@@ -159,7 +159,10 @@ for t in range(T):
             # Accumulate the modifications
             canvas = canvas + write(decoder_output, reuse=reuse)
     canvases.append(canvas)
-    reconstructions.append(tf.sigmoid(canvas))
+
+    # Previous reconstruction
+    reconstruction = tf.sigmoid(canvas)
+    reconstructions.append(reconstruction)
 
 # Reconstruction loss at final time step
 CE = tf.nn.sigmoid_cross_entropy_with_logits(logits=canvases[-1], labels=x)
@@ -223,12 +226,12 @@ nx = ny = 10
 images = data.test.images[:nx*ny]
 reconstructed_images = reconstruct(images)
 
-for t, reconstructions_t in enumerate(reconstructed_images):
+for t, reconstructed_image in enumerate(reconstructed_images):
     grid = np.zeros((28*ny, 28*nx))
     for i in range(ny):
         for j in range(nx):
             grid[28*(ny-i-1):28*(ny-i),28*j:28*(j+1)] = (
-                reconstructions_t[i*ny+j].reshape((28, 28))
+                reconstructed_image[i*ny+j].reshape((28, 28))
                 )
 
     plt.figure()

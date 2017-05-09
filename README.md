@@ -22,7 +22,7 @@ This code has been tested with Python 3.5 and TensorFlow 1.0.1. Many examples ge
 
 * `iris_linreg_tf.py` does the same with TensorFlow.
 
-<img src="https://github.com/frsong/tf-examples/blob/master/figs/iris_linreg_tf.png" width=400 />
+<img src="figs/iris_linreg_tf.png" width=400 />
 
 * `visualize_graph.py` writes the computational graph for the linear regression loss to an event file so it can be visualized by running `tensorboard --logdir=logs/visualize`. Open the indicated IP address in a browser and click on the "Graphs" tab.
 
@@ -32,7 +32,7 @@ This code has been tested with Python 3.5 and TensorFlow 1.0.1. Many examples ge
 
 * `iris_logreg_tf.py` does the same with TensorFlow.
 
-<img src="https://github.com/frsong/tf-examples/blob/master/figs/iris_logreg_tf.png" width=400 />
+<img src="figs/iris_logreg_tf.png" width=400 />
 
 ## Multiclass logistic regression with MNIST
 
@@ -124,7 +124,7 @@ After 70 epochs, loss = 138.74444517655806
 After 75 epochs, loss = 138.50106091586025
 ```
 
-<img src="https://github.com/frsong/tf-examples/blob/master/figs/vae_embedding.png" width=400 /><img src="https://github.com/frsong/tf-examples/blob/master/figs/vae_samples.png" width=400 />
+<img src="figs/vae_embedding.png" width=400 /><img src="figs/vae_samples.png" width=400 />
 
 ## Deep Recurrent Attentive Writer (DRAW) with MNIST
 
@@ -205,7 +205,7 @@ Go, spy up in reproved trai
 
 * `normal_gan.py` implements a GAN based on the code from http://blog.evjang.com/2016/06/generative-adversarial-nets-in.html and http://blog.aylien.com/introduction-generative-adversarial-networks-code-tensorflow/. Some of the tricks mentioned in those blog posts didn't seem to be necessary for this simple example so are not included. Demonstrates the use of an exponentially decaying learning rate and optimizing with respect to subsets of the model parameters.
 
-<img src="https://github.com/frsong/tf-examples/blob/master/figs/normal_gan.png" width=400 />
+<img src="figs/normal_gan.png" width=400 />
 
 ## Asynchronous advantage actor-critic (A3C) reinforcement learning for Atari
 
@@ -237,6 +237,6 @@ $ tensorboard --logdir=/tmp/breakout
 $ python a3c_test.py --env-id=BreakoutDeterministic-v3 --log-dir=/tmp/breakout --movie-path=movies/breakout
 ```
 
-<img src="https://github.com/frsong/tf-examples/blob/develop/assets/breakout_reward.png" width=350 /> <img src="https://github.com/frsong/tf-examples/blob/develop/assets/breakout.gif" />
+<img src="assets/breakout_reward.png" width=350 /> <img src="assets/breakout.gif" />
 
 (The original mp4 files were converted to animated GIFs with the command `convert -delay 2 movies/breakout.mp4 assets/breakout.gif` and similarly for Pong so they could be included here.)

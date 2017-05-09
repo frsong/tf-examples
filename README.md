@@ -240,3 +240,9 @@ $ python a3c_test.py --env-id=BreakoutDeterministic-v3 --log-dir=/tmp/breakout -
 <img src="assets/breakout_reward.png" width=350 /> <img src="assets/breakout.gif" />
 
 (The original mp4 files were converted to animated GIFs with the command `convert -delay 2 movies/breakout.mp4 assets/breakout.gif` and similarly for Pong so they could be included here.)
+
+# Additional resources
+
+* Deep convolutional generative adversarial network (DCGAN): https://github.com/carpedm20/DCGAN-tensorflow
+
+* Evolution strategies for reinforcement learning: https://github.com/openai/evolution-strategies-starter

@@ -150,7 +150,7 @@ num_params = 0
 for v in variables:
     num_params += np.prod(v.get_shape().as_list())
     print(v.name, v.get_shape())
-print("=> Total number of parameters = {}".format(num_params))
+print("=> Total number of parameters =", num_params)
 
 # TF session
 sess = tf.Session()

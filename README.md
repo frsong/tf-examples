@@ -130,6 +130,46 @@ After 75 epochs, loss = 138.50106091586025
 
 * `draw.py` implements DRAW, a recurrent VAE with attention, based on https://github.com/ericjang/draw. Note the basic similarity with the VAE code above.
 
+```
+Variables
+---------
+encoder/read/W:0 (256, 5)
+encoder/read/b:0 (5,)
+encoder/lstm_cell/weights:0 (562, 1024)
+encoder/lstm_cell/biases:0 (1024,)
+encoder/mean/W:0 (256, 10)
+encoder/mean/b:0 (10,)
+encoder/var/W:0 (256, 10)
+encoder/var/b:0 (10,)
+decoder/lstm_cell/weights:0 (266, 1024)
+decoder/lstm_cell/biases:0 (1024,)
+decoder/reconstruction/patch/W:0 (256, 25)
+decoder/reconstruction/patch/b:0 (25,)
+decoder/reconstruction/write/W:0 (256, 5)
+decoder/reconstruction/write/b:0 (5,)
+=> Total number of parameters = 864055
+After 1 epochs, loss = 201.9442735706676
+After 2 epochs, loss = 152.0951077825373
+After 3 epochs, loss = 132.94116324684836
+After 4 epochs, loss = 123.02201456243341
+After 5 epochs, loss = 117.14258439497515
+After 6 epochs, loss = 113.38466285011985
+After 7 epochs, loss = 110.65857582785867
+After 8 epochs, loss = 108.49950408935547
+After 9 epochs, loss = 106.83435360995206
+After 10 epochs, loss = 105.4043239662864
+After 11 epochs, loss = 104.31813178322533
+After 12 epochs, loss = 103.3717008001154
+After 13 epochs, loss = 102.62253411032937
+After 14 epochs, loss = 101.94451520052823
+After 15 epochs, loss = 101.26953340010209
+After 16 epochs, loss = 100.77957465431906
+After 17 epochs, loss = 100.32966930042613
+After 18 epochs, loss = 99.84818851817738
+After 19 epochs, loss = 99.42697262850675
+After 20 epochs, loss = 99.06217550104314
+```
+
 <img src="https://github.com/frsong/tf-examples/blob/develop/assets/draw.gif" width=400 />
 
 ## char-rnn with Shakespeare
@@ -175,7 +215,7 @@ pip install universe
 pip install opencv-python
 ```
 
-For the most part, this is just a stripped-down version of the already excellent code at https://github.com/openai/universe-starter-agent. I hope it's a bit more readable and therefore easier to modify, but it's also not as general as the original code - for instance, it cannot play games over VNC and doesn't work for earlier versions of TensorFlow. Use `a3c_train.py` to train (note this uses tmux to launch processes by default). `a3c_train.py` calls `a3c_worker.py` to launch a parameter server called ps and `num-workers` workers that experience the environment. Use TensorBoard to monitor progress during training and `a3c_test.py` at any time to generate a video of the agent playing. Both examples only use 2 workers, but basically the more workers (with more cores) the better.
+For the most part, this is just a stripped-down version of the already excellent code at https://github.com/openai/universe-starter-agent. I hope it's a bit more readable and therefore easier to modify, but it's also not as general as the original code - for instance, it cannot play games over VNC and doesn't work for earlier versions of TensorFlow. Use `a3c_train.py` to train (note this uses tmux to launch processes by default). `a3c_train.py` calls `a3c_worker.py` to launch a parameter server called ps and `num-workers` workers that experience the environment. Use TensorBoard to monitor progress during training and `a3c_test.py` at any time to generate a video of the agent playing. Both examples use just 2 workers, but basically the more workers (with more cores) the better.
 
 *Note*: If you are using a virtual environment you have to put `source [path to activate] [environment name]` in your .bashrc file so the correct environment is used when new shells are opened.
 

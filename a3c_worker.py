@@ -108,7 +108,7 @@ def run(server, seed):
 
 def cluster_spec(num_workers, num_ps):
     cluster = {}
-    port = 12222
+    port    = 12222
 
     all_ps = []
     host = '127.0.0.1'

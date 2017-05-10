@@ -39,7 +39,6 @@ def process_rollout(rollout, gamma=0.99, lambda_=1.0):
     batch_adv      = discount(delta_t, gamma * lambda_)
 
     state = rollout.states[0]
-
     return Batch(batch_obs, batch_a, batch_adv, batch_r, rollout.done, state)
 
 class Rollout(object):

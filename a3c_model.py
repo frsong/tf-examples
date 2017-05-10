@@ -39,7 +39,7 @@ def conv(name, x, num_filters, filter_size=[3, 3], stride=[1, 1],
         # Get b
         init = tf.constant_initializer(0.0)
         b    = tf.get_variable('b', [num_filters], initializer=init,
-                            collections=collections)
+                               collections=collections)
 
         return tf.nn.conv2d(x, W, stride_shape, padding) + b
 

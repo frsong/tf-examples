@@ -93,10 +93,9 @@ class RunnerThread(Thread):
 
     def run(self):
         with self.sess.as_default():
-            rollout_provider = env_runner(self.env,
-                                          self.policy,
-                                          self.num_local_steps,
-                                          self.summary_writer)
+            rollout_provider = env_runner(
+                self.env, self.policy, self.num_local_steps, self.summary_writer
+                )
             while True:
                 # Original code says the timeout is needed to make the
                 # workers die together

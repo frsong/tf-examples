@@ -26,7 +26,7 @@ This code has been tested with Python 3.5 and TensorFlow 1.0.1. Many examples ge
 
 * `visualize_graph.py` writes the computational graph for the linear regression loss to an event file so it can be visualized by running `tensorboard --logdir=logs/visualize`. Open the indicated IP address in a browser and click on the "Graphs" tab.
 
-<img src="https://github.com/frsong/tf-examples/blob/develop/assets/linreg_graph.gif" width=400 />
+<img src="assets/linreg_graph.gif" width=400 />
 
 ## Binary logistic regression with the Iris dataset
 
@@ -172,7 +172,7 @@ After 19 epochs, loss = 99.42697262850675
 After 20 epochs, loss = 99.06217550104314
 ```
 
-<img src="https://github.com/frsong/tf-examples/blob/develop/assets/draw.gif" width=500 />
+<img src="assets/draw.gif" width=500 />
 
 (The PNG files were turned into an animated GIF using ImageMagick with the command `convert -delay 20 -loop 0 figs/draw/* assets/draw.gif`)
 

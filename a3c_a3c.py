@@ -13,8 +13,8 @@ import queue
 from collections import namedtuple
 from threading import Thread
 import numpy as np
-import tensorflow as tf
 import scipy.signal
+import tensorflow as tf
 
 from a3c_model import Policy
 

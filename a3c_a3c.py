@@ -1,5 +1,5 @@
 """
-Asynchronous advantage actor-critic based on
+Asynchronous advantage actor-critic (A3C) based on
 
     https://github.com/openai/universe-starter-agent
 

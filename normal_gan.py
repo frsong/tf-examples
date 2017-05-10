@@ -1,5 +1,5 @@
 """
-Based on
+Generative adversarial network (GAN) for a 1D normal distribution, based on
 
     http://blog.evjang.com/2016/06/generative-adversarial-nets-in.html
     http://blog.aylien.com/introduction-generative-adversarial-networks-code-tensorflow/

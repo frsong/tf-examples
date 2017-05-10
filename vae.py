@@ -1,5 +1,5 @@
 """
-Variational autoencoder for MNIST based on
+Variational autoencoder (VAE) for MNIST based on
 
     https://jmetzen.github.io/2015-11-27/vae.html
 

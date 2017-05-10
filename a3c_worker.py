@@ -111,7 +111,7 @@ def cluster_spec(num_workers, num_ps):
     port    = 12222
 
     all_ps = []
-    host = '127.0.0.1'
+    host   = '127.0.0.1'
     for _ in range(num_ps):
         all_ps.append('{}:{}'.format(host, port))
         port += 1

@@ -26,6 +26,8 @@ This code has been tested with Python 3.5 and TensorFlow 1.0.1. Many examples ge
 
 * `visualize_graph.py` writes the computational graph for the linear regression loss to an event file so it can be visualized by running `tensorboard --logdir=logs/visualize`. Open the indicated IP address in a browser and click on the "Graphs" tab.
 
+<img src="https://github.com/frsong/tf-examples/blob/develop/assets/linreg_graph.gif" width=400 />
+
 ## Binary logistic regression with the Iris dataset
 
 * `iris_logreg_np.py` implements logistic regression in NumPy with stochastic gradient descent, i.e., each gradient is computed on one random example from the dataset.
